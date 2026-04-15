@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Investment Calculators India — FD vs SIP, PPF, NPS, Emergency Fund | PaisaClarity</title>
+<meta name="description" content="Free investment calculators for India. Compare FD vs SIP vs RD returns, PPF maturity, NPS pension estimator, emergency fund planner. Make smarter money decisions in 2025.">
+<meta name="keywords" content="FD vs SIP calculator india,PPF calculator,NPS calculator india,emergency fund calculator,SIP returns calculator,mutual fund returns,RD calculator india">
+<link rel="canonical" href="https://paisaclarity.in/pages/invest.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="navbar"></div>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Investments</span></div>
+    <span class="badge badge-red">📈 Investments</span>
+    <h1>Investment Calculators</h1>
+    <p>FD vs SIP vs RD returns, PPF maturity, NPS pension, emergency fund — all with accurate calculations for Indian investors in 2025.</p>
+  </div>
+</div>
+<div class="container" style="padding-top:24px"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+
+<div class="tool-page">
+  <div class="container">
+    <div class="tabs" data-tabs>
+      <button class="tab-btn active" data-tab="v1">FD vs SIP vs RD</button>
+      <button class="tab-btn" data-tab="v2">PPF Calculator</button>
+      <button class="tab-btn" data-tab="v3">NPS Calculator</button>
+      <button class="tab-btn" data-tab="v4">Emergency Fund</button>
+    </div>
+
+    <!-- ══ TAB 1: FD vs SIP vs RD ══ -->
+    <div class="tab-content active" id="v1">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Compare Returns: FD vs SIP vs RD</div>
+            <div class="grid-2">
+              <div class="form-group"><label class="form-label">Monthly Investment (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="cmp-amt" value="10000"></div></div>
+              <div class="form-group"><label class="form-label">Investment Period (Years)</label><input type="number" class="form-input" id="cmp-yrs" value="10" min="1" max="40"></div>
+              <div class="form-group"><label class="form-label">FD / RD Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="cmp-fd-rate" value="7.0" step="0.1"><span class="input-suf-sym">%</span></div></div>
+              <div class="form-group"><label class="form-label">Expected SIP Returns (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="cmp-sip-rate" value="12" step="0.5"><span class="input-suf-sym">%</span></div><div class="form-hint">Historical Nifty 50 SIP avg: ~12–13%</div></div>
+              <div class="form-group"><label class="form-label">Your Income Tax Slab (for FD interest)</label>
+                <select class="form-select" id="cmp-slab">
+                  <option value="0">Nil (income under ₹3L)</option>
+                  <option value="5">5%</option>
+                  <option value="20" selected>20%</option>
+                  <option value="30">30%</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcCompare()">Compare All Three</button>
+
+            <div id="cmp-result" class="hidden mt-16">
+              <div class="grid-3">
+                <div class="card">
+                  <div class="result-label">Recurring Deposit</div>
+                  <div style="font-size:1.4rem;font-weight:700;color:var(--text-primary);font-family:var(--font-display)" id="cmp-rd">₹0</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);margin-top:4px" id="cmp-rd-sub">Gain: ₹0 | Post-tax: ₹0</div>
+                </div>
+                <div class="card">
+                  <div class="result-label">Fixed Deposit (Lump Sum)</div>
+                  <div style="font-size:1.4rem;font-weight:700;color:var(--text-primary);font-family:var(--font-display)" id="cmp-fd">₹0</div>
+                  <div style="font-size:.78rem;color:var(--text-secondary);margin-top:4px" id="cmp-fd-sub">Gain: ₹0 | Post-tax: ₹0</div>
+                </div>
+                <div class="card" style="border-color:var(--primary);background:var(--primary-bg)">
+                  <div class="result-label" style="color:var(--primary-dark)">SIP (Equity MF)</div>
+                  <div style="font-size:1.4rem;font-weight:700;color:var(--primary);font-family:var(--font-display)" id="cmp-sip">₹0</div>
+                  <div style="font-size:.78rem;color:var(--primary-dark);margin-top:4px" id="cmp-sip-sub">Gain: ₹0</div>
+                </div>
+              </div>
+              <div class="result-box mt-16">
+                <div class="result-label">SIP outperforms RD by</div>
+                <div class="result-main" id="cmp-diff">₹0</div>
+              </div>
+              <div class="alert mt-12" id="cmp-advice"></div>
+              <h4 style="margin:20px 0 12px">Detailed Comparison</h4>
+              <div style="overflow-x:auto">
+                <table class="result-table">
+                  <thead><tr><th>Option</th><th>Total Invested</th><th>Maturity Value</th><th>Gain</th><th>Post-Tax Return</th></tr></thead>
+                  <tbody id="cmp-table"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>FD vs SIP vs RD — The Honest Comparison</h2>
+            <p>There is no single right answer — the best option depends on your risk tolerance, time horizon, and tax bracket. Here's what you need to know before choosing.</p>
+            <div class="highlight-box"><p>💡 Rule of thumb: Goals under 3 years → FD/RD (safe). Goals 5+ years away → SIP in equity funds (wealth creation). Tax saving → ELSS SIP (Section 80C).</p></div>
+            <h3>Fixed Deposit (FD)</h3>
+            <p>Safe, guaranteed returns. Current rates: 6.5–7.5% for 1–5 years. But FD interest is <strong>fully taxable at your slab rate</strong>. At 30% slab, effective return shrinks to 4.9–5.25%. Suitable only for short-term or risk-averse investors.</p>
+            <h3>Recurring Deposit (RD)</h3>
+            <p>Like FD but with monthly contributions. Same interest rate as FD. Fully safe and predictable. Interest taxable. Good for disciplined short-term saving (vacation fund, car down payment).</p>
+            <h3>SIP in Equity Mutual Funds</h3>
+            <p>Monthly investment in equity MFs. Market-linked — not guaranteed. Historical Nifty 50 SIP returns over 10+ years: 12–15% CAGR. LTCG taxed at only 12.5% above ₹1.25L — much lower effective tax than FD at 20–30% slab. Best for long-term wealth building.</p>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 2: PPF ══ -->
+    <div class="tab-content" id="v2">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">PPF Maturity Calculator — Public Provident Fund</div>
+            <div class="alert alert-green mb-16"><span>✅</span> PPF is EEE — Contributions, Interest, and Maturity are ALL tax-free. One of India's best debt instruments.</div>
+            <div class="form-group"><label class="form-label">Annual PPF Contribution (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ppf-amt" value="150000" min="500" max="150000"></div><div class="form-hint">Min: ₹500 · Max: ₹1,50,000/year</div></div>
+            <div class="form-group"><label class="form-label">Current PPF Balance (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ppf-bal" value="0"></div></div>
+            <div class="form-group"><label class="form-label">Years Already Completed (0–14)</label><input type="number" class="form-input" id="ppf-done" value="0" min="0" max="14"></div>
+            <div class="form-group"><label class="form-label">PPF Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="ppf-rate" value="7.1" step="0.05"><span class="input-suf-sym">%</span></div><div class="form-hint">Current rate: 7.1% (Q1 FY2025)</div></div>
+            <button class="btn btn-primary w-full" onclick="calcPPF()">Calculate PPF Maturity</button>
+
+            <div id="ppf-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">Maturity Value (at 15 Years)</div><div class="result-main" id="ppf-maturity">₹0</div></div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Total Invested</div><div class="result-item-value" id="ppf-invested">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Tax-Free Interest Earned</div><div class="result-item-value pos" id="ppf-interest">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Years Remaining</div><div class="result-item-value" id="ppf-remain">0</div></div>
+                <div class="result-item"><div class="result-item-label">Tax on Maturity</div><div class="result-item-value pos">₹0 (Completely Tax-Free!)</div></div>
+              </div>
+              <div id="ppf-extension" class="hidden mt-16">
+                <h4 style="margin-bottom:8px">After 15 Years — Extended by 5 Years</h4>
+                <div class="result-grid">
+                  <div class="result-item"><div class="result-item-label">Value after 20 years</div><div class="result-item-value pos" id="ppf-20">₹0</div></div>
+                  <div class="result-item"><div class="result-item-label">Value after 25 years</div><div class="result-item-value pos" id="ppf-25">₹0</div></div>
+                </div>
+              </div>
+              <div class="alert alert-green mt-12" id="ppf-advice"></div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>PPF — Complete Guide for Indian Investors</h2>
+            <p>Public Provident Fund (PPF) is one of India's best long-term savings instruments. It's backed by the Government of India and offers the rare EEE (Exempt-Exempt-Exempt) tax treatment.</p>
+            <h3>Key PPF Rules</h3>
+            <ul>
+              <li>Tenure: 15 years (extendable in 5-year blocks indefinitely)</li>
+              <li>Minimum: ₹500/year. Maximum: ₹1,50,000/year</li>
+              <li>Partial withdrawal: Allowed from Year 7 onwards (50% of balance at end of 4th year)</li>
+              <li>Loan: Available Year 3 to 6 (25% of balance at end of 2nd preceding year)</li>
+              <li>Account for minor: Parents can open in child's name (counts toward parent's ₹1.5L limit)</li>
+            </ul>
+            <div class="highlight-box"><p>💡 Deposit before the 5th of each month to earn interest for that entire month. Depositing after the 5th loses you one month's compounded interest.</p></div>
+            <h3>PPF vs FD: The Real Comparison</h3>
+            <p>PPF at 7.1% tax-free is better than FD at 7.5% taxable for anyone in the 20% or 30% slab. Effective post-tax FD return at 30% slab: just 5.25%. PPF wins for long-term savings.</p>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 3: NPS ══ -->
+    <div class="tab-content" id="v3">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">NPS Pension Calculator</div>
+            <div class="alert alert-blue mb-16"><span>ℹ️</span> NPS gives an extra <strong>₹50,000 tax deduction</strong> under 80CCD(1B) — completely over and above the ₹1.5L 80C limit.</div>
+            <div class="form-group"><label class="form-label">Current Age</label><input type="number" class="form-input" id="nps-age" value="30" min="18" max="59"></div>
+            <div class="form-group"><label class="form-label">Monthly NPS Contribution (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="nps-amt" value="5000"></div></div>
+            <div class="form-group"><label class="form-label">Expected Annual Return (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="nps-rate" value="10" step="0.5"><span class="input-suf-sym">%</span></div><div class="form-hint">NPS Tier 1 Equity (E) plan historical avg: 10–12%</div></div>
+            <div class="form-group"><label class="form-label">Annuity Rate for Pension (%)</label><div class="input-suf"><input type="number" class="form-input" id="nps-annuity-rate" value="6" step="0.5"><span class="input-suf-sym">%</span></div><div class="form-hint">Current annuity rates: 5.5–7%</div></div>
+            <div class="form-group"><label class="form-label">Your Tax Slab</label>
+              <select class="form-select" id="nps-slab">
+                <option value="5">5%</option>
+                <option value="20">20%</option>
+                <option value="30" selected>30%</option>
+              </select>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcNPS()">Calculate NPS Pension</button>
+
+            <div id="nps-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">NPS Corpus at Age 60</div><div class="result-main" id="nps-corpus">₹0</div></div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">60% Lump Sum (Tax-Free)</div><div class="result-item-value pos" id="nps-lump">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">40% → Annuity Purchase</div><div class="result-item-value" id="nps-annuity-amt">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Monthly Pension</div><div class="result-item-value pos" id="nps-pension">₹0/mo</div></div>
+                <div class="result-item"><div class="result-item-label">Annual Tax Saving Now</div><div class="result-item-value pos" id="nps-taxsave">₹0</div></div>
+              </div>
+              <div class="result-box mt-12" style="background:var(--accent-light);border-color:rgba(244,168,50,.3)">
+                <div class="result-label" style="color:#8A5800">Total Tax Saved Over Career</div>
+                <div class="result-main" id="nps-total-save" style="color:#8A5800">₹0</div>
+              </div>
+              <div class="alert alert-green mt-12" id="nps-advice"></div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>NPS — Is It Worth It for Salaried Indians?</h2>
+            <p>For salaried employees in the 20% or 30% tax bracket, NPS is one of the most tax-efficient instruments in India, particularly because of the <strong>additional ₹50,000 deduction under 80CCD(1B)</strong> that sits completely outside the ₹1.5L 80C limit.</p>
+            <h3>NPS Tax Benefits</h3>
+            <ul>
+              <li><strong>80CCD(1):</strong> Up to 10% of salary (within 80C ₹1.5L cap)</li>
+              <li><strong>80CCD(1B):</strong> Additional ₹50,000 — completely separate from 80C</li>
+              <li><strong>80CCD(2):</strong> Employer NPS contribution up to 10% of salary — no cap, not in 80C</li>
+            </ul>
+            <div class="highlight-box"><p>💡 At 30% slab, the 80CCD(1B) ₹50,000 deduction alone saves ₹15,600/year (including cess). Over 30 years, that's ₹4.68L in tax savings — plus the corpus growth on the invested amount.</p></div>
+            <h3>NPS Withdrawal Rules</h3>
+            <ul>
+              <li>At 60: 60% lump sum (tax-free) + 40% must purchase annuity</li>
+              <li>Monthly pension from annuity is taxable as income</li>
+              <li>Partial withdrawal: After 3 years for education, illness, home purchase</li>
+              <li>Early exit (before 60): 80% must go to annuity, only 20% lump sum</li>
+            </ul>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 4: EMERGENCY FUND ══ -->
+    <div class="tab-content" id="v4">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Emergency Fund Planner</div>
+            <div class="alert alert-amber mb-16"><span>⚠️</span> Most Indians have no emergency fund. This is your most important investment — before SIP, before PPF, before anything else.</div>
+            <div class="form-group"><label class="form-label">Monthly Essential Expenses (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ef-exp" value="45000"></div><div class="form-hint">Rent + groceries + EMIs + utilities + school fees</div></div>
+            <div class="form-group"><label class="form-label">Job Stability</label>
+              <select class="form-select" id="ef-stab">
+                <option value="stable">Very Stable (Govt job, large MNC)</option>
+                <option value="medium" selected>Moderate (Private, 3+ years)</option>
+                <option value="volatile">Volatile (Startup, freelance, sales-target)</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Dependents</label>
+              <select class="form-select" id="ef-dep">
+                <option value="0">Just myself</option>
+                <option value="1" selected>Spouse / 1–2 children</option>
+                <option value="3">Elderly parents + family (3+)</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Health Insurance Coverage</label>
+              <select class="form-select" id="ef-health">
+                <option value="yes">Yes — adequately covered</option>
+                <option value="partial">Partial / Only employer cover</option>
+                <option value="no">No insurance</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">EMI Obligations (₹/month)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ef-emi" value="15000"></div><div class="form-hint">Loans that must be paid even if you lose income</div></div>
+            <div class="form-group"><label class="form-label">Current Liquid Savings (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ef-saved" value="100000"></div></div>
+            <button class="btn btn-primary w-full" onclick="calcEF()">Plan My Emergency Fund</button>
+
+            <div id="ef-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">Recommended Emergency Fund</div><div class="result-main" id="ef-target">₹0</div></div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Months of Coverage</div><div class="result-item-value" id="ef-months">0</div></div>
+                <div class="result-item"><div class="result-item-label">You Currently Have</div><div class="result-item-value" id="ef-have">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Amount Still Needed</div><div class="result-item-value warn" id="ef-gap">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Time to Build (saving 20%)</div><div class="result-item-value" id="ef-time">0</div></div>
+              </div>
+              <div class="alert mt-12" id="ef-advice"></div>
+              <h4 style="margin:16px 0 10px">Where to Keep Your Emergency Fund</h4>
+              <div style="font-size:.875rem">
+                <div style="padding:9px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--primary);flex-shrink:0">✓</span><div><strong>High-Yield Savings Account</strong> (IDFC First, Kotak, AU Bank — 6–7%) — keep 1–2 months here for instant access</div></div>
+                <div style="padding:9px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--primary);flex-shrink:0">✓</span><div><strong>Liquid Mutual Fund</strong> (7–8%, withdrawable in 1 business day) — keep 2–4 months here</div></div>
+                <div style="padding:9px 0;display:flex;gap:10px"><span style="color:var(--primary);flex-shrink:0">✓</span><div><strong>Sweep-in FD</strong> (FD rates, instant liquidity) — for the remaining portion of your fund</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>Emergency Fund — India's Most Neglected Financial Step</h2>
+            <p>Before any SIP, PPF, or tax planning, an emergency fund covering 3–12 months of expenses is your most critical financial cushion. Without it, any unexpected event — job loss, medical emergency, car breakdown — pushes you into high-interest debt.</p>
+            <div class="highlight-box"><p>💡 A ₹3L emergency fund in a liquid fund earning 7.5% is not "idle money" — it's your personal insurance policy. The cost of not having it (high-interest personal loan at 18%) is far greater than the opportunity cost.</p></div>
+            <h3>Common Emergency Fund Mistakes</h3>
+            <ul>
+              <li><strong>Keeping it in stocks/ELSS:</strong> Market down exactly when you need money. Never do this.</li>
+              <li><strong>Using credit card as backup:</strong> Credit cards at 36% interest make emergencies catastrophic.</li>
+              <li><strong>Mixing with goal savings:</strong> Label the account "Emergency Only" — psychologically and practically separate.</li>
+              <li><strong>Under-saving for freelancers:</strong> If your income is irregular, you need 9–12 months, not 3.</li>
+            </ul>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script>renderNav();renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+const f=n=>new Intl.NumberFormat('en-IN').format(Math.round(n));
+const fL=n=>{if(n>=10000000)return(n/10000000).toFixed(2)+' Cr';if(n>=100000)return(n/100000).toFixed(2)+' L';return f(n);};
+
+function calcCompare(){
+  const amt=+document.getElementById('cmp-amt').value||0;
+  const yrs=+document.getElementById('cmp-yrs').value||0;
+  const fdRate=+document.getElementById('cmp-fd-rate').value/100;
+  const sipRate=+document.getElementById('cmp-sip-rate').value/100;
+  const slab=+document.getElementById('cmp-slab').value/100;
+  if(!amt||!yrs){alert('Please fill all fields');return;}
+  const n=yrs*12;const invested=amt*n;
+  // RD maturity
+  const rdR=fdRate/12;const rdVal=amt*((Math.pow(1+rdR,n)-1)/rdR)*(1+rdR);
+  const rdGain=rdVal-invested;const rdPostTax=invested+rdGain*(1-slab);
+  // FD (invest all at start for equivalent comparison)
+  const fdVal=invested*Math.pow(1+fdRate,yrs);
+  const fdGain=fdVal-invested;const fdPostTax=invested+fdGain*(1-slab);
+  // SIP
+  const sipR=sipRate/12;const sipVal=amt*((Math.pow(1+sipR,n)-1)/sipR)*(1+sipR);
+  const sipGain=sipVal-invested;
+  // SIP LTCG: 12.5% on gain above 1.25L
+  const sipTaxable=Math.max(0,sipGain-125000);const sipPostTax=sipVal-sipTaxable*0.125*1.04;
+  document.getElementById('cmp-result').classList.remove('hidden');
+  document.getElementById('cmp-rd').textContent='₹'+fL(rdVal);
+  document.getElementById('cmp-rd-sub').textContent=`Gain: ₹${fL(rdGain)} | After ${slab*100}% tax: ₹${fL(rdPostTax)}`;
+  document.getElementById('cmp-fd').textContent='₹'+fL(fdVal);
+  document.getElementById('cmp-fd-sub').textContent=`Gain: ₹${fL(fdGain)} | After ${slab*100}% tax: ₹${fL(fdPostTax)}`;
+  document.getElementById('cmp-sip').textContent='₹'+fL(sipVal);
+  document.getElementById('cmp-sip-sub').textContent=`Gain: ₹${fL(sipGain)} | After 12.5% LTCG: ₹${fL(sipPostTax)}`;
+  document.getElementById('cmp-diff').textContent='₹'+fL(Math.max(0,sipVal-rdVal));
+  const ad=document.getElementById('cmp-advice');
+  const better=sipPostTax>rdPostTax;
+  ad.className='alert '+(better?'alert-green':'alert-amber');
+  ad.innerHTML=`Over ${yrs} years, SIP ${better?'generates ₹'+fL(sipPostTax-rdPostTax)+' more wealth than RD after all taxes.':'returns less than RD — at '+fdRate*100+'% FD rate, guaranteed returns beat '+sipRate*100+'% SIP assumption for this period.'} SIP gains value dramatically in 10+ year horizons due to compounding.`;
+  const inv=fL(invested);
+  document.getElementById('cmp-table').innerHTML=`
+    <tr><td>Recurring Deposit</td><td>₹${inv}</td><td>₹${fL(rdVal)}</td><td>₹${fL(rdGain)}</td><td>₹${fL(rdPostTax)}</td></tr>
+    <tr><td>Fixed Deposit (Lump)</td><td>₹${inv}</td><td>₹${fL(fdVal)}</td><td>₹${fL(fdGain)}</td><td>₹${fL(fdPostTax)}</td></tr>
+    <tr class="total"><td>SIP (Equity MF)</td><td>₹${inv}</td><td>₹${fL(sipVal)}</td><td>₹${fL(sipGain)}</td><td>₹${fL(sipPostTax)}</td></tr>`;
+}
+
+function calcPPF(){
+  const annual=+document.getElementById('ppf-amt').value||0;
+  const existing=+document.getElementById('ppf-bal').value||0;
+  const done=+document.getElementById('ppf-done').value||0;
+  const rate=+document.getElementById('ppf-rate').value/100;
+  if(!annual){alert('Enter annual contribution');return;}
+  const rem=Math.max(1,15-done);let corpus=existing;let invested=0;
+  for(let i=0;i<rem;i++){corpus=(corpus+annual)*(1+rate);invested+=annual;}
+  // 20 and 25 year projections
+  let c20=corpus;for(let i=0;i<5;i++){c20=(c20+annual)*(1+rate);}
+  let c25=c20;for(let i=0;i<5;i++){c25=(c25+annual)*(1+rate);}
+  document.getElementById('ppf-result').classList.remove('hidden');
+  document.getElementById('ppf-maturity').textContent='₹'+fL(corpus);
+  document.getElementById('ppf-invested').textContent='₹'+fL(invested+existing);
+  document.getElementById('ppf-interest').textContent='₹'+fL(corpus-invested-existing);
+  document.getElementById('ppf-remain').textContent=rem+' years';
+  document.getElementById('ppf-extension').classList.remove('hidden');
+  document.getElementById('ppf-20').textContent='₹'+fL(c20);
+  document.getElementById('ppf-25').textContent='₹'+fL(c25);
+  const effVsFd=((rate*100)*100/70).toFixed(1);
+  document.getElementById('ppf-advice').textContent=`PPF at ${rate*100}% tax-free = equivalent to an FD at ${effVsFd}% pre-tax (at 30% slab). You'll receive ₹${fL(corpus)} completely tax-free after ${rem} years.`;
+}
+
+function calcNPS(){
+  const age=+document.getElementById('nps-age').value||30;
+  const monthly=+document.getElementById('nps-amt').value||0;
+  const rate=+document.getElementById('nps-rate').value/100;
+  const annRate=+document.getElementById('nps-annuity-rate').value/100;
+  const slab=+document.getElementById('nps-slab').value/100;
+  if(!monthly){alert('Enter monthly contribution');return;}
+  const yrs=Math.max(1,60-age);const r=rate/12;const n=yrs*12;
+  const corpus=monthly*((Math.pow(1+r,n)-1)/r)*(1+r);
+  const lump=corpus*0.6;const annCorpus=corpus*0.4;const pension=annCorpus*annRate/12;
+  const annContrib=Math.min(monthly*12,50000);
+  const annSave=annContrib*slab*1.04;
+  const totalSave=annSave*yrs;
+  document.getElementById('nps-result').classList.remove('hidden');
+  document.getElementById('nps-corpus').textContent='₹'+fL(corpus);
+  document.getElementById('nps-lump').textContent='₹'+fL(lump);
+  document.getElementById('nps-annuity-amt').textContent='₹'+fL(annCorpus);
+  document.getElementById('nps-pension').textContent='₹'+f(pension)+'/mo';
+  document.getElementById('nps-taxsave').textContent='₹'+f(annSave)+'/yr';
+  document.getElementById('nps-total-save').textContent='₹'+fL(totalSave);
+  document.getElementById('nps-advice').textContent=`In ${yrs} years, NPS grows to ₹${fL(corpus)}. You get ₹${fL(lump)} tax-free lump sum + ₹${f(pension)}/month pension. Plus you save ₹${f(annSave)} in tax every year — totalling ₹${fL(totalSave)} over your career.`;
+}
+
+function calcEF(){
+  const exp=+document.getElementById('ef-exp').value||0;
+  const stab=document.getElementById('ef-stab').value;
+  const dep=document.getElementById('ef-dep').value;
+  const health=document.getElementById('ef-health').value;
+  const emi=+document.getElementById('ef-emi').value||0;
+  const saved=+document.getElementById('ef-saved').value||0;
+  if(!exp){alert('Enter monthly expenses');return;}
+  let months=3;
+  if(stab==='medium')months=6;if(stab==='volatile')months=9;
+  if(dep==='1')months+=1;if(dep==='3')months+=3;
+  if(health==='partial')months+=1;if(health==='no')months+=2;
+  const monthlyNeed=exp+emi;// must cover EMIs too
+  const target=monthlyNeed*months;const gap=Math.max(0,target-saved);
+  const mSave=exp*0.20;const time=gap>0?Math.ceil(gap/mSave):0;
+  document.getElementById('ef-result').classList.remove('hidden');
+  document.getElementById('ef-target').textContent='₹'+fL(target);
+  document.getElementById('ef-months').textContent=months+' months of expenses + EMIs';
+  document.getElementById('ef-have').textContent='₹'+fL(saved);
+  document.getElementById('ef-gap').textContent=gap>0?'₹'+fL(gap):'₹0 — You\'re covered!';
+  document.getElementById('ef-time').textContent=time>0?time+' months (saving 20% of expenses)':'Ready now!';
+  const ad=document.getElementById('ef-advice');
+  if(gap<=0){ad.className='alert alert-green';ad.textContent=`✅ Your emergency fund is fully covered for ${months} months! Focus on long-term investments next.`;}
+  else if(gap<exp*2){ad.className='alert alert-amber';ad.textContent=`Almost there! You need ₹${fL(gap)} more. Save 20% of expenses (₹${f(mSave)}/mo) and you'll hit your target in ${time} months. Keep this in a liquid fund.`;}
+  else{ad.className='alert alert-red';ad.textContent=`⚠️ You need ₹${fL(gap)} more. Start immediately — set up a ₹${f(mSave)}/month auto-transfer to a liquid fund. Don't invest anything else until you have at least 3 months covered.`;}
+}
+</script>
+</body>
+</html>

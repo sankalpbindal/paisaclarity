@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PaisaClarity Pricing — Free, Pro & CA Connect | Per-Session Available</title>
+<meta name="description" content="PaisaClarity pricing. Free forever for all calculators. Pro at ₹299/year. CA Connect from ₹99 per query — no subscription needed. India's most flexible tax help pricing.">
+<link rel="canonical" href="https://paisaclarity.in/pages/pricing.html">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── BILLING TOGGLE ── */
+.billing-toggle{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px 0 8px}
+.toggle-label{font-size:.9rem;font-weight:500;color:var(--text-secondary)}
+.toggle-label.active{color:var(--primary);font-weight:600}
+.toggle-switch{position:relative;width:52px;height:28px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--border-strong);border-radius:28px;cursor:pointer;transition:.3s}
+.toggle-slider::before{content:'';position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle-switch input:checked + .toggle-slider{background:var(--primary)}
+.toggle-switch input:checked + .toggle-slider::before{transform:translateX(24px)}
+.toggle-save-pill{display:inline-flex;align-items:center;padding:3px 10px;background:#FEF3C7;color:#92400E;border-radius:20px;font-size:.75rem;font-weight:600;margin-left:4px}
+
+/* ── PRICING GRID — 5 tiers ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:0 auto}
+.pricing-grid-bottom{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin:20px auto 0}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr 1fr}.pricing-grid-bottom{grid-template-columns:1fr}}
+@media(max-width:600px){.pricing-grid{grid-template-columns:1fr}}
+
+/* ── CARD VARIANTS ── */
+.pc{border-radius:var(--radius-xl);padding:28px 24px;border:2px solid var(--border);background:var(--surface);transition:all .2s ease;position:relative;overflow:hidden}
+.pc:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.pc.popular{border-color:var(--primary);background:var(--primary-bg)}
+.pc.ca-card{border-color:#7C3AED;background:#FAF5FF}
+.pc.session-card{border-color:var(--accent);background:var(--accent-light)}
+
+.pc-ribbon{position:absolute;top:16px;right:-28px;background:var(--primary);color:#fff;font-size:.7rem;font-weight:700;padding:4px 36px;transform:rotate(35deg);letter-spacing:.06em}
+.pc-ribbon.amber{background:var(--accent);color:#fff}
+.pc-ribbon.purple{background:#7C3AED}
+
+.pc-tag{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:12px}
+.pc-tag.free{background:var(--surface-3);color:var(--text-secondary)}
+.pc-tag.pro{background:var(--primary-bg);color:var(--primary-dark)}
+.pc-tag.ca{background:#EDE9FE;color:#5B21B6}
+.pc-tag.session{background:var(--accent-light);color:#92400E}
+
+.pc-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:4px}
+.pc-price{font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--text-primary);line-height:1;margin:10px 0 4px}
+.pc-price sub{font-size:.9rem;font-weight:400;color:var(--text-muted);vertical-align:middle}
+.pc-equiv{font-size:.8rem;color:var(--text-muted);margin-bottom:16px;min-height:20px}
+.pc-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.pc-features{list-style:none;margin-bottom:20px}
+.pc-features li{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:.855rem;color:var(--text-secondary);border-bottom:1px solid rgba(0,0,0,.04)}
+.pc-features li:last-child{border-bottom:none}
+.pf-yes{color:var(--primary);font-weight:700;flex-shrink:0;margin-top:1px}
+.pf-no{color:var(--text-muted);flex-shrink:0;margin-top:1px}
+.pf-ca{color:#7C3AED;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ── SESSION BUNDLE SECTION ── */
+.session-section{background:linear-gradient(135deg,#FFFBEB 0%,#FFF7ED 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.session-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.session-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.session-grid{grid-template-columns:1fr}}
+
+.scard{border-radius:var(--radius-lg);padding:22px 18px;background:#fff;border:2px solid var(--border);text-align:center;transition:all .2s;position:relative}
+.scard:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.scard.best-val{border-color:var(--accent);background:linear-gradient(135deg,#FFF7ED,#FFFBEB)}
+.scard-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px}
+.scard.best-val .scard-label{color:var(--accent)}
+.scard-price{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--text-primary);line-height:1}
+.scard-sub{font-size:.78rem;color:var(--text-muted);margin:4px 0 10px}
+.scard-badge{display:inline-flex;padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:600;margin-bottom:12px}
+.scard-badge.green{background:var(--primary-bg);color:var(--primary-dark)}
+.scard-badge.amber{background:var(--accent-light);color:#92400E}
+.scard-badge.red{background:var(--danger-bg);color:var(--danger)}
+.scard-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.5;margin-bottom:14px}
+.best-val-ribbon{position:absolute;top:-1px;right:16px;background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;padding:2px 10px;border-radius:0 0 8px 8px;letter-spacing:.05em}
+
+/* ── CA SECTION ── */
+.ca-section{background:linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%);border-top:1px solid #DDD6FE;border-bottom:1px solid #DDD6FE}
+.ca-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:900px){.ca-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ca-grid{grid-template-columns:1fr}}
+.ca-pkg{border-radius:var(--radius-lg);padding:24px;background:#fff;border:1.5px solid #DDD6FE;transition:all .2s}
+.ca-pkg:hover{border-color:#7C3AED;box-shadow:0 8px 24px rgba(124,58,237,.1);transform:translateY(-2px)}
+.ca-pkg.flagship{border-color:#7C3AED;background:linear-gradient(135deg,#FAF5FF,#F5F3FF)}
+.ca-pkg-icon{font-size:1.6rem;margin-bottom:10px}
+.ca-pkg-name{font-family:var(--font-display);font-weight:700;font-size:1rem;margin-bottom:4px;color:var(--text-primary)}
+.ca-pkg-price{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:#5B21B6;margin:8px 0 3px}
+.ca-pkg-price sub{font-size:.8rem;font-weight:400;color:var(--text-muted)}
+.ca-pkg-note{font-size:.78rem;color:var(--text-muted);margin-bottom:14px}
+.ca-pkg ul{list-style:none;margin-bottom:18px}
+.ca-pkg ul li{font-size:.83rem;color:var(--text-secondary);padding:5px 0;display:flex;gap:8px;border-bottom:1px solid rgba(0,0,0,.04)}
+.ca-pkg ul li:last-child{border-bottom:none}
+.ca-check{color:#7C3AED;font-weight:700;flex-shrink:0}
+
+/* ── TRUST STRIP ── */
+.trust-strip{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:24px 0}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.83rem;color:var(--text-secondary)}
+.trust-item strong{color:var(--text-primary)}
+
+/* ── COMPARISON TABLE ── */
+.cmp-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.cmp-table th{padding:12px 14px;text-align:center;font-weight:600;font-size:.8rem;color:var(--text-secondary);background:var(--surface-3)}
+.cmp-table th:first-child{text-align:left;color:var(--text-secondary)}
+.cmp-table th.hl{background:var(--primary-bg);color:var(--primary)}
+.cmp-table td{padding:11px 14px;text-align:center;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.cmp-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary)}
+.cmp-table td.hl{background:var(--primary-bg)}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .y{color:var(--primary);font-weight:700}
+.cmp-table .n{color:var(--text-muted)}
+.cmp-table .p{color:#7C3AED;font-weight:700}
+.cmp-cat{background:var(--surface-2)!important}
+.cmp-cat td{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);padding:8px 14px!important}
+
+/* ── SEASON BANNER ── */
+.season-banner{background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:var(--radius-xl);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.season-banner h3{color:#fff;margin-bottom:4px;font-size:1.15rem}
+.season-banner p{color:rgba(255,255,255,.75);font-size:.875rem;margin:0}
+.countdown{display:flex;gap:12px}
+.countdown-unit{text-align:center;background:rgba(255,255,255,.15);border-radius:var(--radius-md);padding:8px 14px}
+.countdown-num{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:#fff;line-height:1}
+.countdown-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+
+/* ── YEAR PRICE TOGGLE ── */
+.annual-price{display:none}
+.monthly-price{display:block}
+body.show-annual .annual-price{display:block}
+body.show-annual .monthly-price{display:none}
+</style>
+</head>
+<body>
+<div id="navbar"></div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="container text-center">
+    <span class="badge badge-amber">💳 Pricing</span>
+    <h1 style="margin-top:12px">Honest pricing. No surprises.</h1>
+    <p style="margin:0 auto;max-width:520px">Use everything free. Pay only when you want more — per query, per session, or subscribe. No lock-ins. UPI-ready.</p>
+    <div class="billing-toggle">
+      <span class="toggle-label active" id="lbl-monthly">Monthly</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billing-toggle" onchange="toggleBilling(this)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="lbl-annual">Annual <span class="toggle-save-pill">Save 40%</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-top:20px"><div class="ad-slot ad-leaderboard"><span>Advertisement</span></div></div>
+
+<!-- ═══════════════════════════════
+     SECTION 1 — CORE TIERS
+════════════════════════════════ -->
+<section class="section-sm">
+  <div class="container">
+
+    <!-- ITR Season Banner -->
+    <div class="season-banner">
+      <div>
+        <h3>🗓️ ITR Season is here — deadline July 31</h3>
+        <p>Peak demand. Lock in your Pro or CA session before prices adjust.</p>
+      </div>
+      <div class="countdown">
+        <div class="countdown-unit"><div class="countdown-num" id="cd-d">107</div><div class="countdown-lbl">Days</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-h">--</div><div class="countdown-lbl">Hrs</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-m">--</div><div class="countdown-lbl">Min</div></div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="pc">
+        <div class="pc-tag free">🎁 Free forever</div>
+        <div class="pc-name">Free</div>
+        <div class="pc-price">₹0<sub>/forever</sub></div>
+        <div class="pc-equiv">No signup. No card. Start now.</div>
+        <hr class="pc-divider">
+        <ul class="pc-features">
+          <li><span class="pf-yes">✓</span> All calculators — CTC, HRA, PF, EMI, FD vs SIP</li>
+          <li><span class="pf-yes">✓</span> All tax guides & articles</li>
+          <li><span class="pf-yes">✓</span> Which-ITR-form finder</li>
+          <li><span class="pf-yes">✓</span> Emergency fund & NPS planner</li>
+          <li><span class="pf-yes">✓</span> 3 AI questions per day</li>
+          <li><span class="pf-no">–</span> <span style="color:var(--text-muted)">PDF export</span></li>
+          <li><span class="pf-no">–</span> <span style="color:var(--text-muted)">Saved salary history</span></li>
+          <li><span class="pf-no">–</span> <span style="color:var(--text-muted)">WhatsApp deadline alerts</span></li>
+          <li><span class="pf-no">–</span> <span style="color:var(--text-muted)">Ad-free experience</span></li>
+        </ul>
+        <a href="../index.html" class="btn btn-ghost w-full">Start Free →</a>
+      </div>
+
+      <!-- PRO — POPULAR -->
+      <div class="pc popular">
+        <div class="pc-ribbon">POPULAR</div>
+        <div class="pc-tag pro">⚡ Most popular</div>
+        <div class="pc-name" style="color:var(--primary-dark)">Pro</div>
+        <div class="pc-price" style="color:var(--primary-dark)">
+          <span class="monthly-price">₹29<sub>/month</sub></span>
+          <span class="annual-price">₹299<sub>/year</sub></span>
+        </div>
+        <div class="pc-equiv monthly-price">Billed monthly · Less than one chai</div>
+        <div class="pc-equiv annual-price" style="color:var(--primary)">₹25/month billed yearly · Save ₹49</div>
+        <hr class="pc-divider">
+        <ul class="pc-features">
+          <li><span class="pf-yes">✓</span> Everything in Free</li>
+          <li><span class="pf-yes">✓</span> <strong>Unlimited AI chat</strong></li>
+          <li><span class="pf-yes">✓</span> <strong>PDF export</strong> of all results</li>
+          <li><span class="pf-yes">✓</span> <strong>Ad-free</strong> experience</li>
+          <li><span class="pf-yes">✓</span> <strong>Full lender comparison</strong> (7+ banks)</li>
+          <li><span class="pf-yes">✓</span> <strong>Personalized ITR checklist</strong></li>
+          <li><span class="pf-yes">✓</span> New vs old regime: full analysis</li>
+          <li><span class="pf-yes">✓</span> Capital gains & freelance planners</li>
+          <li><span class="pf-yes">✓</span> <strong>WhatsApp deadline alerts</strong></li>
+          <li><span class="pf-yes">✓</span> Salary history saved across sessions</li>
+          <li><span class="pf-yes">✓</span> Debt payoff planner</li>
+          <li><span class="pf-yes">✓</span> Priority email support</li>
+        </ul>
+        <button class="btn btn-primary w-full" onclick="showPayment('pro')">
+          <span class="monthly-price">Get Pro — ₹29/month</span>
+          <span class="annual-price">Get Pro — ₹299/year</span>
+        </button>
+        <p style="font-size:.75rem;color:var(--primary-dark);text-align:center;margin-top:8px">7-day refund · Cancel anytime</p>
+      </div>
+
+      <!-- PRO + 1 CA SESSION BUNDLE -->
+      <div class="pc" style="border-color:var(--accent)">
+        <div class="pc-ribbon amber">BUNDLE</div>
+        <div class="pc-tag session">🔥 Best value</div>
+        <div class="pc-name">Pro + CA Session</div>
+        <div class="pc-price">
+          <span class="monthly-price">₹299<sub> one-time</sub></span>
+          <span class="annual-price">₹499<sub> one-time</sub></span>
+        </div>
+        <div class="pc-equiv monthly-price" style="color:#92400E">1-month Pro + 1 deep CA session (save ₹129)</div>
+        <div class="pc-equiv annual-price" style="color:#92400E">1-year Pro + 1 deep CA session (save ₹399)</div>
+        <hr class="pc-divider">
+        <ul class="pc-features">
+          <li><span class="pf-yes">✓</span> Everything in Pro</li>
+          <li><span class="pf-yes">✓</span> 1× Deep CA session (₹599 value)</li>
+          <li><span class="pf-yes">✓</span> Unlimited messages for 7 days</li>
+          <li><span class="pf-yes">✓</span> Document review (Form 16, payslip)</li>
+          <li><span class="pf-yes">✓</span> 15-min voice/video call with CA</li>
+          <li><span class="pf-yes">✓</span> CA chosen to match your tax profile</li>
+          <li><span class="pf-yes">✓</span> Platform-managed — your data stays private</li>
+        </ul>
+        <button class="btn btn-accent w-full" onclick="showPayment('bundle')">
+          <span class="monthly-price">Get Bundle — ₹299</span>
+          <span class="annual-price">Get Bundle — ₹499</span>
+        </button>
+        <p style="font-size:.75rem;color:#92400E;text-align:center;margin-top:8px">Best for ITR season first-timers</p>
+      </div>
+
+    </div><!-- /pricing-grid -->
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-item">🔒 <span><strong>Razorpay</strong> secured payments</span></div>
+      <div class="trust-item">↩️ <span><strong>7-day</strong> no-questions refund</span></div>
+      <div class="trust-item">📱 <span><strong>UPI, GPay, PhonePe</strong> accepted</span></div>
+      <div class="trust-item">🔐 <span>CA communicates <strong>only via platform</strong></span></div>
+      <div class="trust-item">⭐ <span><strong>4.8/5</strong> from 1,200+ users</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 2 — PER-SESSION (PAY AS YOU GO)
+════════════════════════════════ -->
+<section class="section-sm session-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-amber">🧾 Pay As You Go</span>
+      <h2 style="margin-top:12px">No subscription? No problem.</h2>
+      <p>Pay per query or per session. Perfect for ITR season or a one-off tax situation. No account, no monthly commitment.</p>
+    </div>
+
+    <div class="session-grid">
+
+      <!-- ₹99 -->
+      <div class="scard">
+        <div class="scard-label">Single query</div>
+        <div class="scard-price">₹99</div>
+        <div class="scard-sub">per question</div>
+        <span class="scard-badge red">Impulse buy</span>
+        <div class="scard-desc">One written question answered by a CA within 24 hours via platform chat. No doc upload.</div>
+        <button class="btn btn-ghost w-full btn-sm" onclick="showPayment('q1')">Buy 1 Query</button>
+      </div>
+
+      <!-- ₹349 BUNDLE (Best per-unit value) -->
+      <div class="scard best-val">
+        <div class="best-val-ribbon">BEST DEAL</div>
+        <div class="scard-label">5-query pack</div>
+        <div class="scard-price">₹349</div>
+        <div class="scard-sub">₹70/query · Save 30%</div>
+        <span class="scard-badge amber">Most bought</span>
+        <div class="scard-desc">5 written CA queries, valid for 60 days. Perfect for a full ITR season. No expiry pressure.</div>
+        <button class="btn btn-accent w-full btn-sm" onclick="showPayment('q5')">Buy 5 Queries</button>
+      </div>
+
+      <!-- ₹299 SESSION -->
+      <div class="scard">
+        <div class="scard-label">Standard session</div>
+        <div class="scard-price">₹299</div>
+        <div class="scard-sub">5 messages + 1 doc upload</div>
+        <span class="scard-badge green">Most useful</span>
+        <div class="scard-desc">5 back-and-forth messages + upload your Form 16 or payslip. Resolved in 48 hours.</div>
+        <button class="btn btn-outline w-full btn-sm" onclick="showPayment('session-std')">Book Session</button>
+      </div>
+
+      <!-- ₹599 DEEP SESSION -->
+      <div class="scard">
+        <div class="scard-label">Deep session</div>
+        <div class="scard-price">₹599</div>
+        <div class="scard-sub">7 days unlimited + voice call</div>
+        <span class="scard-badge green">Complex cases</span>
+        <div class="scard-desc">Unlimited messages for 7 days + document review + 15-min video or voice call with your CA.</div>
+        <button class="btn btn-outline w-full btn-sm" onclick="showPayment('session-deep')">Book Deep Session</button>
+      </div>
+
+    </div>
+
+    <!-- UPSELL NOTE -->
+    <div class="alert alert-amber" style="max-width:680px;margin:28px auto 0">
+      <span>💡</span>
+      <div><strong>Already bought 2+ sessions?</strong> You've spent more than a Pro subscription. <a href="#" onclick="showPayment('pro');return false">Upgrade to Pro</a> — unlimited AI chat, PDF exports, and your first CA query included for ₹299/year.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 3 — CA CONNECT PACKAGES
+════════════════════════════════ -->
+<section class="section-sm ca-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-blue" style="background:#EDE9FE;color:#5B21B6">👨‍💼 CA Connect</span>
+      <h2 style="margin-top:12px">When you need a real CA to do it for you</h2>
+      <p>Verified, practicing CAs. All communication through PaisaClarity — your number and email are never shared directly.</p>
+    </div>
+
+    <div class="ca-grid">
+
+      <!-- QUICK CONSULT -->
+      <div class="ca-pkg">
+        <div class="ca-pkg-icon">💬</div>
+        <div class="ca-pkg-name">Quick Consult</div>
+        <div class="ca-pkg-price">₹299<sub>/session</sub></div>
+        <div class="ca-pkg-note">Written Q&A · 48-hr response</div>
+        <ul>
+          <li><span class="ca-check">✓</span> 5 back-and-forth messages</li>
+          <li><span class="ca-check">✓</span> 1 document upload (Form 16 / payslip)</li>
+          <li><span class="ca-check">✓</span> Regime selection advice</li>
+          <li><span class="ca-check">✓</span> Deduction optimization tips</li>
+          <li><span class="ca-check">✓</span> Platform chat only — data private</li>
+        </ul>
+        <button class="btn w-full" style="background:#EDE9FE;color:#5B21B6;border:none" onclick="showPayment('ca-quick')">Book Quick Consult</button>
+      </div>
+
+      <!-- ITR FILING — FLAGSHIP -->
+      <div class="ca-pkg flagship">
+        <div class="ca-pkg-icon">📋</div>
+        <div class="ca-pkg-name">ITR Filing — Done For You</div>
+        <div class="ca-pkg-price">₹999<sub>+</sub></div>
+        <div class="ca-pkg-note">Starting price · Varies by complexity</div>
+        <ul>
+          <li><span class="ca-check">✓</span> CA reviews all your documents</li>
+          <li><span class="ca-check">✓</span> Computes correct income & deductions</li>
+          <li><span class="ca-check">✓</span> Files ITR on your behalf</li>
+          <li><span class="ca-check">✓</span> Acknowledgment & ITR-V sent</li>
+          <li><span class="ca-check">✓</span> Regime chosen for maximum refund</li>
+          <li><span class="ca-check">✓</span> 1-month post-filing support</li>
+          <li><span class="ca-check">✓</span> Pro plan included (₹299 value)</li>
+        </ul>
+        <button class="btn w-full" style="background:#7C3AED;color:#fff;border:none" onclick="showPayment('ca-itr')">Get ITR Filed — ₹999+</button>
+        <p style="font-size:.75rem;color:#7C3AED;text-align:center;margin-top:8px">Simple salaried: ₹999 · Capital gains / freelance: ₹1,999+</p>
+      </div>
+
+      <!-- NOTICE / COMPLEX -->
+      <div class="ca-pkg">
+        <div class="ca-pkg-icon">⚖️</div>
+        <div class="ca-pkg-name">IT Notice & Complex Cases</div>
+        <div class="ca-pkg-price">₹1,999<sub>+</sub></div>
+        <div class="ca-pkg-note">Custom quote after assessment</div>
+        <ul>
+          <li><span class="ca-check">✓</span> Income tax notice response</li>
+          <li><span class="ca-check">✓</span> Capital gains (property / stocks)</li>
+          <li><span class="ca-check">✓</span> Freelance / multiple income sources</li>
+          <li><span class="ca-check">✓</span> NRI tax & DTAA cases</li>
+          <li><span class="ca-check">✓</span> 30-min video call included</li>
+          <li><span class="ca-check">✓</span> 3-month follow-up support</li>
+          <li><span class="ca-check">✓</span> Pro plan included (₹299 value)</li>
+        </ul>
+        <button class="btn w-full" style="background:#EDE9FE;color:#5B21B6;border:none" onclick="showPayment('ca-complex')">Describe Your Case</button>
+      </div>
+
+    </div>
+
+    <!-- CA TRUST NOTE -->
+    <div style="background:#fff;border:1.5px solid #DDD6FE;border-radius:var(--radius-lg);padding:20px 24px;max-width:760px;margin:28px auto 0;display:flex;gap:16px;align-items:flex-start">
+      <span style="font-size:1.4rem;flex-shrink:0">🛡️</span>
+      <div>
+        <strong style="color:#5B21B6;font-size:.9rem">Your CA never gets your direct contact details.</strong>
+        <p style="font-size:.83rem;margin-top:4px;color:var(--text-secondary)">All communication happens inside PaisaClarity's platform. CAs are verified ICAI members. If you're ever unsatisfied, we reassign or refund — no questions asked. We keep you in the relationship, not the CA.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 4 — FULL COMPARISON TABLE
+════════════════════════════════ -->
+<section class="section-sm" style="background:var(--surface-2)">
+  <div class="container">
+    <div class="section-header"><h2>Full Feature Comparison</h2></div>
+    <div style="overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-sm)">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;width:35%">Feature</th>
+            <th>Free</th>
+            <th class="hl">Pro ₹299/yr</th>
+            <th>Per Session</th>
+            <th style="color:#7C3AED">CA Connect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cmp-cat"><td colspan="5">Core Tools</td></tr>
+          <tr><td>All calculators</td><td class="y">✓</td><td class="y hl">✓</td><td class="y">✓</td><td class="p">✓</td></tr>
+          <tr><td>Tax guides & articles</td><td class="y">✓</td><td class="y hl">✓</td><td class="y">✓</td><td class="p">✓</td></tr>
+          <tr><td>Which-ITR-form finder</td><td class="y">✓</td><td class="y hl">✓</td><td class="y">✓</td><td class="p">✓</td></tr>
+
+          <tr class="cmp-cat"><td colspan="5">AI Assistant</td></tr>
+          <tr><td>AI questions per day</td><td>3</td><td class="hl" style="color:var(--primary);font-weight:700">Unlimited</td><td>3 (free AI)</td><td class="p">Unlimited</td></tr>
+          <tr><td>CA-answered queries</td><td class="n">–</td><td class="hl n">–</td><td class="y">✓ Paid</td><td class="p">✓ Included</td></tr>
+
+          <tr class="cmp-cat"><td colspan="5">Pro Features</td></tr>
+          <tr><td>PDF export of results</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>Ad-free experience</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>Salary history saved</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>WhatsApp deadline alerts</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>Full lender comparison (7+ banks)</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>Personalized ITR checklist</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+          <tr><td>Capital gains & freelance planner</td><td class="n">–</td><td class="y hl">✓</td><td class="n">–</td><td class="p">✓</td></tr>
+
+          <tr class="cmp-cat"><td colspan="5">CA Services</td></tr>
+          <tr><td>Document review by CA</td><td class="n">–</td><td class="hl n">–</td><td class="y">₹299+</td><td class="p">✓</td></tr>
+          <tr><td>ITR filed by CA</td><td class="n">–</td><td class="hl n">–</td><td class="n">–</td><td class="p">₹999+</td></tr>
+          <tr><td>Voice / video call with CA</td><td class="n">–</td><td class="hl n">–</td><td style="color:#7C3AED">₹599 session</td><td class="p">✓</td></tr>
+          <tr><td>IT notice handling</td><td class="n">–</td><td class="hl n">–</td><td class="n">–</td><td class="p">₹1,999+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PAYMENT MODAL
+════════════════════════════════ -->
+<div id="payment-modal" class="hidden" style="padding:32px 0">
+  <div class="container">
+    <div class="tool-card" style="max-width:500px;margin:0 auto;border:2px solid var(--primary)">
+      <h3 id="modal-title" style="margin-bottom:4px">Subscribe to Pro</h3>
+      <p id="modal-desc" style="font-size:.85rem;color:var(--text-muted);margin-bottom:20px">₹299/year · Cancel anytime</p>
+      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="pay-name" placeholder="Rahul Sharma"></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="pay-email" placeholder="rahul@example.com"></div>
+      <div class="form-group"><label class="form-label">Mobile (for WhatsApp alerts)</label><input type="tel" class="form-input" id="pay-phone" placeholder="9876543210"></div>
+      <div class="alert alert-blue mb-16"><span>ℹ️</span> Payments via UPI, GPay, PhonePe, card, or net banking — powered by Razorpay.</div>
+      <button class="btn btn-primary w-full" id="pay-btn" onclick="processPayment()">Pay & Activate</button>
+      <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:8px">7-day refund guaranteed · Your CA contact never shared externally</p>
+      <button onclick="document.getElementById('payment-modal').classList.add('hidden')" style="display:block;margin:12px auto 0;background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:.83rem">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     FAQ
+════════════════════════════════ -->
+<section class="section-sm">
+  <div class="container" style="max-width:720px">
+    <div class="section-header"><h2>Pricing Questions</h2></div>
+
+    <div class="faq-item">
+      <button class="faq-question">Is the free plan really free — no hidden charges? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes, completely. All calculators, all guides, and 3 AI questions per day require no account, no card, nothing. We earn from ads on the free tier and from Pro/CA upgrades — not by paywalling basic tools.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What's the difference between a 5-query pack and a standard session? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The 5-query pack (₹349) gives you 5 individual written questions answered by a CA, valid for 60 days — you can space them out. A standard session (₹299) is a connected conversation: 5 back-and-forth messages within one 48-hour window, plus one document upload. If you need to share a document like Form 16, go with a session. If you just have standalone questions spread over the season, the pack is better value.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I talk to the CA directly on WhatsApp or phone? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">No — and this is intentional. All communication happens through PaisaClarity's platform. This protects your data, ensures quality, and lets us hold CAs accountable. For the Deep Session (₹599) and CA Connect packages, you get a scheduled video/voice call within the platform or through a secure link we generate — no personal numbers shared.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What payment methods are accepted? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">All major UPI apps (GPay, PhonePe, Paytm, BHIM), credit cards, debit cards, and net banking via Razorpay. No foreign cards required. Single-tap UPI payment works for all per-session purchases.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How does CA pricing work — why does it say ₹999+? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">A simple salaried ITR with one Form 16 and standard deductions starts at ₹999. Complexity adds cost: capital gains from property or stocks, freelance income with 44ADA, NRI status, or multiple employers each add ₹500–₹1,000. After you submit your situation, we give you an exact quote before you pay anything.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What's the refund policy? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Pro subscriptions: full refund within 7 days, no questions asked. Per-session purchases: refund if your CA hasn't responded within the promised window, or if you're genuinely unsatisfied with the quality. Email support@paisaclarity.in with your order ID — refund within 3–5 business days to your original payment method.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Will prices increase during ITR season? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Per-session CA prices may adjust in June–July when CA demand spikes (similar to Swiggy surge pricing). Pro subscription pricing stays fixed. If you want to lock in current rates, buying a session pack now is the safest option.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="section-sm" style="background:var(--primary)">
+  <div class="container text-center">
+    <h2 style="color:#fff;margin-bottom:10px">Start free. Pay only when it makes sense.</h2>
+    <p style="color:rgba(255,255,255,.8);margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto">No pressure. The free plan is genuinely useful. Most people upgrade only when they hit the AI limit or need a CA.</p>
+    <div class="flex flex-wrap gap-12" style="justify-content:center">
+      <a href="../index.html" class="btn btn-accent btn-lg">Try Free Tools</a>
+      <button onclick="showPayment('pro')" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)">Get Pro — ₹299/yr</button>
+      <button onclick="showPayment('session-std')" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)">Book CA Session — ₹299</button>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script>renderNav();renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+// ── BILLING TOGGLE ──
+function toggleBilling(el){
+  if(el.checked){
+    document.body.classList.add('show-annual');
+    document.getElementById('lbl-monthly').classList.remove('active');
+    document.getElementById('lbl-annual').classList.add('active');
+  } else {
+    document.body.classList.remove('show-annual');
+    document.getElementById('lbl-monthly').classList.add('active');
+    document.getElementById('lbl-annual').classList.remove('active');
+  }
+}
+
+// ── PAYMENT MODAL ──
+const planMeta = {
+  pro:          {title:'Subscribe to Pro',              desc:'₹299/year · Cancel anytime · 7-day refund',           btn:'Pay ₹299 & Activate Pro'},
+  bundle:       {title:'Pro + CA Session Bundle',        desc:'1-month Pro + 1 deep CA session · Save ₹129',         btn:'Pay ₹299 & Activate Bundle'},
+  q1:           {title:'Buy 1 CA Query',                 desc:'₹99 · Single written question answered within 24 hrs',btn:'Pay ₹99'},
+  q5:           {title:'Buy 5-Query Pack',               desc:'₹349 · 5 CA queries valid for 60 days · Save 30%',    btn:'Pay ₹349'},
+  'session-std':{title:'Book Standard CA Session',       desc:'₹299 · 5 messages + 1 doc upload · 48-hr window',     btn:'Pay ₹299 & Book Session'},
+  'session-deep':{title:'Book Deep CA Session',          desc:'₹599 · 7 days unlimited + 15-min voice/video call',   btn:'Pay ₹599 & Book Deep Session'},
+  'ca-quick':   {title:'Book CA Quick Consult',          desc:'₹299 · Written Q&A · 48-hr response via platform',    btn:'Pay ₹299 & Connect to CA'},
+  'ca-itr':     {title:'ITR Filing — Done For You',      desc:'Starting ₹999 · Exact quote given after assessment',  btn:'Submit & Get Quote'},
+  'ca-complex': {title:'Complex Case / IT Notice',       desc:'Starting ₹1,999 · Custom quote after case review',    btn:'Submit Case Details'},
+};
+function showPayment(plan){
+  const m=planMeta[plan]||{title:'PaisaClarity Payment',desc:'',btn:'Proceed to Pay'};
+  document.getElementById('modal-title').textContent=m.title;
+  document.getElementById('modal-desc').textContent=m.desc;
+  document.getElementById('pay-btn').textContent=m.btn;
+  const modal=document.getElementById('payment-modal');
+  modal.classList.remove('hidden');
+  modal.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function processPayment(){
+  const name=document.getElementById('pay-name').value.trim();
+  const email=document.getElementById('pay-email').value.trim();
+  if(!name||!email){alert('Please fill in your name and email.');return;}
+  alert('Payment integration coming soon! We\'ll notify you at '+email+' when this goes live. Thank you, '+name+'!');
+}
+
+// ── COUNTDOWN TO JULY 31 ──
+function updateCountdown(){
+  const deadline=new Date('2026-07-31T23:59:59');
+  const now=new Date();
+  const diff=deadline-now;
+  if(diff<=0){document.querySelector('.season-banner').style.display='none';return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  document.getElementById('cd-d').textContent=d;
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,60000);
+</script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ITR Filing Guide India FY 2024-25 — Which Form, 80C, Refund Calculator | PaisaClarity</title>
+<meta name="description" content="Free ITR filing guide for India. Find which ITR form, calculate refund, understand 80C deductions, capital gains tax, advance tax. Updated FY 2024-25.">
+<meta name="keywords" content="which ITR form,ITR filing 2024,80C deductions,tax refund calculator india,Form 26AS,capital gains tax india,advance tax calculator,freelancer tax india">
+<link rel="canonical" href="https://paisaclarity.in/pages/itr.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="navbar"></div>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>ITR Saathi</span></div>
+    <span class="badge badge-blue">📊 ITR Saathi</span>
+    <h1>ITR Filing Guide — FY 2024-25</h1>
+    <p>Which form to use, what deductions to claim, refund estimation, and capital gains tax — all in plain language. No CA required for most salaried filers.</p>
+  </div>
+</div>
+<div class="container" style="padding-top:24px"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+
+<div class="tool-page">
+  <div class="container">
+    <div class="tabs" data-tabs>
+      <button class="tab-btn active" data-tab="i1">Which ITR Form?</button>
+      <button class="tab-btn" data-tab="i2">Tax Refund Estimator</button>
+      <button class="tab-btn" data-tab="i3">80C Planner</button>
+      <button class="tab-btn" data-tab="i4">Capital Gains</button>
+      <button class="tab-btn" data-tab="i5">Advance Tax</button>
+      <button class="tab-btn" data-tab="i6">Freelancer Taxes</button>
+    </div>
+
+    <!-- ══ TAB 1: WHICH FORM ══ -->
+    <div class="tab-content active" id="i1">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Find Your ITR Form — Answer 5 Questions</div>
+            <div class="form-group">
+              <label class="form-label">Income sources (tick all that apply)</label>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-salary" checked> Salary / Pension</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-house"> House property rental income</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-capital"> Capital Gains (stocks, MFs, property)</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-business"> Business / Freelance / Professional income</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-foreign"> Foreign income / Foreign assets</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-crypto"> Crypto / Virtual Digital Assets (VDA)</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Total Annual Income (approximate)</label>
+              <select class="form-select" id="amt-range">
+                <option value="u5">Under ₹5 Lakh</option>
+                <option value="5to50" selected>₹5L – ₹50L</option>
+                <option value="above50">Above ₹50 Lakh</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">House properties owned</label>
+              <select class="form-select" id="house-count">
+                <option value="0">None</option>
+                <option value="1" selected>One</option>
+                <option value="2">Two or more</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Are you a Director in any company, or hold unlisted shares?</label>
+              <select class="form-select" id="is-director">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            <button class="btn btn-primary w-full" onclick="findForm()">Find My ITR Form</button>
+
+            <div id="form-result" class="hidden mt-16">
+              <div class="result-box">
+                <div class="result-label">Your Recommended Form</div>
+                <div class="result-main" id="form-name">ITR-1</div>
+                <p id="form-desc" style="margin-top:8px;font-size:.9rem;color:var(--primary-dark)"></p>
+              </div>
+              <div class="alert mt-12" id="form-advice"></div>
+              <h4 style="margin:16px 0 10px">Documents You'll Need</h4>
+              <div id="form-docs"></div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>ITR Forms — Complete Guide FY 2024-25</h2>
+            <h3>ITR-1 (Sahaj) — Simplest</h3>
+            <p>For resident individuals with: only salary/pension income, income from one house property, other income (interest, dividends) up to ₹5,000. Total income must be under ₹50L. Cannot be used if you have capital gains, foreign assets, or are a company director.</p>
+            <h3>ITR-2 — For Capital Gains & Multiple Properties</h3>
+            <p>For individuals/HUFs with salary + capital gains (stocks, MFs, property), multiple house properties, foreign assets or income, or directors of companies. No business income.</p>
+            <h3>ITR-3 — For Business Income</h3>
+            <p>For individuals/HUFs with business or professional income, not opting for presumptive taxation. For freelancers with income above ₹50L or those maintaining full books of accounts.</p>
+            <h3>ITR-4 (Sugam) — For Freelancers & Small Business</h3>
+            <p>For those opting for presumptive taxation under Section 44AD (business turnover up to ₹2Cr) or 44ADA (professional receipts up to ₹75L from FY24-25). Simplest option for most freelancers.</p>
+            <div class="highlight-box"><p>⚠️ Filing the wrong ITR form = defective return notice from IT Department. Always verify before filing.</p></div>
+            <h3>Key Dates — FY 2024-25 (AY 2025-26)</h3>
+            <ul>
+              <li><strong>July 31, 2025</strong> — Regular deadline (no penalty)</li>
+              <li><strong>December 31, 2025</strong> — Belated return (₹5,000 penalty; ₹1,000 if income ≤ ₹5L)</li>
+              <li><strong>March 31, 2026</strong> — Updated return ITR-U (additional 25–50% tax)</li>
+            </ul>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky">
+          <div class="card mb-16">
+            <h4 style="margin-bottom:12px">ITR Deadline</h4>
+            <div style="font-size:.82rem">
+              <div style="font-weight:600;color:var(--primary)">July 31, 2025</div>
+              <div style="color:var(--text-muted);margin-bottom:8px">Regular filing deadline</div>
+              <div class="progress-bar"><div class="progress-fill" id="deadline-prog" style="width:30%"></div></div>
+              <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px">FY runs Apr 1 – Mar 31</div>
+            </div>
+          </div>
+          <div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 2: REFUND ESTIMATOR ══ -->
+    <div class="tab-content" id="i2">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Tax Refund Estimator — FY 2024-25</div>
+            <div class="alert alert-blue mb-16"><span>ℹ️</span> Enter data from your Form 16 (from employer) and Form 26AS (from IT portal) to estimate your refund.</div>
+            <div class="form-group"><label class="form-label">Gross Salary (from Form 16 Part B)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-salary" value="1200000"></div></div>
+            <div class="form-group"><label class="form-label">Total TDS Already Deducted (Form 26AS)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-tds" value="85000"></div></div>
+            <div class="form-group"><label class="form-label">HRA Exemption Claimable (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-hra" value="144000"></div></div>
+            <div class="form-group"><label class="form-label">80C Investments (₹) — max ₹1.5L</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-80c" value="150000" max="150000"></div></div>
+            <div class="form-group"><label class="form-label">80D Health Insurance (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-80d" value="25000"></div></div>
+            <div class="form-group"><label class="form-label">Home Loan Interest 24(b) (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rf-hl" value="0"></div></div>
+            <div class="form-group"><label class="form-label">Tax Regime</label><select class="form-select" id="rf-regime"><option value="new">New Regime (Default)</option><option value="old">Old Regime</option></select></div>
+            <button class="btn btn-primary w-full" onclick="calcRefund()">Estimate My Refund</button>
+
+            <div id="rf-result" class="hidden mt-16">
+              <div class="result-box" id="rf-box">
+                <div class="result-label" id="rf-label">Estimated Refund</div>
+                <div class="result-main" id="rf-amount">₹0</div>
+              </div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Taxable Income</div><div class="result-item-value" id="rf-taxable">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Total Tax Liability</div><div class="result-item-value neg" id="rf-liability">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">TDS Already Paid</div><div class="result-item-value pos" id="rf-paid">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Refund Processing</div><div class="result-item-value">30–45 days</div></div>
+              </div>
+              <div class="alert mt-12" id="rf-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h3>How to check Form 26AS</h3>
+            <p>Login to <strong>incometax.gov.in</strong> → e-File → Income Tax Returns → View Form 26AS. This shows all TDS deducted on your behalf. Always match with your Form 16 before filing.</p>
+            <div class="highlight-box"><p>💡 If 26AS and Form 16 mismatch, contact HR immediately. Filing with mismatch triggers IT notices.</p></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 3: 80C PLANNER ══ -->
+    <div class="tab-content" id="i3">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">80C Deduction Planner — Limit: ₹1,50,000</div>
+            <div class="alert alert-amber mb-16"><span>⚠️</span> 80C deductions are <strong>only available in Old Tax Regime</strong>. No benefit in New Regime.</div>
+            <div class="form-group"><label class="form-label">EPF (auto-deducted from salary)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="21600" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">PPF Contribution</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="50000" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">ELSS Mutual Funds</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="30000" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">LIC Premium</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="25000" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">NSC / 5-Year Tax Saving FD</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="0" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">Home Loan Principal Repayment</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="0" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">Children's Tuition Fees</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="0" oninput="update80C()"></div></div>
+            <div class="form-group"><label class="form-label">Sukanya Samriddhi Yojana</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input c80-inp" value="0" oninput="update80C()"></div></div>
+            <div class="result-box">
+              <div class="flex-between">
+                <div><div class="result-label">Total Invested</div><div class="result-main" id="c80-total">₹1,26,600</div></div>
+                <div style="text-align:right"><div class="result-label">Deduction Allowed</div><div class="result-main" id="c80-allowed" style="color:var(--primary)">₹1,26,600</div></div>
+              </div>
+              <div class="progress-bar mt-12"><div class="progress-fill" id="c80-bar" style="width:84%"></div></div>
+              <div class="flex-between mt-4"><span style="font-size:.75rem;color:var(--text-muted)">₹0</span><span style="font-size:.75rem;color:var(--text-muted)">Limit: ₹1,50,000</span></div>
+              <div class="alert mt-12" id="c80-msg"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>Complete 80C Deductions List 2024-25</h2>
+            <p>Section 80C allows a maximum of <strong>₹1,50,000</strong> deduction from taxable income. At 30% slab, this saves ₹46,800 in tax (including 4% cess). Only in Old Regime.</p>
+            <h3>Best 80C instruments by flexibility</h3>
+            <ul>
+              <li><strong>ELSS:</strong> 3-year lock-in (shortest). Market returns (12–15% historical). Best for wealth creation.</li>
+              <li><strong>PPF:</strong> 15-year, 7.1%, fully tax-free. Sovereign guarantee. Best for safety.</li>
+              <li><strong>5-Year FD:</strong> 6.5–7.5%. Safe. Interest taxable at maturity.</li>
+              <li><strong>NPS 80CCD(1B):</strong> Extra ₹50,000 deduction <em>beyond</em> 80C limit. Best if you've maxed 80C.</li>
+            </ul>
+            <div class="highlight-box"><p>💡 Most salaried employees already use part of ₹1.5L via EPF. Check your payslip — EPF counts toward your 80C limit.</p></div>
+            <div class="ad-slot"><span>Advertisement</span></div>
+            <h3>Other deductions beyond 80C</h3>
+            <ul>
+              <li><strong>80D:</strong> Health insurance — ₹25,000 self/family; ₹50,000 for senior citizen parents</li>
+              <li><strong>80E:</strong> Education loan interest — no limit, 8 years</li>
+              <li><strong>80CCD(1B):</strong> NPS — additional ₹50,000 over 80C cap</li>
+              <li><strong>80TTA:</strong> Savings account interest — up to ₹10,000 exempt</li>
+              <li><strong>80G:</strong> Donations to approved charities — 50% or 100%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 4: CAPITAL GAINS ══ -->
+    <div class="tab-content" id="i4">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Capital Gains Tax Calculator — Budget 2024 Updated</div>
+            <div class="form-group">
+              <label class="form-label">Asset Type</label>
+              <select class="form-select" id="cg-asset">
+                <option value="equity">Equity Shares / Equity Mutual Funds</option>
+                <option value="debt">Debt MF / Bonds (post Apr 2023)</option>
+                <option value="property">Immovable Property (Land / House)</option>
+                <option value="gold">Gold / Gold ETF / Sovereign Gold Bond</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Purchase Price (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="cg-buy" value="500000"></div></div>
+            <div class="form-group"><label class="form-label">Sale Price (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="cg-sell" value="900000"></div></div>
+            <div class="form-group">
+              <label class="form-label">Holding Period</label>
+              <select class="form-select" id="cg-hold">
+                <option value="short">Short Term</option>
+                <option value="long" selected>Long Term</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Income Tax Slab (for STCG on non-equity)</label>
+              <select class="form-select" id="cg-slab">
+                <option value="5">5%</option>
+                <option value="20" selected>20%</option>
+                <option value="30">30%</option>
+              </select>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcCapGains()">Calculate Capital Gains Tax</button>
+
+            <div id="cg-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">Capital Gain</div><div class="result-main" id="cg-gain">₹0</div></div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Gain Type</div><div class="result-item-value" id="cg-type">LTCG</div></div>
+                <div class="result-item"><div class="result-item-label">Applicable Rate</div><div class="result-item-value" id="cg-rate">12.5%</div></div>
+                <div class="result-item"><div class="result-item-label">Tax + 4% Cess</div><div class="result-item-value neg" id="cg-tax">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Net Profit After Tax</div><div class="result-item-value pos" id="cg-net">₹0</div></div>
+              </div>
+              <div class="alert mt-12" id="cg-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>Capital Gains Tax — Budget 2024 Changes</h2>
+            <h3>Equity Shares & Equity MF</h3>
+            <ul>
+              <li><strong>STCG (held &lt;1 year):</strong> 20% (up from 15% in Budget 2024)</li>
+              <li><strong>LTCG (held ≥1 year):</strong> 12.5% on gains above ₹1.25L (up from 10% above ₹1L)</li>
+            </ul>
+            <h3>Immovable Property</h3>
+            <ul>
+              <li><strong>STCG (held &lt;2 years):</strong> Added to income, taxed at your slab</li>
+              <li><strong>LTCG (held ≥2 years):</strong> 12.5% without indexation — OR — 20% with indexation for property purchased before July 23, 2024</li>
+            </ul>
+            <div class="highlight-box"><p>💡 Section 54 exemption: LTCG on property sale is exempt if reinvested in a new residential property within 2 years (or constructed within 3 years).</p></div>
+            <h3>Debt Mutual Funds (post April 2023)</h3>
+            <p>All gains from debt MFs purchased after April 1, 2023 are taxed at your slab rate, regardless of holding period. The LTCG indexation benefit has been removed.</p>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 5: ADVANCE TAX ══ -->
+    <div class="tab-content" id="i5">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Advance Tax Calculator</div>
+            <div class="alert alert-blue mb-16"><span>ℹ️</span> Advance tax is required if total tax liability (after TDS) exceeds ₹10,000. Mainly applies to freelancers, business owners, and those with capital gains or rental income.</div>
+            <div class="form-group"><label class="form-label">Estimated Annual Income (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="at-income" value="1500000"></div></div>
+            <div class="form-group"><label class="form-label">TDS Already Deducted This Year (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="at-tds" value="60000"></div></div>
+            <div class="form-group"><label class="form-label">Total Deductions (80C + HRA + others)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="at-ded" value="300000"></div></div>
+            <div class="form-group"><label class="form-label">Tax Regime</label><select class="form-select" id="at-regime"><option value="new">New Regime</option><option value="old">Old Regime</option></select></div>
+            <button class="btn btn-primary w-full" onclick="calcAdvTax()">Calculate Advance Tax Schedule</button>
+
+            <div id="at-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">Net Tax Payable (after TDS)</div><div class="result-main" id="at-net">₹0</div></div>
+              <table class="result-table mt-12">
+                <thead><tr><th>Installment</th><th>Due Date</th><th>% Payable</th><th>Amount Due</th><th>Status</th></tr></thead>
+                <tbody id="at-tbody"></tbody>
+              </table>
+              <div class="alert mt-12" id="at-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>Advance Tax — Due Dates & Penalties</h2>
+            <ul>
+              <li><strong>June 15:</strong> 15% of estimated annual tax</li>
+              <li><strong>September 15:</strong> 45% cumulative</li>
+              <li><strong>December 15:</strong> 75% cumulative</li>
+              <li><strong>March 15:</strong> 100% cumulative</li>
+            </ul>
+            <p>Penalty for non-payment or underpayment: <strong>1% per month</strong> interest under Sections 234B (no advance tax paid) and 234C (installments short). Pay via Challan 280 on the IT portal.</p>
+            <div class="highlight-box"><p>💡 For salaried employees with only salary income, advance tax is usually not needed — your employer's TDS covers it. It becomes relevant when you have significant capital gains, rental income, or freelance income not covered by TDS.</p></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 6: FREELANCER ══ -->
+    <div class="tab-content" id="i6">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Freelancer Tax Estimator — Section 44ADA</div>
+            <div class="alert alert-green mb-16"><span>✅</span> Section 44ADA lets professionals declare 50% of gross receipts as profit — no expense tracking needed. Available if gross receipts ≤ ₹75L.</div>
+            <div class="form-group"><label class="form-label">Annual Gross Receipts / Turnover (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="fl-gross" value="1800000"></div></div>
+            <div class="form-group"><label class="form-label">Other Income (salary, rent, interest, etc.)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="fl-other" value="0"></div></div>
+            <div class="form-group"><label class="form-label">Scheme</label>
+              <select class="form-select" id="fl-scheme">
+                <option value="44ada">Section 44ADA (50% presumptive — professionals)</option>
+                <option value="actual">Actual profit (maintaining books)</option>
+              </select>
+            </div>
+            <div class="form-group" id="fl-actual-wrap" style="display:none"><label class="form-label">Actual Business Expenses (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="fl-expenses" value="600000"></div></div>
+            <div class="form-group"><label class="form-label">80C + Other Deductions (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="fl-ded" value="150000"></div></div>
+            <button class="btn btn-primary w-full" onclick="calcFreelancer()">Calculate My Tax</button>
+
+            <div id="fl-result" class="hidden mt-16">
+              <div class="result-box"><div class="result-label">Estimated Annual Tax</div><div class="result-main" id="fl-tax">₹0</div></div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Taxable Income</div><div class="result-item-value" id="fl-taxable">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Effective Tax Rate</div><div class="result-item-value" id="fl-eff">0%</div></div>
+                <div class="result-item"><div class="result-item-label">Monthly Advance Tax</div><div class="result-item-value" id="fl-monthly">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">ITR Form to Use</div><div class="result-item-value" id="fl-form">ITR-4</div></div>
+              </div>
+              <div class="alert mt-12" id="fl-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>Freelancer Tax Guide India 2024-25</h2>
+            <h3>Section 44ADA — Biggest Tax Benefit for Freelancers</h3>
+            <p>If you're a professional freelancer (IT, design, writing, consulting, doctor, CA, lawyer) with gross receipts ≤ ₹75L, you can opt for Section 44ADA. You declare 50% of gross as profit, pay tax on that — no books, no expense tracking, no auditor needed.</p>
+            <div class="highlight-box"><p>💡 Example: ₹18L gross receipts → ₹9L taxable income. Tax at new regime: ~₹72,500. Effective rate on gross receipts: just 4%. This is legally one of the best tax structures in India.</p></div>
+            <h3>GST for Freelancers</h3>
+            <ul>
+              <li>GST registration mandatory if turnover &gt; ₹20L (₹10L in special category states)</li>
+              <li>Services to foreign clients = export of services = 0% GST (but register to claim input credits)</li>
+              <li>GST rate on professional services: 18%</li>
+            </ul>
+            <h3>TDS on Freelance Payments</h3>
+            <p>Indian companies paying you deduct 10% TDS under Section 194J. This is advance tax — you get credit for it when filing ITR. Foreign clients: no TDS, so you must pay advance tax quarterly.</p>
+            <h3>Expenses You Can Deduct (if not using 44ADA)</h3>
+            <ul>
+              <li>Internet and phone (proportionate business use)</li>
+              <li>Laptop and equipment (depreciation)</li>
+              <li>Home office (proportionate rent/electricity)</li>
+              <li>Professional software subscriptions</li>
+              <li>Courses and certifications</li>
+              <li>Travel for work</li>
+            </ul>
+            <div class="ad-slot"><span>Advertisement</span></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script>renderNav();renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+const f=n=>new Intl.NumberFormat('en-IN').format(Math.round(n));
+const fL=n=>{if(n>=10000000)return(n/10000000).toFixed(2)+' Cr';if(n>=100000)return(n/100000).toFixed(2)+' L';return f(n);};
+function taxNew(i){let t=0;if(i>1500000)t=150000+(i-1500000)*.3;else if(i>1200000)t=90000+(i-1200000)*.2;else if(i>900000)t=60000+(i-900000)*.15;else if(i>600000)t=15000+(i-600000)*.1;else if(i>300000)t=(i-300000)*.05;if(i<=700000&&t>0)t=Math.max(0,t-12500);return t*1.04;}
+function taxOld(i){let t=0;if(i>1000000)t=112500+(i-1000000)*.3;else if(i>500000)t=12500+(i-500000)*.2;else if(i>250000)t=(i-250000)*.05;if(i<=500000&&t>0)t=Math.max(0,t-12500);return t*1.04;}
+
+function findForm(){
+  const salary=document.getElementById('src-salary').checked;
+  const capital=document.getElementById('src-capital').checked;
+  const business=document.getElementById('src-business').checked;
+  const foreign=document.getElementById('src-foreign').checked;
+  const houseCount=document.getElementById('house-count').value;
+  const amt=document.getElementById('amt-range').value;
+  const director=document.getElementById('is-director').value;
+  let form,desc,advice,cls;
+  const docs=['PAN card','Aadhaar card','Form 16 from employer','Form 26AS (IT portal login)','Bank statements (all accounts)'];
+  if(business){form='ITR-4 or ITR-3';desc='You have business/professional income. ITR-4 (Sugam) if opting for presumptive taxation (44ADA/44AD). ITR-3 if maintaining books.';advice='Consider Section 44ADA if you\'re a professional with receipts under ₹75L — it\'s simpler and often tax-efficient. Use the Freelancer Tab for your estimate.';cls='alert-amber';docs.push('All invoices raised','Client TDS certificates (Form 16A)','Business expense receipts');}
+  else if(foreign||director){form='ITR-2';desc='Required for foreign assets/income or company directors. Cannot use ITR-1.';advice='Keep all foreign account statements, FEMA documents, and directorship details ready. Foreign asset disclosure is mandatory.';cls='alert-amber';docs.push('Foreign account statements','Schedule FA details');}
+  else if(capital){form='ITR-2';desc='Required when you have capital gains from stocks, mutual funds, property, or any asset.';advice='Download capital gains statement from your broker (Zerodha: Tax P&L report, Groww: Capital Gains report). For property, get sale deed and purchase deed.';cls='alert-blue';docs.push('Capital gains statement from broker/Kuvera','Property sale deed (if applicable)','Cost of acquisition proof');}
+  else if(houseCount==='2'||amt==='above50'){form='ITR-2';desc='Multiple house properties or income above ₹50L requires ITR-2.';advice='Keep rental agreements and property tax receipts for all properties.';cls='alert-blue';}
+  else{form='ITR-1 (Sahaj)';desc='Simplest form for salary + one house property + other income under ₹50L. Most pre-filled data auto-populates on the IT portal.';advice='Great news! ITR-1 is easiest. Log in to incometax.gov.in, click File ITR → AY 2025-26 → the data should mostly be pre-filled from Form 16. Just verify and submit.';cls='alert-green';}
+  document.getElementById('form-result').classList.remove('hidden');
+  document.getElementById('form-name').textContent=form;
+  document.getElementById('form-desc').textContent=desc;
+  const adv=document.getElementById('form-advice');adv.className='alert '+cls;adv.textContent=advice;
+  document.getElementById('form-docs').innerHTML=docs.map(d=>`<div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:.875rem"><span style="color:var(--primary);flex-shrink:0">✓</span>${d}</div>`).join('');
+}
+
+function calcRefund(){
+  const sal=+document.getElementById('rf-salary').value||0;const tds=+document.getElementById('rf-tds').value||0;
+  const hra=+document.getElementById('rf-hra').value||0;const c80=Math.min(+document.getElementById('rf-80c').value||0,150000);
+  const c80d=+document.getElementById('rf-80d').value||0;const hl=Math.min(+document.getElementById('rf-hl').value||0,200000);
+  const regime=document.getElementById('rf-regime').value;
+  let taxable,liability;
+  if(regime==='new'){taxable=Math.max(0,sal);liability=Math.round(taxNew(taxable));}
+  else{taxable=Math.max(0,sal-hra-50000-c80-c80d-hl);liability=Math.round(taxOld(taxable));}
+  const diff=tds-liability;
+  document.getElementById('rf-result').classList.remove('hidden');
+  document.getElementById('rf-taxable').textContent='₹'+fL(taxable);
+  document.getElementById('rf-liability').textContent='₹'+f(liability);
+  document.getElementById('rf-paid').textContent='₹'+f(tds);
+  const box=document.getElementById('rf-box');const ad=document.getElementById('rf-advice');
+  if(diff>0){
+    box.style.background='var(--primary-bg)';
+    document.getElementById('rf-label').textContent='Estimated Tax Refund';
+    document.getElementById('rf-amount').textContent='₹'+f(diff);
+    document.getElementById('rf-amount').style.color='var(--primary)';
+    ad.className='alert alert-green';
+    ad.textContent=`✅ You'll get ₹${f(diff)} refund. File ITR early — refunds are faster before the July rush. Ensure your bank account is pre-validated on the IT portal for direct credit.`;
+  } else {
+    box.style.background='var(--danger-bg)';
+    document.getElementById('rf-label').textContent='Additional Tax Payable';
+    document.getElementById('rf-amount').textContent='₹'+f(Math.abs(diff));
+    document.getElementById('rf-amount').style.color='var(--danger)';
+    ad.className='alert alert-red';
+    ad.textContent=`⚠️ Pay ₹${f(Math.abs(diff))} as self-assessment tax (Challan 280 on IT portal) before filing ITR. Interest at 1%/month applies from April 1.`;
+  }
+}
+
+function update80C(){
+  const inputs=document.querySelectorAll('.c80-inp');let total=0;
+  inputs.forEach(i=>total+=+i.value||0);
+  const allowed=Math.min(total,150000);const pct=Math.min(100,total/150000*100);
+  document.getElementById('c80-total').textContent='₹'+f(total);
+  document.getElementById('c80-allowed').textContent='₹'+f(allowed);
+  const bar=document.getElementById('c80-bar');bar.style.width=pct+'%';
+  bar.className='progress-fill'+(pct>=100?' danger':pct>80?' warn':'');
+  const msg=document.getElementById('c80-msg');const left=150000-total;
+  if(total>=150000){msg.className='alert alert-green';msg.textContent=`✅ 80C maxed! Tax saving: ₹${f(150000*.30)} (30% slab). Consider NPS 80CCD(1B) for ₹50,000 additional deduction.`;}
+  else{msg.className='alert alert-amber';msg.textContent=`₹${f(left)} of 80C unused. Invest more to save up to ₹${f(left*.30)} more in tax.`;}
+}
+update80C();
+
+function calcCapGains(){
+  const asset=document.getElementById('cg-asset').value;const buy=+document.getElementById('cg-buy').value||0;
+  const sell=+document.getElementById('cg-sell').value||0;const hold=document.getElementById('cg-hold').value;
+  const slab=+document.getElementById('cg-slab').value/100;const gain=sell-buy;
+  let rate,typeName,taxableGain=gain;
+  if(asset==='equity'){if(hold==='short'){rate=.20;typeName='STCG @ 20%';}else{taxableGain=Math.max(0,gain-125000);rate=.125;typeName='LTCG @ 12.5% (above ₹1.25L)';}
+  } else if(asset==='property'){if(hold==='short'){rate=slab;typeName='STCG @ slab rate';}else{rate=.125;typeName='LTCG @ 12.5% (no indexation)';}}
+  else{if(hold==='short'){rate=slab;typeName='STCG @ slab rate';}else{rate=.125;typeName='LTCG @ 12.5%';}}
+  const tax=Math.max(0,taxableGain)*rate*1.04;
+  document.getElementById('cg-result').classList.remove('hidden');
+  document.getElementById('cg-gain').textContent='₹'+f(gain);
+  document.getElementById('cg-type').textContent=typeName;
+  document.getElementById('cg-rate').textContent=(rate*100).toFixed(1)+'%';
+  document.getElementById('cg-tax').textContent='₹'+f(tax);
+  document.getElementById('cg-net').textContent='₹'+f(Math.max(0,gain-tax));
+  const ad=document.getElementById('cg-advice');
+  if(gain<=0){ad.className='alert alert-blue';ad.textContent='No capital gain — no tax applicable. Capital losses can be carried forward for 8 years to offset future gains.';}
+  else{ad.className='alert alert-green';ad.textContent=`Net profit after tax: ₹${f(gain-tax)}. ${asset==='equity'&&hold==='long'?'Plan your equity sales to stay within ₹1.25L LTCG free limit each year.':''}`;}
+}
+
+function calcAdvTax(){
+  const income=+document.getElementById('at-income').value||0;const tds=+document.getElementById('at-tds').value||0;
+  const ded=+document.getElementById('at-ded').value||0;const regime=document.getElementById('at-regime').value;
+  const taxable=Math.max(0,income-(regime==='old'?ded:0));
+  const totalTax=Math.round(regime==='new'?taxNew(taxable):taxOld(taxable));
+  const balance=Math.max(0,totalTax-tds);
+  document.getElementById('at-result').classList.remove('hidden');
+  document.getElementById('at-net').textContent='₹'+f(balance);
+  const now=new Date();
+  const dates=[['1st (15%)', new Date('2025-06-15'),.15],['2nd (45%)',new Date('2025-09-15'),.45],['3rd (75%)',new Date('2025-12-15'),.75],['4th (100%)',new Date('2026-03-15'),1]];
+  let cumulPaid=0;
+  document.getElementById('at-tbody').innerHTML=dates.map(([lbl,date,pct])=>{
+    const due=pct*balance-cumulPaid;cumulPaid=pct*balance;
+    const past=now>date;const status=past?'<span class="badge badge-red">Overdue</span>':'<span class="badge badge-green">Upcoming</span>';
+    return`<tr><td>${lbl}</td><td>${date.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</td><td>${(pct*100).toFixed(0)}%</td><td class="amt">₹${f(Math.max(0,due))}</td><td>${status}</td></tr>`;
+  }).join('');
+  const ad=document.getElementById('at-advice');
+  if(balance<10000){ad.className='alert alert-green';ad.textContent='✅ Your advance tax liability is below ₹10,000 — no advance tax required. Pay balance as self-assessment tax before filing ITR.';}
+  else{ad.className='alert alert-amber';ad.textContent=`Pay total ₹${f(balance)} in 4 installments. Missing any installment attracts 1%/month interest under Section 234C. Pay via Challan 280 on incometax.gov.in.`;}
+}
+
+// Freelancer scheme toggle
+document.getElementById('fl-scheme').addEventListener('change',function(){
+  document.getElementById('fl-actual-wrap').style.display=this.value==='actual'?'block':'none';
+});
+
+function calcFreelancer(){
+  const gross=+document.getElementById('fl-gross').value||0;const other=+document.getElementById('fl-other').value||0;
+  const scheme=document.getElementById('fl-scheme').value;const ded=+document.getElementById('fl-ded').value||0;
+  let profit;
+  if(scheme==='44ada'){profit=gross*0.50;}
+  else{const exp=+document.getElementById('fl-expenses').value||0;profit=Math.max(0,gross-exp);}
+  const totalIncome=profit+other;const taxable=Math.max(0,totalIncome-ded);
+  const tax=Math.round(taxNew(taxable));
+  const eff=(tax/gross*100).toFixed(1);
+  const itrForm=scheme==='44ada'&&gross<=7500000?'ITR-4 (Sugam)':'ITR-3';
+  document.getElementById('fl-result').classList.remove('hidden');
+  document.getElementById('fl-tax').textContent='₹'+f(tax);
+  document.getElementById('fl-taxable').textContent='₹'+fL(taxable);
+  document.getElementById('fl-eff').textContent=eff+'%';
+  document.getElementById('fl-monthly').textContent='₹'+f(tax/12)+'/mo';
+  document.getElementById('fl-form').textContent=itrForm;
+  const ad=document.getElementById('fl-advice');ad.className='alert '+(eff<10?'alert-green':'alert-amber');
+  ad.innerHTML=`${scheme==='44ada'?`✅ Under 44ADA, only 50% (₹${fL(profit)}) of your ₹${fL(gross)} receipts are taxable. This is one of the best tax structures in India.`:`Your actual profit is ₹${fL(profit)}. Consider 44ADA presumptive scheme — it might simplify filing and could reduce tax.`} Pay advance tax quarterly to avoid interest.`;
+}
+</script>
+</body>
+</html>

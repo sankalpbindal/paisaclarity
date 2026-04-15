@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EMI Calculator India — Real Loan Cost, Prepayment & Lender Comparison | PaisaClarity</title>
+<meta name="description" content="Free EMI calculator showing true loan cost with processing fees. Compare home loan, personal loan EMIs across SBI, HDFC, ICICI. Prepayment savings calculator India 2025.">
+<meta name="keywords" content="EMI calculator india,home loan EMI,personal loan total cost,loan prepayment calculator,SBI home loan,HDFC loan comparison,loan eligibility calculator">
+<link rel="canonical" href="https://paisaclarity.in/pages/emi.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>EMI Truth</span></div>
+    <span class="badge badge-amber">🏦 EMI Truth</span>
+    <h1>EMI Calculator — The Real Cost of Your Loan</h1>
+    <p>Banks show you the monthly EMI. We show you the truth — total interest, processing fees, and how prepaying early saves you lakhs.</p>
+  </div>
+</div>
+
+<div class="container" style="padding-top:24px"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+
+<div class="tool-page">
+  <div class="container">
+    <div class="tabs" data-tabs>
+      <button class="tab-btn active" data-tab="e1">EMI Calculator</button>
+      <button class="tab-btn" data-tab="e2">Prepayment Planner</button>
+      <button class="tab-btn" data-tab="e3">Loan Eligibility</button>
+      <button class="tab-btn" data-tab="e4">Lender Comparison</button>
+      <button class="tab-btn" data-tab="e5">Loan Guides</button>
+    </div>
+
+    <!-- ══ TAB 1: EMI CALCULATOR ══ -->
+    <div class="tab-content active" id="e1">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Full-Cost EMI Calculator</div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Loan Type</label>
+                <select class="form-select" id="em-type" onchange="emiSetDefaults()">
+                  <option value="home">Home Loan</option>
+                  <option value="personal">Personal Loan</option>
+                  <option value="car">Car Loan</option>
+                  <option value="education">Education Loan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Loan Amount (₹)</label>
+                <div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="em-amt" value="3000000"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Interest Rate (% p.a.)</label>
+                <div class="input-suf"><input type="number" class="form-input" id="em-rate" value="8.5" step="0.1"><span class="input-suf-sym">%</span></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tenure (Years)</label>
+                <input type="number" class="form-input" id="em-tenure" value="20" min="1" max="30">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Processing Fee (%)</label>
+                <div class="input-suf"><input type="number" class="form-input" id="em-proc" value="0.5" step="0.1"><span class="input-suf-sym">%</span></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Loan Insurance (₹)</label>
+                <div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="em-ins" value="0"></div>
+              </div>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcEMI()">Calculate Real Cost</button>
+
+            <div id="em-result" class="hidden">
+              <hr class="divider">
+              <div class="result-box">
+                <div class="result-label">Monthly EMI</div>
+                <div class="result-main" id="em-emi">₹0</div>
+              </div>
+              <div class="result-grid mt-12">
+                <div class="result-item"><div class="result-item-label">Total Amount Paid</div><div class="result-item-value" id="em-total">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Total Interest</div><div class="result-item-value neg" id="em-interest">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Processing Fee</div><div class="result-item-value neg" id="em-proc-amt">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Extra Paid vs Principal</div><div class="result-item-value warn" id="em-extra">0%</div></div>
+              </div>
+              <div class="alert mt-16" id="em-advice"></div>
+              <h4 style="margin:20px 0 12px">Year-wise Amortization</h4>
+              <div style="overflow-x:auto">
+                <table class="result-table">
+                  <thead><tr><th>Year</th><th class="text-right">Principal Paid</th><th class="text-right">Interest Paid</th><th class="text-right">Balance</th></tr></thead>
+                  <tbody id="em-sched"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-content mt-32">
+            <h2>What is the true cost of a home loan?</h2>
+            <p>A ₹30L home loan at 8.5% for 20 years has a monthly EMI of about ₹26,000. But the total paid back is ~₹62L — that's <strong>₹32L in interest alone</strong>, more than the principal. Most borrowers never see this number until it's too late.</p>
+            <div class="highlight-box"><p>💡 A 1% lower interest rate on a ₹30L/20yr loan saves ₹3.7L in total interest. Always negotiate before signing.</p></div>
+            <h3>Home Loan Tax Benefits (Old Regime)</h3>
+            <ul>
+              <li><strong>Section 24(b):</strong> Up to ₹2L/yr deduction on interest (self-occupied property)</li>
+              <li><strong>Section 80C:</strong> Up to ₹1.5L/yr on principal repayment (part of 80C limit)</li>
+              <li><strong>Section 80EEA:</strong> Extra ₹1.5L for first-time buyers (affordable housing)</li>
+            </ul>
+            <h3>What is a processing fee?</h3>
+            <p>Banks charge 0.5–2% of the loan amount as a one-time processing fee. On a ₹50L home loan, this is ₹25,000–₹1L, deducted upfront. It's not in the EMI but is part of your true cost.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky">
+          <div class="card mb-16">
+            <h4 style="margin-bottom:12px">Current Loan Rates (Approx. 2025)</h4>
+            <div style="font-size:.82rem">
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>Home Loan:</strong> 8.35–9.5% p.a.</div>
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>Personal Loan:</strong> 10.5–24% p.a.</div>
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>Car Loan:</strong> 7.5–12% p.a.</div>
+              <div style="padding:7px 0"><strong>Education Loan:</strong> 8.5–15% p.a.</div>
+            </div>
+          </div>
+          <div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 2: PREPAYMENT ══ -->
+    <div class="tab-content" id="e2">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Prepayment Savings Calculator</div>
+            <div class="alert alert-green mb-16"><span>💡</span> Paying even ₹5,000 extra per month on a ₹30L loan can save over ₹8L in interest and close the loan 4 years early.</div>
+            <div class="form-group"><label class="form-label">Original Loan Amount (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="pp-amt" value="3000000"></div></div>
+            <div class="form-group"><label class="form-label">Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="pp-rate" value="8.5" step="0.1"><span class="input-suf-sym">%</span></div></div>
+            <div class="form-group"><label class="form-label">Tenure (Years)</label><input type="number" class="form-input" id="pp-tenure" value="20" min="1" max="30"></div>
+            <div class="form-group"><label class="form-label">Extra Monthly Payment (₹)</label><div class="input-pre"><span class="input-pre-sym">+₹</span><input type="number" class="form-input" id="pp-extra" value="5000"></div><div class="form-hint">Amount you'll pay above the regular EMI each month</div></div>
+            <button class="btn btn-primary w-full" onclick="calcPrepay()">Calculate Savings</button>
+
+            <div id="pp-result" class="hidden">
+              <hr class="divider">
+              <div class="grid-2">
+                <div class="card" style="border-color:var(--danger)">
+                  <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Without Prepayment</div>
+                  <div style="font-size:1.3rem;font-weight:700;color:var(--danger);font-family:var(--font-display)" id="pp-orig-total">₹0</div>
+                  <div style="font-size:.82rem;color:var(--text-secondary);margin-top:4px" id="pp-orig-int">Interest: ₹0</div>
+                </div>
+                <div class="card" style="border-color:var(--primary)">
+                  <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">With Prepayment</div>
+                  <div style="font-size:1.3rem;font-weight:700;color:var(--primary);font-family:var(--font-display)" id="pp-new-total">₹0</div>
+                  <div style="font-size:.82rem;color:var(--text-secondary);margin-top:4px" id="pp-new-int">Interest: ₹0</div>
+                </div>
+              </div>
+              <div class="result-box mt-16">
+                <div class="result-label">Total Interest Saved</div>
+                <div class="result-main" id="pp-saved">₹0</div>
+              </div>
+              <div class="result-grid mt-8">
+                <div class="result-item"><div class="result-item-label">Loan closes early by</div><div class="result-item-value pos" id="pp-early">0 months</div></div>
+                <div class="result-item"><div class="result-item-label">Regular EMI</div><div class="result-item-value" id="pp-emi">₹0</div></div>
+              </div>
+              <div class="alert alert-green mt-12" id="pp-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>Should you prepay your home loan?</h2>
+            <p>Prepaying gives you a <strong>guaranteed return equal to your loan rate</strong>. At 8.5% loan rate, every prepaid rupee effectively earns 8.5% — better than most FDs and completely risk-free.</p>
+            <div class="highlight-box"><p>💡 In the first 5 years, 75–85% of your EMI goes towards interest. Prepaying early has a disproportionately large impact. A ₹5L lump sum in year 1 saves more than ₹5L in year 15.</p></div>
+            <h3>Prepayment penalty rules</h3>
+            <p>As per RBI rules, banks <strong>cannot charge prepayment penalty on floating rate home loans</strong>. For fixed rate loans, check your loan agreement. Personal loans may have a 2–5% prepayment charge in the first 1–2 years.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 3: ELIGIBILITY ══ -->
+    <div class="tab-content" id="e3">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Loan Eligibility Checker</div>
+            <div class="form-group"><label class="form-label">Monthly Net Take-Home Salary (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="el-salary" value="75000"></div></div>
+            <div class="form-group"><label class="form-label">Existing Monthly EMIs (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="el-emi" value="10000"></div><div class="form-hint">Car loan, personal loan, credit card minimums</div></div>
+            <div class="form-group"><label class="form-label">Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="el-rate" value="8.75" step="0.1"><span class="input-suf-sym">%</span></div></div>
+            <div class="form-group"><label class="form-label">Tenure (Years)</label><input type="number" class="form-input" id="el-tenure" value="20" min="1" max="30"></div>
+            <div class="form-group"><label class="form-label">CIBIL Score (approx.)</label>
+              <select class="form-select" id="el-cibil">
+                <option value="excellent">750+ (Excellent)</option>
+                <option value="good">700–749 (Good)</option>
+                <option value="fair">650–699 (Fair)</option>
+                <option value="poor">Below 650 (Poor)</option>
+              </select>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcEligibility()">Check My Eligibility</button>
+
+            <div id="el-result" class="hidden">
+              <hr class="divider">
+              <div class="result-box"><div class="result-label">Maximum Loan You May Get</div><div class="result-main" id="el-max">₹0</div></div>
+              <div class="result-grid mt-8">
+                <div class="result-item"><div class="result-item-label">Max EMI (50% of salary)</div><div class="result-item-value" id="el-max-emi">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Available EMI capacity</div><div class="result-item-value pos" id="el-avail">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">FOIR (Fixed Obligations Ratio)</div><div class="result-item-value" id="el-foir">0%</div></div>
+                <div class="result-item"><div class="result-item-label">Bank FOIR limit</div><div class="result-item-value">40–50%</div></div>
+              </div>
+              <div class="alert mt-12" id="el-advice"></div>
+              <div class="card mt-16" id="el-cibil-tip"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>How banks calculate loan eligibility</h2>
+            <p>Banks use <strong>FOIR (Fixed Obligation to Income Ratio)</strong> — the percentage of your income going towards all fixed EMI obligations. They typically allow total EMIs up to 40–55% of net salary.</p>
+            <h3>Tips to increase eligibility</h3>
+            <ul>
+              <li>Add a co-applicant (spouse) — combined income raises eligibility significantly</li>
+              <li>Close existing small loans before applying</li>
+              <li>Improve CIBIL score to 750+ for better rate and higher eligibility</li>
+              <li>Choose longer tenure (reduces EMI, increases eligible amount)</li>
+              <li>Show additional income sources (rent, freelance) with proper documentation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 4: LENDER COMPARISON ══ -->
+    <div class="tab-content" id="e4">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Lender Comparison — Home Loan</div>
+            <div class="alert alert-blue mb-16"><span>ℹ️</span> Rates shown are indicative for salaried borrowers with CIBIL 750+. Confirm exact rates with individual banks before applying.</div>
+            <div class="grid-2">
+              <div class="form-group"><label class="form-label">Loan Amount (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="lc-amt" value="3000000"></div></div>
+              <div class="form-group"><label class="form-label">Tenure (Years)</label><input type="number" class="form-input" id="lc-tenure" value="20" min="1" max="30"></div>
+            </div>
+            <button class="btn btn-primary" onclick="calcLenderComp()">Compare All Lenders</button>
+
+            <div id="lc-result" class="hidden mt-24">
+              <div style="overflow-x:auto">
+                <table class="result-table">
+                  <thead><tr><th>Lender</th><th>Rate</th><th>Monthly EMI</th><th>Processing Fee</th><th>Total Interest</th><th>Total Cost</th></tr></thead>
+                  <tbody id="lc-tbody"></tbody>
+                </table>
+              </div>
+              <div class="alert alert-green mt-16" id="lc-advice"></div>
+              <p style="font-size:.78rem;color:var(--text-muted);margin-top:8px">*Always verify rates directly with the bank. Rates as of 2025.</p>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>How to compare home loan lenders</h2>
+            <p>Don't just look at the interest rate. The true comparison should include: processing fee, prepayment penalty (if any), technical/legal charges, and customer service reputation.</p>
+            <div class="highlight-box"><p>💡 A 0.25% lower rate on ₹30L/20yr saves ₹90,000 in total interest. It's always worth negotiating or switching lenders (balance transfer).</p></div>
+            <h3>Balance Transfer</h3>
+            <p>If your current lender's rate is 0.5%+ higher than competitors, a balance transfer makes sense. Typical transfer cost: 0.5–1% processing fee at new lender. Break-even is usually within 12–18 months on a large loan.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB 5: GUIDES ══ -->
+    <div class="tab-content" id="e5">
+      <div class="content-with-sidebar">
+        <div class="guide-content">
+          <h2>Complete Home Loan Guide for India 2025</h2>
+          <p>A home loan is the largest financial commitment most Indians make. Understanding every aspect before signing can save you lakhs over the tenure.</p>
+
+          <div class="ad-slot"><span>Advertisement</span></div>
+
+          <h3>Floating vs Fixed Interest Rate</h3>
+          <ul>
+            <li><strong>Floating Rate (RLLR-linked):</strong> Linked to RBI's repo rate. Changes when RBI revises policy. Currently most common. Drops when RBI cuts rates — your EMI reduces automatically.</li>
+            <li><strong>Fixed Rate:</strong> Doesn't change for 2–5 years. Higher than floating but gives certainty. Rare in India for full tenure.</li>
+          </ul>
+
+          <h3>Personal Loan — When It Makes Sense</h3>
+          <p>Personal loans (no collateral, 1–3 day disbursal) are expensive at 12–24%. Use only for genuine emergencies or debt consolidation where the personal loan rate is lower than existing debt.</p>
+
+          <h3>Credit Card vs Personal Loan</h3>
+          <p>Credit card EMI conversion is often cheaper (12–18%) than fresh personal loans (14–24%). However, converted EMIs reduce your credit limit until paid.</p>
+
+          <h3>Questions to ask your bank before signing</h3>
+          <ul>
+            <li>Is the rate RLLR-linked or MCLR-linked? (RLLR resets faster with RBI changes)</li>
+            <li>What is the prepayment penalty? (Floating home loans: zero by RBI rule)</li>
+            <li>Is loan insurance mandatory? (It shouldn't be — it's your choice)</li>
+            <li>What are technical + legal charges? (Often ₹5,000–₹15,000 hidden cost)</li>
+            <li>Can I do a balance transfer without penalty?</li>
+          </ul>
+
+          <h3>Joint Home Loan Benefits</h3>
+          <p>Joint loan with spouse can: increase eligibility (combined income), reduce stamp duty in some states, and both co-borrowers can claim ₹2L Section 24(b) deduction separately — saving ₹60,000+ each year in the 30% slab.</p>
+
+          <div class="ad-slot"><span>Advertisement</span></div>
+
+          <h3>Debt-to-Income Tips</h3>
+          <ul>
+            <li>Keep all EMIs below 40% of take-home for financial breathing room</li>
+            <li>Never take personal loan to pay home loan EMI — classic debt trap</li>
+            <li>Review your loan rate every 2 years — switch if you can save 0.5%+</li>
+            <li>Make one extra EMI payment per year — reduces tenure significantly</li>
+          </ul>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script>renderNav();renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+const f=n=>new Intl.NumberFormat('en-IN').format(Math.round(n));
+const fL=n=>{if(n>=10000000)return(n/10000000).toFixed(2)+' Cr';if(n>=100000)return(n/100000).toFixed(2)+' L';return f(n);};
+function emi(p,r,n){const mr=r/100/12;return mr===0?p/n:p*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);}
+
+function emiSetDefaults(){
+  const t=document.getElementById('em-type').value;
+  const d={home:{rate:8.5,tenure:20,proc:0.5},personal:{rate:14,tenure:5,proc:1.5},car:{rate:9,tenure:7,proc:1},education:{rate:10,tenure:10,proc:0}};
+  document.getElementById('em-rate').value=d[t].rate;
+  document.getElementById('em-tenure').value=d[t].tenure;
+  document.getElementById('em-proc').value=d[t].proc;
+}
+
+function calcEMI(){
+  const amt=+document.getElementById('em-amt').value||0;
+  const rate=+document.getElementById('em-rate').value||0;
+  const yrs=+document.getElementById('em-tenure').value||0;
+  const procPct=+document.getElementById('em-proc').value||0;
+  const ins=+document.getElementById('em-ins').value||0;
+  if(!amt||!rate||!yrs){alert('Please fill all fields');return;}
+  const n=yrs*12;
+  const monthly=emi(amt,rate,n);
+  const total=monthly*n;
+  const interest=total-amt;
+  const proc=amt*procPct/100;
+  document.getElementById('em-result').classList.remove('hidden');
+  document.getElementById('em-emi').textContent='₹'+f(monthly);
+  document.getElementById('em-total').textContent='₹'+fL(total+proc+ins);
+  document.getElementById('em-interest').textContent='₹'+fL(interest);
+  document.getElementById('em-proc-amt').textContent='₹'+f(proc);
+  document.getElementById('em-extra').textContent=((interest+proc+ins)/amt*100).toFixed(1)+'% extra';
+  const ad=document.getElementById('em-advice');
+  ad.className='alert alert-amber';
+  ad.innerHTML=`⚠️ You'll pay <strong>₹${fL(interest)}</strong> in interest — ${(interest/amt*100).toFixed(0)}% of what you borrowed. Paying ₹5,000 extra/month saves approx ₹${fL(interest*0.22)} and closes the loan ~${Math.round(yrs*0.18)} years early.`;
+  let bal=amt;
+  let html='';
+  for(let yr=1;yr<=yrs;yr++){
+    let yp=0,yi=0;
+    for(let m=0;m<12;m++){const im=bal*(rate/100/12);const pm=monthly-im;yi+=im;yp+=pm;bal=Math.max(0,bal-pm);}
+    html+=`<tr><td>Year ${yr}</td><td class="amt sav">₹${f(yp)}</td><td class="amt ded">₹${f(yi)}</td><td class="amt">₹${f(Math.max(0,bal))}</td></tr>`;
+  }
+  document.getElementById('em-sched').innerHTML=html;
+}
+
+function calcPrepay(){
+  const amt=+document.getElementById('pp-amt').value||0;
+  const rate=+document.getElementById('pp-rate').value||0;
+  const yrs=+document.getElementById('pp-tenure').value||0;
+  const extra=+document.getElementById('pp-extra').value||0;
+  if(!amt||!rate||!yrs){alert('Please fill all fields');return;}
+  const monthly=emi(amt,rate,yrs*12);
+  const origTotal=monthly*yrs*12;
+  const origInt=origTotal-amt;
+  // With extra
+  let bal=amt,months=0,newTotal=0;
+  const newEmi=monthly+extra;
+  while(bal>1&&months<yrs*12+12){
+    const im=bal*(rate/100/12);
+    const pm=Math.min(newEmi-im,bal);
+    bal-=pm;newTotal+=pm+im;months++;
+  }
+  const newInt=newTotal-amt;
+  const saved=origInt-newInt;
+  const earlyMo=yrs*12-months;
+  document.getElementById('pp-result').classList.remove('hidden');
+  document.getElementById('pp-orig-total').textContent='₹'+fL(origTotal);
+  document.getElementById('pp-orig-int').textContent='Interest: ₹'+fL(origInt);
+  document.getElementById('pp-new-total').textContent='₹'+fL(newTotal);
+  document.getElementById('pp-new-int').textContent='Interest: ₹'+fL(newInt);
+  document.getElementById('pp-saved').textContent='₹'+fL(Math.max(0,saved));
+  document.getElementById('pp-emi').textContent='₹'+f(monthly)+'/mo';
+  const early=Math.max(0,earlyMo);
+  document.getElementById('pp-early').textContent=Math.floor(early/12)+'yr '+early%12+'mo';
+  const ad=document.getElementById('pp-advice');
+  ad.textContent=`Paying ₹${f(extra)} extra/month saves ₹${fL(Math.max(0,saved))} in interest and closes your loan ${Math.floor(early/12)} years ${early%12} months early. That's a guaranteed ${rate}% return on each prepaid rupee.`;
+}
+
+function calcEligibility(){
+  const sal=+document.getElementById('el-salary').value||0;
+  const existEmi=+document.getElementById('el-emi').value||0;
+  const rate=+document.getElementById('el-rate').value||0;
+  const tenure=+document.getElementById('el-tenure').value||0;
+  const cibil=document.getElementById('el-cibil').value;
+  if(!sal||!rate||!tenure){alert('Please fill all fields');return;}
+  const maxEmi=sal*0.50;
+  const availEmi=Math.max(0,maxEmi-existEmi);
+  const r=rate/100/12;const n=tenure*12;
+  const maxLoan=availEmi*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));
+  const foir=(existEmi/sal*100).toFixed(1);
+  document.getElementById('el-result').classList.remove('hidden');
+  document.getElementById('el-max').textContent='₹'+fL(Math.max(0,maxLoan));
+  document.getElementById('el-max-emi').textContent='₹'+f(maxEmi);
+  document.getElementById('el-avail').textContent='₹'+f(availEmi);
+  document.getElementById('el-foir').textContent=foir+'%';
+  const ad=document.getElementById('el-advice');
+  const tips={excellent:'✅ Excellent CIBIL! You qualify for the lowest rates (8.35–8.5%). Banks may offer you pre-approved offers.',good:'Good score. You\'ll get loans but may not get the lowest rate. 2–3 months of on-time payments can push you to 750+.',fair:'⚠️ Fair score. Loan approval is possible but rate will be 0.5–1% higher. Focus on improving score before applying.',poor:'⚠️ Low CIBIL will likely cause rejection or very high rates. Pay all dues on time for 6+ months before applying.'};
+  if(existEmi/sal>0.5){ad.className='alert alert-red';ad.textContent='⚠️ Existing EMIs exceed 50% of income. Most banks will reject. Consider closing smaller loans first.';}
+  else if(maxLoan<500000){ad.className='alert alert-amber';ad.textContent=`Limited eligibility of ₹${fL(maxLoan)}. Adding a co-applicant's income can significantly increase this.`;}
+  else{ad.className='alert alert-green';ad.textContent=`✅ Good eligibility of ₹${fL(maxLoan)}. ${tips[cibil]}`;}
+  document.getElementById('el-cibil-tip').innerHTML=`<h4 style="margin-bottom:8px">CIBIL Score Tips</h4><p style="font-size:.875rem">${tips[cibil]}</p>`;
+}
+
+function calcLenderComp(){
+  const amt=+document.getElementById('lc-amt').value||0;
+  const tenure=+document.getElementById('lc-tenure').value||0;
+  if(!amt||!tenure){alert('Please fill all fields');return;}
+  const lenders=[
+    {name:'SBI',rate:8.35,proc:0.35,note:'Lowest rate, best for govt employees'},
+    {name:'Bank of Baroda',rate:8.40,proc:0.25,note:'Low processing fee'},
+    {name:'HDFC Bank',rate:8.45,proc:0.5,note:'Fast processing, good service'},
+    {name:'LIC HFL',rate:8.50,proc:0.25,note:'Good for long tenure'},
+    {name:'ICICI Bank',rate:8.50,proc:0.5,note:'Best digital experience'},
+    {name:'Axis Bank',rate:8.55,proc:0.5,note:'Flexible prepayment terms'},
+    {name:'Kotak Mahindra',rate:8.65,proc:0.5,note:'Good for self-employed'},
+    {name:'PNB HFL',rate:8.75,proc:0.5,note:'Wide branch network'},
+  ];
+  const rows=lenders.map(l=>{
+    const e=emi(amt,l.rate,tenure*12);
+    const total=e*tenure*12;
+    const interest=total-amt;
+    const proc=amt*l.proc/100;
+    return{...l,emi:e,total,interest,proc,grandTotal:total+proc};
+  }).sort((a,b)=>a.grandTotal-b.grandTotal);
+  const best=rows[0],worst=rows[rows.length-1];
+  document.getElementById('lc-result').classList.remove('hidden');
+  document.getElementById('lc-tbody').innerHTML=rows.map((r,i)=>`
+    <tr${i===0?' style="background:var(--primary-bg)"':''}>
+      <td><strong>${r.name}</strong>${i===0?' <span class="badge badge-green" style="font-size:10px;margin-left:4px">Best</span>':''}<br><span style="font-size:.75rem;color:var(--text-muted)">${r.note}</span></td>
+      <td>${r.rate}%</td>
+      <td class="amt sav">₹${f(r.emi)}</td>
+      <td class="amt">₹${f(r.proc)}</td>
+      <td class="amt ded">₹${fL(r.interest)}</td>
+      <td class="amt" style="font-weight:600">₹${fL(r.grandTotal)}</td>
+    </tr>`).join('');
+  document.getElementById('lc-advice').textContent=`✅ ${best.name} saves ₹${fL(worst.grandTotal-best.grandTotal)} vs the most expensive option. Even if the best rate bank rejects you, use this to negotiate with your preferred bank.`;
+}
+</script>
+</body>
+</html>

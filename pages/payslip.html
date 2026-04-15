@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payslip Explainer & Salary Calculator India FY 2024-25 | PaisaClarity</title>
+<meta name="description" content="Understand every deduction on your Indian payslip. Free HRA calculator, PF calculator, CTC to take-home salary calculator, new vs old tax regime comparison for FY 2024-25.">
+<meta name="keywords" content="payslip explainer india,HRA calculator,PF calculator,take home salary calculator,CTC to in hand,what is professional tax,TDS on salary 2024">
+<link rel="canonical" href="https://paisaclarity.in/pages/payslip.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="navbar"></div>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Payslip Scanner</span></div>
+    <span class="badge badge-green">🧾 Payslip Tools</span>
+    <h1>Payslip Scanner & Salary Calculator</h1>
+    <p>Every deduction explained — HRA, PF, TDS, Professional Tax, ESIC. CTC to take-home in plain language. Updated for FY 2024-25.</p>
+  </div>
+</div>
+<div class="container" style="padding-top:24px"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+
+<div class="tool-page">
+  <div class="container">
+    <div class="tabs" data-tabs>
+      <button class="tab-btn active" data-tab="t1">CTC → Take-Home</button>
+      <button class="tab-btn" data-tab="t2">HRA Calculator</button>
+      <button class="tab-btn" data-tab="t3">PF Calculator</button>
+      <button class="tab-btn" data-tab="t4">New vs Old Regime</button>
+      <button class="tab-btn" data-tab="t5">Gratuity</button>
+    </div>
+
+    <!-- CTC TO TAKE HOME -->
+    <div class="tab-content active" id="t1">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card">
+            <div class="tool-section-label">Enter Your CTC Details</div>
+            <div class="grid-2">
+              <div class="form-group"><label class="form-label">Annual CTC (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="th-ctc" value="1200000"></div></div>
+              <div class="form-group"><label class="form-label">Basic % of CTC</label><div class="input-suf"><input type="number" class="form-input" id="th-bpct" value="40" min="30" max="60"><span class="input-suf-sym">%</span></div><div class="form-hint">Usually 40–50%</div></div>
+              <div class="form-group"><label class="form-label">Monthly Rent Paid (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="th-rent" value="20000"></div></div>
+              <div class="form-group"><label class="form-label">City Type</label><select class="form-select" id="th-city"><option value="metro">Metro (Delhi/Mumbai/Chennai/Kolkata)</option><option value="nonmetro">Non-Metro</option></select></div>
+              <div class="form-group"><label class="form-label">80C Investments/yr (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="th-80c" value="50000" max="150000"></div><div class="form-hint">LIC, ELSS, PPF (max ₹1.5L)</div></div>
+              <div class="form-group"><label class="form-label">Tax Regime</label><select class="form-select" id="th-regime"><option value="new">New Regime (Default 2024)</option><option value="old">Old Regime</option></select></div>
+            </div>
+            <button class="btn btn-primary w-full" onclick="calcTakeHome()">Calculate My Take-Home Salary</button>
+            <div id="th-result" class="hidden">
+              <hr class="divider">
+              <div class="result-box"><div class="result-label">Monthly In-Hand Salary</div><div class="result-main" id="th-inhand">₹0</div></div>
+              <table class="result-table mt-16"><thead><tr><th>Component</th><th>Monthly</th><th>Annual</th></tr></thead><tbody id="th-tbody"></tbody></table>
+              <div class="alert mt-16" id="th-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2 id="ctc-guide">What is CTC and how is take-home different?</h2>
+            <p>CTC (Cost to Company) is the total annual expenditure your employer incurs on you. Your in-hand salary is lower because several components are deducted before you receive your pay.</p>
+            <h3>What's inside your CTC?</h3>
+            <ul>
+              <li><strong>Basic Salary</strong> — Typically 40–50% of CTC. Forms the basis for PF, HRA, and gratuity calculations. Fully taxable.</li>
+              <li><strong>HRA (House Rent Allowance)</strong> — Usually 40–50% of Basic. Partially or fully tax-exempt if you pay rent.</li>
+              <li><strong>Special Allowance</strong> — Balance amount. Fully taxable. Often the largest component after Basic.</li>
+              <li><strong>Employer PF</strong> — 12% of Basic (max ₹1,800/mo). Goes into your EPF account, not your bank account.</li>
+              <li><strong>Gratuity</strong> — 4.81% of Basic. Part of CTC but paid only after 5 years of service.</li>
+            </ul>
+            <div class="highlight-box"><p>💡 A ₹12L CTC typically results in ₹72,000–85,000 in-hand per month, depending on your rent, city, and tax choices.</p></div>
+            <h3>What is TDS on salary?</h3>
+            <p>TDS (Tax Deducted at Source) is the advance income tax your employer deducts every month. It's not extra tax — it's your annual income tax paid in 12 installments. If too much is deducted, you get a refund when you file ITR.</p>
+            <h3>What is Professional Tax?</h3>
+            <p>Professional Tax is a state-level tax deducted by employers in states like Maharashtra (max ₹200/mo), Karnataka (₹200/mo), West Bengal, and Andhra Pradesh. The maximum across India is ₹2,500/year. It's deductible from your taxable income.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky">
+          <div class="card mb-16">
+            <h4 style="margin-bottom:12px">Quick Deduction Guide</h4>
+            <div style="font-size:.82rem">
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>PF:</strong> 12% of basic, max ₹1,800/mo</div>
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>Prof. Tax:</strong> Max ₹200/mo. State-specific.</div>
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>TDS:</strong> Monthly advance income tax</div>
+              <div style="padding:7px 0;border-bottom:1px solid var(--border)"><strong>ESIC:</strong> 0.75% if gross &lt; ₹21,000/mo</div>
+              <div style="padding:7px 0"><strong>LWF:</strong> ₹6–25/mo depending on state</div>
+            </div>
+          </div>
+          <div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div>
+          <div class="card mt-16">
+            <h4 style="margin-bottom:8px">⭐ Pro: PDF Export</h4>
+            <p style="font-size:.82rem;margin-bottom:12px">Download your full salary breakdown as a PDF — useful for loan applications and HR discussions.</p>
+            <a href="pricing.html" class="btn btn-primary btn-sm w-full">Unlock for ₹299/yr</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HRA -->
+    <div class="tab-content" id="t2">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card" id="hra">
+            <div class="tool-section-label">HRA Exemption Calculator — Section 10(13A)</div>
+            <div class="alert alert-blue mb-16"><span>ℹ️</span> HRA exemption = <strong>Minimum</strong> of 3 calculated values. We show all three so you understand exactly what limits your exemption.</div>
+            <div class="form-group"><label class="form-label">Annual Basic Salary (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="h-basic" value="480000"></div></div>
+            <div class="form-group"><label class="form-label">Annual HRA Received from Employer (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="h-recv" value="240000"></div></div>
+            <div class="form-group"><label class="form-label">Monthly Rent Paid (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="h-rent" value="18000"></div></div>
+            <div class="form-group"><label class="form-label">City Type</label><select class="form-select" id="h-city"><option value="metro">Metro City (Delhi/Mumbai/Chennai/Kolkata) — 50% of Basic</option><option value="nonmetro">Non-Metro — 40% of Basic</option></select></div>
+            <button class="btn btn-primary w-full" onclick="calcHRA()">Calculate HRA Exemption</button>
+            <div id="h-result" class="hidden">
+              <div class="result-box mt-16"><div class="result-label">Annual HRA Exemption (Tax-Free Amount)</div><div class="result-main" id="h-exempt">₹0</div></div>
+              <table class="result-table mt-12"><thead><tr><th>Rule</th><th>Amount</th><th>Note</th></tr></thead><tbody id="h-tbody"></tbody></table>
+              <div class="alert mt-12" id="h-advice"></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>How HRA Exemption Works — Section 10(13A)</h2>
+            <p>HRA exemption is governed by Section 10(13A) of the Income Tax Act. The exempt amount is the <strong>lowest</strong> of three values.</p>
+            <ul>
+              <li>Actual HRA received from employer</li>
+              <li>Rent paid − 10% of Annual Basic Salary</li>
+              <li>50% of Annual Basic (metro) or 40% (non-metro)</li>
+            </ul>
+            <div class="highlight-box"><p>⚠️ If your monthly rent is less than 10% of your basic salary, your HRA exemption is ₹0. Always check this before planning your rent.</p></div>
+            <h3>Do I need rent receipts?</h3>
+            <p>If your annual HRA claim exceeds ₹1 lakh, you must submit your landlord's PAN. Always keep rent receipts. If paying to a family member, you must show actual bank transfers — cash payments are not accepted by the IT department.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- PF -->
+    <div class="tab-content" id="t3">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card" id="pf">
+            <div class="tool-section-label">EPF Corpus Calculator</div>
+            <div class="form-group"><label class="form-label">Monthly Basic + DA (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="p-basic" value="40000"></div></div>
+            <div class="form-group"><label class="form-label">Current Age</label><input type="number" class="form-input" id="p-age" value="28" min="18" max="57"></div>
+            <div class="form-group"><label class="form-label">Current PF Balance (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="p-bal" value="150000"></div></div>
+            <div class="form-group"><label class="form-label">Annual Salary Increment (%)</label><div class="input-suf"><input type="number" class="form-input" id="p-hike" value="8" min="0"><span class="input-suf-sym">%/yr</span></div></div>
+            <button class="btn btn-primary w-full" onclick="calcPF()">Calculate PF Corpus at Retirement</button>
+            <div id="p-result" class="hidden">
+              <div class="result-box mt-16"><div class="result-label">EPF Corpus at Age 58</div><div class="result-main" id="p-corpus">₹0</div></div>
+              <div class="result-grid mt-8">
+                <div class="result-item"><div class="result-item-label">Your PF/month</div><div class="result-item-value" id="p-emp">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Employer EPF/month</div><div class="result-item-value pos" id="p-er">₹0</div></div>
+                <div class="result-item"><div class="result-item-label">Years to retirement</div><div class="result-item-value" id="p-yrs">0</div></div>
+                <div class="result-item"><div class="result-item-label">EPF Interest Rate</div><div class="result-item-value">8.25%</div></div>
+              </div>
+              <div class="alert alert-green mt-12">✅ EPF withdrawals are completely tax-free after 5 years of continuous service. Employer's 8.33% contribution goes to EPS (pension), not your EPF corpus.</div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>EPF vs EPS — Understanding Your PF</h2>
+            <p>When your employer deducts 12% of your Basic for PF, it's matched by an equal employer contribution. However, the employer's 12% is split: 8.33% goes to EPS (Employees' Pension Scheme, max ₹1,250/mo) and 3.67% goes to EPF.</p>
+            <p>The EPF interest rate for FY 2023-24 is <strong>8.25% per annum</strong> — one of the highest guaranteed returns in India, and completely tax-free.</p>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- REGIME -->
+    <div class="tab-content" id="t4">
+      <div class="content-with-sidebar">
+        <div>
+          <div class="tool-card" id="regime">
+            <div class="tool-section-label">New vs Old Tax Regime — Which is Better For You?</div>
+            <div class="form-group"><label class="form-label">Annual Gross Salary (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rg-sal" value="1500000"></div></div>
+            <div class="form-group"><label class="form-label">HRA Exemption/yr (₹) <span style="font-weight:400;color:var(--text-muted)">— from HRA Calculator above</span></label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rg-hra" value="144000"></div></div>
+            <div class="form-group"><label class="form-label">80C Investments/yr (₹) — max ₹1.5L</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rg-80c" value="150000" max="150000"></div></div>
+            <div class="form-group"><label class="form-label">Health Insurance 80D (₹) — max ₹1L</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rg-80d" value="25000"></div></div>
+            <div class="form-group"><label class="form-label">Home Loan Interest 24(b) (₹) — max ₹2L</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="rg-hl" value="0" max="200000"></div></div>
+            <button class="btn btn-primary w-full" onclick="calcRegime()">Compare Both Regimes</button>
+            <div id="rg-result" class="hidden mt-16">
+              <div class="grid-2">
+                <div class="card" id="rg-nc"><div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:8px">New Regime (Default)</div><div style="font-size:1.6rem;font-weight:700;font-family:var(--font-display)" id="rg-nt">₹0</div><div style="font-size:.82rem;color:var(--text-secondary);margin-top:4px">Annual Tax + 4% Cess</div></div>
+                <div class="card" id="rg-oc"><div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:8px">Old Regime</div><div style="font-size:1.6rem;font-weight:700;font-family:var(--font-display)" id="rg-ot">₹0</div><div style="font-size:.82rem;color:var(--text-secondary);margin-top:4px">Annual Tax + 4% Cess</div></div>
+              </div>
+              <div class="alert mt-12" id="rg-rec"></div>
+              <div class="result-box mt-12"><div class="result-label">You save per year by choosing the better regime</div><div class="result-main" id="rg-sav">₹0</div></div>
+            </div>
+          </div>
+          <div class="guide-content mt-32">
+            <h2>New vs Old Regime — 2024 Guide</h2>
+            <p>From FY 2023-24, the <strong>New Regime is the default</strong>. You must explicitly opt into the Old Regime when filing your ITR if you want to claim deductions.</p>
+            <h3>New Regime Tax Slabs (FY 2024-25)</h3>
+            <ul><li>Up to ₹3L — Nil</li><li>₹3L–₹7L — 5%</li><li>₹7L–₹10L — 10% (wait — ₹3L–₹6L is 5%, ₹6L–₹9L is 10%)</li><li>₹3L–₹6L — 5%</li><li>₹6L–₹9L — 10%</li><li>₹9L–₹12L — 15%</li><li>₹12L–₹15L — 20%</li><li>Above ₹15L — 30%</li></ul>
+            <div class="highlight-box"><p>💡 Rebate u/s 87A: If your taxable income ≤ ₹7L in New Regime (or ≤ ₹5L in Old Regime), your tax is ₹0 after rebate.</p></div>
+          </div>
+        </div>
+        <div class="sidebar-sticky"><div class="ad-slot" style="min-height:250px"><span>Advertisement</span></div></div>
+      </div>
+    </div>
+
+    <!-- GRATUITY -->
+    <div class="tab-content" id="t5">
+      <div class="tool-card" style="max-width:560px">
+        <div class="tool-section-label">Gratuity Calculator</div>
+        <div class="alert alert-blue mb-16"><span>ℹ️</span> Formula (for Gratuity Act): (Last Basic+DA × 15 × Years) ÷ 26. Payable after 5+ continuous years of service.</div>
+        <div class="form-group"><label class="form-label">Last Monthly Basic + DA (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="gr-basic" value="50000"></div></div>
+        <div class="form-group"><label class="form-label">Years of Service</label><input type="number" class="form-input" id="gr-yrs" value="7" min="1"></div>
+        <div class="form-group"><label class="form-label">Employer covered under Gratuity Act?</label><select class="form-select" id="gr-act"><option value="yes">Yes (10+ employees)</option><option value="no">No — using 30-day formula</option></select></div>
+        <button class="btn btn-primary w-full" onclick="calcGratuity()">Calculate Gratuity</button>
+        <div id="gr-result" class="hidden">
+          <div class="result-box mt-16"><div class="result-label">Gratuity Payable</div><div class="result-main" id="gr-amt">₹0</div></div>
+          <div class="result-grid mt-8">
+            <div class="result-item"><div class="result-item-label">Tax-free limit</div><div class="result-item-value">₹20,00,000</div></div>
+            <div class="result-item"><div class="result-item-label">Tax on excess (est.)</div><div class="result-item-value" id="gr-tax">₹0</div></div>
+          </div>
+          <div class="alert mt-12" id="gr-note"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container"><div class="ad-slot"><span>Advertisement — Google AdSense</span></div></div>
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script>renderNav();renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+const f=n=>new Intl.NumberFormat('en-IN').format(Math.round(n));
+const fL=n=>{if(n>=10000000)return(n/10000000).toFixed(2)+' Cr';if(n>=100000)return(n/100000).toFixed(2)+' L';return f(n);}
+
+function calcTakeHome(){
+  const ctc=+document.getElementById('th-ctc').value||0;const bp=(+document.getElementById('th-bpct').value||40)/100;
+  const rent=+document.getElementById('th-rent').value||0;const city=document.getElementById('th-city').value;
+  const inv=Math.min(+document.getElementById('th-80c').value||0,150000);const regime=document.getElementById('th-regime').value;
+  if(ctc<50000){alert('Enter valid CTC');return;}
+  const aBasic=ctc*bp,mBasic=aBasic/12,mHRA=mBasic*0.5,aHRA=mHRA*12;
+  const mSpec=Math.max(0,(ctc-aBasic-aHRA-mBasic*0.12*12-mBasic*0.0481*12)/12);
+  const pf=Math.min(mBasic*0.12,1800);const pt=200;
+  const gross=mBasic+mHRA+mSpec;
+  const hraEx=Math.max(0,Math.min(aHRA,rent*12-aBasic*0.10,aBasic*(city==='metro'?0.5:0.4)));
+  let tax=0,taxable=0;
+  if(regime==='new'){
+    taxable=Math.max(0,ctc-(pf*24));
+    if(taxable>1500000)tax=150000+(taxable-1500000)*0.30;
+    else if(taxable>1200000)tax=90000+(taxable-1200000)*0.20;
+    else if(taxable>900000)tax=60000+(taxable-900000)*0.15;
+    else if(taxable>600000)tax=15000+(taxable-600000)*0.10;
+    else if(taxable>300000)tax=(taxable-300000)*0.05;
+    if(taxable<=700000&&tax>0)tax=Math.max(0,tax-12500);
+  } else {
+    taxable=Math.max(0,ctc-(pf*24)-hraEx-50000-inv);
+    if(taxable>1000000)tax=112500+(taxable-1000000)*0.30;
+    else if(taxable>500000)tax=12500+(taxable-500000)*0.20;
+    else if(taxable>250000)tax=(taxable-250000)*0.05;
+    if(taxable<=500000&&tax>0)tax=Math.max(0,tax-12500);
+  }
+  const tds=(tax*1.04)/12;const inhand=Math.max(0,gross-pf-tds-pt);
+  document.getElementById('th-result').classList.remove('hidden');
+  document.getElementById('th-inhand').textContent='₹'+f(inhand);
+  const rows=[['Basic Salary',mBasic,aBasic,''],['HRA',mHRA,aHRA,''],['Special Allowance',mSpec,mSpec*12,''],['Gross Salary',gross,gross*12,'bold'],['(−) Employee PF',pf,pf*12,'ded'],['(−) Professional Tax',pt,pt*12,'ded'],['(−) TDS (Income Tax)',tds,tax*1.04,'ded'],['= In-Hand Salary',inhand,inhand*12,'bold pos']];
+  document.getElementById('th-tbody').innerHTML=rows.map(r=>`<tr${r[3]==='bold pos'?` class="total"`:''}><td>${r[0]}</td><td class="amt${r[3]==='ded'?' ded':r[3]==='bold pos'?' sav':''}">${r[3]==='ded'?'−':''}₹${f(r[1])}</td><td class="amt${r[3]==='ded'?' ded':r[3]==='bold pos'?' sav':''}">${r[3]==='ded'?'−':''}₹${f(r[2])}</td></tr>`).join('');
+  const ad=document.getElementById('th-advice');const eff=(tax*1.04/ctc*100).toFixed(1);
+  ad.className='alert alert-green';ad.innerHTML=`✅ Effective tax rate: <strong>${eff}%</strong>. HRA saves ₹${f(hraEx*0.30)}/yr in taxes. ${regime==='old'?'80C saves ₹'+f(inv*0.20)+' more.':'Switch to Old Regime if your deductions &gt; ₹3.75L.'}`;
+}
+
+function calcHRA(){
+  const basic=+document.getElementById('h-basic').value;const recv=+document.getElementById('h-recv').value;
+  const rent=(+document.getElementById('h-rent').value)*12;const city=document.getElementById('h-city').value;
+  const c1=recv,c2=Math.max(0,rent-basic*0.10),c3=basic*(city==='metro'?0.5:0.4);
+  const exempt=Math.min(c1,c2,c3);
+  document.getElementById('h-result').classList.remove('hidden');
+  document.getElementById('h-exempt').textContent='₹'+f(exempt);
+  const min=Math.min(c1,c2,c3);
+  document.getElementById('h-tbody').innerHTML=[['Actual HRA received',c1],['Rent paid − 10% of Basic',c2],[(city==='metro'?'50%':'40%')+' of Annual Basic',c3]].map(([l,v])=>`<tr><td>${l}</td><td class="amt">₹${f(v)}</td><td>${v===min?'<span class="badge badge-amber" style="font-size:10px">Minimum ← your exemption</span>':''}</td></tr>`).join('');
+  const ad=document.getElementById('h-advice');
+  if(exempt<=0){ad.className='alert alert-red';ad.innerHTML='⚠️ <strong>No HRA exemption!</strong> Your rent is ≤10% of basic. Increase rent to claim exemption.';}
+  else{ad.className='alert alert-green';ad.textContent=`✅ You save ₹${f(exempt*0.30)} in taxes (at 30% slab). Taxable HRA = ₹${f(recv-exempt)}.`;}
+}
+
+function calcPF(){
+  const basic=+document.getElementById('p-basic').value;const age=+document.getElementById('p-age').value||28;
+  const bal=+document.getElementById('p-bal').value||0;const hike=(+document.getElementById('p-hike').value||8)/100;
+  const yrs=Math.max(1,58-age);const emp=Math.min(basic*0.12,1800);const er=Math.min(basic*0.0367,550);
+  let corpus=bal;let b=basic;
+  for(let i=0;i<yrs;i++){corpus=(corpus+(emp+er)*12)*(1+0.0825);b*=(1+hike);}
+  document.getElementById('p-result').classList.remove('hidden');
+  document.getElementById('p-corpus').textContent='₹'+fL(corpus);
+  document.getElementById('p-emp').textContent='₹'+f(emp);
+  document.getElementById('p-er').textContent='₹'+f(er);
+  document.getElementById('p-yrs').textContent=yrs+' yrs';
+}
+
+function calcRegime(){
+  const sal=+document.getElementById('rg-sal').value;const hra=+document.getElementById('rg-hra').value;
+  const c80=Math.min(+document.getElementById('rg-80c').value,150000);const c80d=+document.getElementById('rg-80d').value;
+  const hl=Math.min(+document.getElementById('rg-hl').value,200000);
+  function tNew(i){let t=0;if(i>1500000)t=150000+(i-1500000)*.3;else if(i>1200000)t=90000+(i-1200000)*.2;else if(i>900000)t=60000+(i-900000)*.15;else if(i>600000)t=15000+(i-600000)*.1;else if(i>300000)t=(i-300000)*.05;if(i<=700000&&t>0)t=Math.max(0,t-12500);return t*1.04;}
+  function tOld(i){let t=0;if(i>1000000)t=112500+(i-1000000)*.3;else if(i>500000)t=12500+(i-500000)*.2;else if(i>250000)t=(i-250000)*.05;if(i<=500000&&t>0)t=Math.max(0,t-12500);return t*1.04;}
+  const nt=tNew(sal),ot=tOld(Math.max(0,sal-hra-50000-c80-c80d-hl));
+  const better=nt<ot?'new':'old';const sav=Math.abs(nt-ot);
+  document.getElementById('rg-result').classList.remove('hidden');
+  document.getElementById('rg-nt').textContent='₹'+f(nt);document.getElementById('rg-ot').textContent='₹'+f(ot);
+  document.getElementById('rg-sav').textContent='₹'+f(sav)+'/year';
+  document.getElementById('rg-nc').style.border=better==='new'?'2px solid var(--primary)':'1px solid var(--border)';
+  document.getElementById('rg-oc').style.border=better==='old'?'2px solid var(--primary)':'1px solid var(--border)';
+  const rec=document.getElementById('rg-rec');rec.className='alert '+(better==='new'?'alert-green':'alert-amber');
+  rec.innerHTML=better==='new'?`✅ <strong>New Regime saves you ₹${f(sav)}/yr.</strong> Your deductions of ₹${f(hra+c80+c80d+hl)} aren't large enough to justify Old Regime.`:`⭐ <strong>Old Regime saves you ₹${f(sav)}/yr.</strong> Your deductions of ₹${f(hra+c80+c80d+hl)} make it worth choosing Old Regime.`;
+}
+
+function calcGratuity(){
+  const basic=+document.getElementById('gr-basic').value;const yrs=+document.getElementById('gr-yrs').value;
+  const act=document.getElementById('gr-act').value;
+  if(yrs<5){document.getElementById('gr-result').classList.remove('hidden');document.getElementById('gr-amt').textContent='₹0';document.getElementById('gr-tax').textContent='N/A';const n=document.getElementById('gr-note');n.className='alert alert-red';n.textContent='⚠️ Gratuity requires minimum 5 years of continuous service.';return;}
+  const g=act==='yes'?(basic*15*yrs)/26:(basic*15*yrs)/30;
+  const taxable=Math.max(0,g-2000000);
+  document.getElementById('gr-result').classList.remove('hidden');
+  document.getElementById('gr-amt').textContent='₹'+f(g);
+  document.getElementById('gr-tax').textContent=taxable>0?'₹'+f(taxable*.30)+' (approx)':'₹0 — fully exempt';
+  const n=document.getElementById('gr-note');n.className='alert '+(g<=2000000?'alert-green':'alert-amber');
+  n.textContent=g<=2000000?`✅ Fully tax-free (below ₹20L limit).`:`⚠️ ₹${f(taxable)} is taxable. Invest the tax-free ₹${f(2000000)} in instruments like PPF for further tax-free growth.`;
+}
+</script>
+</body>
+</html>
