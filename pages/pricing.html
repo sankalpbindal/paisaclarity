@@ -151,7 +151,7 @@ body.show-annual .monthly-price{display:none}
   </div>
 </div>
 
-<div class="container" style="padding-top:20px"><div class="ad-slot ad-leaderboard"><span>Advertisement</span></div></div>
+<div class="container" style="padding-top:20px"><div class="ad-slot ad-leaderboard"><!--<span>Advertisement</span>--></div></div>
 
 <!-- ═══════════════════════════════
      SECTION 1 — CORE TIERS
@@ -490,12 +490,12 @@ body.show-annual .monthly-price{display:none}
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 14px;width:100%;box-sizing:border-box">
           <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:2px">UPI ID</div>
           <div style="font-family:monospace;font-size:.92rem;font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between;align-items:center">
-            <span id="upi-id-display">bindalsankalp@okicici</span>
+            <span id="upi-id-display">payments@paisaclarity</span>
             <!-- TODO: Replace with live UPI ID before going live -->
             <button onclick="copyUPI()" style="background:var(--primary-bg);color:var(--primary);border:none;border-radius:4px;padding:3px 8px;font-size:.72rem;cursor:pointer">Copy</button>
           </div>
         </div>
-        <p style="font-size:.78rem;color:var(--text-muted);margin:0">⚠️ After payment, send your UTR/transaction ID to <strong>bindalsankalp@gmail.com</strong> to activate your plan within 2 hours.</p>
+        <p style="font-size:.78rem;color:var(--text-muted);margin:0">⚠️ After payment, send your UTR/transaction ID to <strong>support@paisaclarity.in</strong> to activate your plan within 2 hours.</p>
       </div>
       <!-- Razorpay integration: commented out pending gateway setup -->
       <!-- <div class="alert alert-blue mb-16"><span>ℹ️</span> Payments via UPI, GPay, PhonePe, card, or net banking — powered by Razorpay.</div> -->
@@ -517,7 +517,7 @@ body.show-annual .monthly-price{display:none}
       <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px">
         <div style="font-size:1.4rem;margin-bottom:8px">⚡</div>
         <div style="font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--text-primary)">Pro Subscription</div>
-        <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.55">Full refund within <strong>7 days</strong> of purchase — no questions asked. Email your order ID to bindalsankalp@gmail.com. Refund in 3–5 business days to your original UPI account.</div>
+        <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.55">Full refund within <strong>7 days</strong> of purchase — no questions asked. Email your order ID to support@paisaclarity.in. Refund in 3–5 business days to your original UPI account.</div>
       </div>
       <!-- Per-session -->
       <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px">
@@ -534,7 +534,7 @@ body.show-annual .monthly-price{display:none}
     </div>
     <div style="background:var(--primary-bg);border:1px solid var(--primary);border-radius:var(--radius-md);padding:14px 18px;margin-top:16px;font-size:.83rem;color:var(--primary-dark);display:flex;gap:10px;align-items:center">
       <span style="font-size:1.1rem;flex-shrink:0">✉️</span>
-      <span>To request a refund, email <strong>bindalsankalp@gmail.com</strong> with your order ID and UPI transaction reference. We respond within 1 business day.</span>
+      <span>To request a refund, email <strong>support@paisaclarity.in</strong> with your order ID and UPI transaction reference. We respond within 1 business day.</span>
     </div>
   </div>
 </section>
@@ -560,7 +560,7 @@ body.show-annual .monthly-price{display:none}
     </div>
     <div class="faq-item">
       <button class="faq-question">What payment methods are accepted? <span class="faq-icon">+</span></button>
-      <div class="faq-answer">Currently we accept UPI payments only — GPay, PhonePe, Paytm, BHIM, or any bank's UPI app. After checkout, you'll receive our UPI ID. Pay and share the UTR / transaction ID to bindalsankalp@gmail.com — your plan is activated within 2 hours. Card and net banking via payment gateway coming soon.</div>
+      <div class="faq-answer">Currently we accept UPI payments only — GPay, PhonePe, Paytm, BHIM, or any bank's UPI app. After checkout, you'll receive our UPI ID. Pay and share the UTR / transaction ID to support@paisaclarity.in — your plan is activated within 2 hours. Card and net banking via payment gateway coming soon.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question">How does CA pricing work — why does it say ₹999+? <span class="faq-icon">+</span></button>
@@ -568,7 +568,7 @@ body.show-annual .monthly-price{display:none}
     </div>
     <div class="faq-item">
       <button class="faq-question">What's the refund policy? <span class="faq-icon">+</span></button>
-      <div class="faq-answer">Pro subscriptions: full refund within 7 days, no questions asked. Per-session purchases: refund if your CA hasn't responded within the promised window, or if you're genuinely unsatisfied with the quality. Email bindalsankalp@gmail.com with your order ID — refund within 3–5 business days to your original payment method.</div>
+      <div class="faq-answer">Pro subscriptions: full refund within 7 days, no questions asked. Per-session purchases: refund if your CA hasn't responded within the promised window, or if you're genuinely unsatisfied with the quality. Email support@paisaclarity.in with your order ID — refund within 3–5 business days to your original payment method.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question">Will prices increase during ITR season? <span class="faq-icon">+</span></button>
@@ -667,7 +667,7 @@ function processPayment(){
   if(phone&&!phoneRe.test(phone)){phoneErr.style.display='block';valid=false;}else{phoneErr.style.display='none';}
   if(!name){alert('Please enter your full name.');return;}
   if(!valid)return;
-  alert('Thank you, '+name+'!\n\nPlease pay via UPI to: bindalsankalp@okicici\n\nAfter payment, email your UTR / transaction ID to bindalsankalp@gmail.com and we\'ll activate your plan within 2 hours. Confirmation will be sent to '+email+'.');
+  alert('Thank you, '+name+'!\n\nPlease pay via UPI to: payments@paisaclarity\n\nAfter payment, email your UTR / transaction ID to support@paisaclarity.in and we\'ll activate your plan within 2 hours. Confirmation will be sent to '+email+'.');
 }
 
 // ── COUNTDOWN TO JULY 31 ──

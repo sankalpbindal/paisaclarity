@@ -257,7 +257,7 @@ input[type=range]{width:100%;accent-color:var(--primary);cursor:pointer;height:4
   overflow: hidden;
 }
 .ad-slot::before {
-  content: 'ADVERTISEMENT';
+  content: '';/*Advertisement*/
   position: absolute;
   top: 5px;
   left: 50%;
