@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Us — PaisaClarity</title>
+<meta name="description" content="Contact PaisaClarity for support, feedback, or partnership inquiries.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="navbar"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="badge badge-blue">Get in Touch</span>
+    <h1>Contact Us</h1>
+    <p>Have a question, spotted an error, or want to collaborate? We'd love to hear from you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:40px;align-items:start">
+
+      <!-- Contact Details -->
+      <div>
+        <h2 style="margin-bottom:8px">Reach us directly</h2>
+        <p style="margin-bottom:32px">We're a small team passionate about financial literacy for India. We read every message and try to respond within 1–2 business days.</p>
+
+        <div class="card" style="margin-bottom:16px;display:flex;align-items:center;gap:20px">
+          <div style="width:48px;height:48px;background:var(--primary-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📧</div>
+          <div>
+            <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:3px">Email</div>
+            <a href="mailto:bindalsankalp@gmail.com" style="font-weight:600;color:var(--primary);font-size:.95rem">bindalsankalp@gmail.com</a>
+            <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">For general queries, feedback, or bugs</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;display:flex;align-items:center;gap:20px">
+          <div style="width:48px;height:48px;background:var(--primary-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📞</div>
+          <div>
+            <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:3px">Phone / WhatsApp</div>
+            <a href="tel:+917701995155" style="font-weight:600;color:var(--primary);font-size:.95rem">+91 77019 95155</a>
+            <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">Mon–Fri, 10am–6pm IST</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:32px;display:flex;align-items:center;gap:20px">
+          <div style="width:48px;height:48px;background:var(--primary-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">🇮🇳</div>
+          <div>
+            <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:3px">Based in</div>
+            <div style="font-weight:600;color:var(--text-primary);font-size:.95rem">India</div>
+            <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">Serving salaried Indians nationwide</div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface-2);border-radius:var(--radius-lg);padding:24px">
+          <h3 style="margin-bottom:16px;font-size:1rem">Frequently Asked</h3>
+
+          <div class="faq-item">
+            <button class="faq-question">Is PaisaClarity really free? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">Yes — our core tools (Payslip Explainer, EMI Calculator, ITR Guide) are completely free. We may offer a Pro plan for advanced features in the future.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">I found a calculation error. How do I report it? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">Please email us with the tool name, the inputs you used, and the expected vs. actual output. We'll investigate and fix it quickly.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Can I partner or advertise with PaisaClarity? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">We're open to relevant partnerships with fintech companies, banks, or content creators. Drop us an email with your proposal.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Is my financial data stored anywhere? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">No. All calculator inputs run entirely in your browser and are never sent to our servers. See our <a href="privacy.html">Privacy Policy</a> for full details.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <div class="tool-card">
+          <h2 style="margin-bottom:6px">Send us a message</h2>
+          <p style="font-size:.875rem;margin-bottom:28px">We'll get back to you within 1–2 business days.</p>
+
+          <div id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Name</label>
+              <input class="form-input" type="text" id="contactName" placeholder="Rahul Sharma">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Email Address</label>
+              <input class="form-input" type="email" id="contactEmail" placeholder="rahul@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactSubject">Subject</label>
+              <select class="form-select" id="contactSubject">
+                <option value="">Select a topic…</option>
+                <option value="bug">Bug / Calculation Error</option>
+                <option value="feedback">General Feedback</option>
+                <option value="feature">Feature Request</option>
+                <option value="partnership">Partnership / Advertising</option>
+                <option value="privacy">Privacy / Data Query</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactMsg">Message</label>
+              <textarea class="form-input" id="contactMsg" rows="5" placeholder="Describe your query in detail…" style="resize:vertical;min-height:120px"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="handleContactSubmit()">Send Message →</button>
+            <p style="font-size:.78rem;color:var(--text-muted);margin-top:12px;text-align:center">Or email directly: <a href="mailto:bindalsankalp@gmail.com">bindalsankalp@gmail.com</a></p>
+          </div>
+
+          <div id="contactSuccess" style="display:none;text-align:center;padding:32px 0">
+            <div style="font-size:2.5rem;margin-bottom:12px">✅</div>
+            <h3 style="margin-bottom:8px">Message Sent!</h3>
+            <p style="font-size:.9rem">Thanks for reaching out. We'll reply to your email within 1–2 business days.</p>
+            <button class="btn btn-outline btn-sm" style="margin-top:20px" onclick="resetContactForm()">Send Another</button>
+          </div>
+        </div>
+
+        <div class="alert alert-green" style="margin-top:16px">
+          <span>🔒</span>
+          <div style="font-size:.82rem">Your message is sent directly to our email. We don't store form submissions on any server.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+<script>renderNav(); renderFooter();</script>
+<script src="../js/main.js"></script>
+<script>
+function handleContactSubmit(){
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value;
+  const msg = document.getElementById('contactMsg').value.trim();
+
+  if(!name || !email || !msg){
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Build a mailto link as fallback (no server-side processing)
+  const subjectLine = subject ? `[PaisaClarity - ${subject}] ${name}` : `[PaisaClarity] Message from ${name}`;
+  const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`;
+  const mailtoUrl = `mailto:bindalsankalp@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoUrl;
+
+  // Show success state
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+
+function resetContactForm(){
+  document.getElementById('contactName').value = '';
+  document.getElementById('contactEmail').value = '';
+  document.getElementById('contactSubject').value = '';
+  document.getElementById('contactMsg').value = '';
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('contactSuccess').style.display = 'none';
+}
+</script>
+</body>
+</html>
