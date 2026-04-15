@@ -65,6 +65,11 @@ function renderFooter(){
     </div>
     <div class="footer-bottom">
       <p>© 2025 PaisaClarity. For educational purposes only. Not financial advice.</p>
+      <div class="footer-legal">
+        <a href="../pages/privacy.html">Privacy Policy</a>
+        <a href="../pages/terms.html">Terms & Conditions</a>
+        <a href="../pages/contact.html">Contact Us</a>
+      </div>
       <p>🇮🇳 Made for India</p>
     </div>
   </div>
@@ -138,6 +143,11 @@ function renderFooterRoot(){
     </div>
     <div class="footer-bottom">
       <p>© 2025 PaisaClarity. For educational purposes only. Not financial advice.</p>
+      <div class="footer-legal">
+        <a href="pages/privacy.html">Privacy Policy</a>
+        <a href="pages/terms.html">Terms & Conditions</a>
+        <a href="pages/contact.html">Contact Us</a>
+      </div>
       <p>🇮🇳 Made for India</p>
     </div>
   </div>
