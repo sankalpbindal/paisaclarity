@@ -162,7 +162,7 @@ body.show-annual .monthly-price{display:none}
     <!-- ITR Season Banner -->
     <div class="season-banner">
       <div>
-        <h3>🗓️ ITR Season is here — deadline July 31</h3>
+        <h3>🗓️ ITR Season 2027 — deadline July 31, 2027</h3>
         <p>Peak demand. Lock in your Pro or CA session before prices adjust.</p>
       </div>
       <div class="countdown">
@@ -672,7 +672,7 @@ function processPayment(){
 
 // ── COUNTDOWN TO JULY 31 ──
 function updateCountdown(){
-  const deadline=new Date('2026-07-31T23:59:59');
+  const deadline=new Date('2027-07-31T23:59:59');
   const now=new Date();
   const diff=deadline-now;
   if(diff<=0){document.querySelector('.season-banner').style.display='none';return;}

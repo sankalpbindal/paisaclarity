@@ -15,7 +15,7 @@
     <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Investments</span></div>
     <span class="badge badge-red">📈 Investments</span>
     <h1>Investment Calculators</h1>
-    <p>FD vs SIP vs RD returns, PPF maturity, NPS pension, emergency fund — all with accurate calculations for Indian investors in 2025.</p>
+    <p>FD vs SIP vs RD returns, PPF maturity, NPS pension, emergency fund — all with accurate calculations for Indian investors in 2026.</p>
   </div>
 </div>
 <div class="container" style="padding-top:24px"><div class="ad-slot"><!--<span>Advertisement — Google AdSense</span>--></div></div>
@@ -111,7 +111,7 @@
             <div class="form-group"><label class="form-label">Annual PPF Contribution (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ppf-amt" value="150000" min="500" max="150000"></div><div class="form-hint">Min: ₹500 · Max: ₹1,50,000/year</div></div>
             <div class="form-group"><label class="form-label">Current PPF Balance (₹)</label><div class="input-pre"><span class="input-pre-sym">₹</span><input type="number" class="form-input" id="ppf-bal" value="0"></div></div>
             <div class="form-group"><label class="form-label">Years Already Completed (0–14)</label><input type="number" class="form-input" id="ppf-done" value="0" min="0" max="14"></div>
-            <div class="form-group"><label class="form-label">PPF Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="ppf-rate" value="7.1" step="0.05"><span class="input-suf-sym">%</span></div><div class="form-hint">Current rate: 7.1% (Q1 FY2025)</div></div>
+            <div class="form-group"><label class="form-label">PPF Interest Rate (% p.a.)</label><div class="input-suf"><input type="number" class="form-input" id="ppf-rate" value="7.1" step="0.05"><span class="input-suf-sym">%</span></div><div class="form-hint">Current rate: 7.1% (continues FY 2026-27 — check NSSF for quarterly updates)</div></div>
             <button class="btn btn-primary w-full" onclick="calcPPF()">Calculate PPF Maturity</button>
 
             <div id="ppf-result" class="hidden mt-16">
@@ -312,14 +312,14 @@ function calcCompare(){
   const sipR=sipRate/12;const sipVal=amt*((Math.pow(1+sipR,n)-1)/sipR)*(1+sipR);
   const sipGain=sipVal-invested;
   // SIP LTCG: 12.5% on gain above 1.25L
-  const sipTaxable=Math.max(0,sipGain-125000);const sipPostTax=sipVal-sipTaxable*0.125*1.04;
+  const sipTaxable=Math.max(0,sipGain-125000);const sipPostTax=sipVal-sipTaxable*0.125*1.04; // LTCG 12.5% above ₹1.25L exemption
   document.getElementById('cmp-result').classList.remove('hidden');
   document.getElementById('cmp-rd').textContent='₹'+fL(rdVal);
   document.getElementById('cmp-rd-sub').textContent=`Gain: ₹${fL(rdGain)} | After ${slab*100}% tax: ₹${fL(rdPostTax)}`;
   document.getElementById('cmp-fd').textContent='₹'+fL(fdVal);
   document.getElementById('cmp-fd-sub').textContent=`Gain: ₹${fL(fdGain)} | After ${slab*100}% tax: ₹${fL(fdPostTax)}`;
   document.getElementById('cmp-sip').textContent='₹'+fL(sipVal);
-  document.getElementById('cmp-sip-sub').textContent=`Gain: ₹${fL(sipGain)} | After 12.5% LTCG: ₹${fL(sipPostTax)}`;
+  document.getElementById('cmp-sip-sub').textContent=`Gain: ₹${fL(sipGain)} | After 12.5% LTCG (above ₹1.25L): ₹${fL(sipPostTax)}`;
   document.getElementById('cmp-diff').textContent='₹'+fL(Math.max(0,sipVal-rdVal));
   const ad=document.getElementById('cmp-advice');
   const better=sipPostTax>rdPostTax;

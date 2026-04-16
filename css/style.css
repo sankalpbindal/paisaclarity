@@ -554,3 +554,50 @@ input[type=range]{width:100%;accent-color:var(--primary);cursor:pointer;height:4
   .trust-bar-inner { gap: 16px; }
   .result-grid { grid-template-columns: 1fr; }
 }
+
+/* ── GUIDE PAGE SPACING FIXES (FY 2026-27 UPDATE) ── */
+.article-wrap h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article-wrap h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.article-wrap p {
+  margin-bottom: 1rem;
+}
+.article-wrap ul, .article-wrap ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+.article-wrap li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+.article-wrap .callout {
+  margin: 1.5rem 0;
+}
+.article-wrap .result-table {
+  margin: 1.25rem 0;
+}
+.article-wrap .tool-card {
+  margin: 1.5rem 0;
+}
+.article-toc {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+}
+.article-toc ol {
+  padding-left: 1.25rem;
+}
+.article-toc li {
+  margin-bottom: 0.35rem;
+}
+.verified-box {
+  margin-top: 2rem;
+  padding: 1.25rem;
+}
+.related-grid {
+  gap: 1rem;
+}

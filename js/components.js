@@ -64,7 +64,7 @@ function renderFooter(){
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 PaisaClarity. For educational purposes only. Not financial advice.</p>
+      <p>© 2026 PaisaClarity. For educational purposes only. Not financial advice.</p>
       <div class="footer-legal">
         <a href="../pages/privacy.html">Privacy Policy</a>
         <a href="../pages/terms.html">Terms & Conditions</a>
@@ -142,7 +142,7 @@ function renderFooterRoot(){
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 PaisaClarity. For educational purposes only. Not financial advice.</p>
+      <p>© 2026 PaisaClarity. For educational purposes only. Not financial advice.</p>
       <div class="footer-legal">
         <a href="pages/privacy.html">Privacy Policy</a>
         <a href="pages/terms.html">Terms & Conditions</a>

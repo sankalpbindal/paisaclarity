@@ -117,12 +117,12 @@
 
           <div class="faq-item">
             <button class="faq-question">What happens if I miss the ITR filing deadline? <span class="faq-icon">+</span></button>
-            <div class="faq-answer">If you miss July 31 (for FY 2024-25): You can file a belated return until December 31, 2025. Penalty: ₹5,000 (₹1,000 if total income ≤ ₹5L). Interest on unpaid tax: 1% per month from April 1 onwards under Sections 234A, 234B, 234C. You lose the right to carry forward capital losses (but not set-off against same-year gains). If you've paid all tax via TDS and just missed filing, the penalty is only ₹1,000–₹5,000 — file immediately.</div>
+            <div class="faq-answer">For FY 2026-27, ITR-1/ITR-2 regular deadline is July 31, 2027; ITR-3/ITR-4 (non-audit) extended to August 31, 2027. Belated return: until December 31, 2027. Penalty: ₹5,000 (₹1,000 if income ≤ ₹5L). Interest on unpaid tax: 1% per month from April 1 under Sections 234A, 234B, 234C. You lose the right to carry forward capital losses if you miss the deadline. File immediately — delays compound.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">Should I invest in ELSS or PPF for 80C? <span class="faq-icon">+</span></button>
-            <div class="faq-answer">Both are popular 80C instruments with key differences: ELSS has a 3-year lock-in (shortest among 80C options), market-linked returns (historically 12–15% CAGR), and LTCG tax at 12.5% on gains above ₹1.25L. PPF has a 15-year tenure, guaranteed 7.1% interest, and is completely tax-free (EEE status). If you're under 40 and can handle market risk, ELSS usually wins for wealth creation. PPF is better for conservative investors or those who want sovereign-guaranteed returns. Most financial advisors suggest doing both — some PPF for stability, some ELSS for growth.</div>
+            <div class="faq-answer">Both are popular 80C instruments (available only under Old Regime) with key differences: ELSS has a 3-year lock-in (shortest among 80C options), market-linked returns (historically 12–15% CAGR), and LTCG tax at 12.5% on gains above ₹1.25L per year. PPF has a 15-year tenure, guaranteed 7.1% interest, and is completely tax-free (EEE status). If you're under 40 and can handle market risk, ELSS usually wins for wealth creation. PPF is better for conservative investors. Most advisors suggest both. Important: First check if the Old Regime even benefits you — at ₹12L income, New Regime gives zero tax without any investments needed.</div>
           </div>
 
           <div class="faq-item">
@@ -213,19 +213,30 @@ async function sendMessage(){
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:`You are PaisaClarity AI, a friendly Indian financial assistant. You answer questions about Indian income tax (ITR), salary deductions, home loans, EMI, investments, and general personal finance for Indian salaried employees and freelancers.
+        system:`You are PaisaClarity AI, a friendly Indian financial assistant specializing in FY 2026-27 Indian personal finance.
+
+KEY TAX RULES (FY 2026-27, effective April 1, 2026):
+- New Regime slabs: 0% (0-4L), 5% (4-8L), 10% (8-12L), 15% (12-16L), 20% (16-20L), 25% (20-24L), 30% (above 24L)
+- Section 87A rebate in New Regime: up to Rs.60,000 -- income up to Rs.12L is effectively tax-free; salaried up to Rs.12.75L (after Rs.75K standard deduction)
+- Old Regime slabs: unchanged. Standard deduction Rs.50K. 87A rebate Rs.12,500 up to Rs.5L.
+- HRA metro cities at 50%: Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Pune, Hyderabad, Ahmedabad (Bengaluru/Pune/Hyderabad/Ahmedabad newly added from April 2026)
+- Capital gains: LTCG equity 12.5% above Rs.1.25L | STCG equity 20% | Property LTCG 12.5% (no indexation for purchases after July 23, 2024)
+- 80C limit: Rs.1.5L unchanged, Old Regime only
+- ITR deadlines FY 2026-27: July 31, 2027 (ITR-1/2) | August 31, 2027 (ITR-3/4 non-audit)
+- New from April 2026: Share buybacks taxed as capital gains; SGBs bought from secondary market no longer tax-free at maturity
+- Income Tax Act 2025 replaced 1961 Act from April 1, 2026 -- same rules, renumbered sections
 
 Rules:
 - Give clear, practical, India-specific answers in plain language
-- Use Indian currency (₹, lakh, crore)
-- Reference correct Indian laws (Income Tax Act, sections like 80C, 24b, 10(13A), etc.)
+- Use Indian currency (Rs., lakh, crore)
+- Reference correct Indian laws; mention old section names (80C, 24b) which are still widely understood
 - Always mention if the user should consult a CA for their specific situation
-- Keep responses concise but complete — 100-300 words ideal
+- Keep responses concise but complete -- 100-300 words ideal
 - Use bullet points for lists
-- Always mention updated rules for FY 2024-25 where relevant
+- Always use FY 2026-27 rules
 - Never give stock-specific investment advice
 - End with a relevant follow-up question or tip if helpful`,
-        messages:[{role:'user',content:q}]
+               messages:[{role:'user',content:q}]
       })
     });
     const data=await response.json();
