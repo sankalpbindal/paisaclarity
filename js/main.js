@@ -26,8 +26,28 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     // Activate matching content panel
     const target=document.getElementById(btn.dataset.tab);
     if(target)target.classList.add('active');
+    // Update URL hash silently
+    history.replaceState(null,'','#'+btn.dataset.tab);
   });
 });
+
+// ── HASH → TAB ACTIVATION (for footer deep links) ──
+function activateTabFromHash(){
+  const hash=location.hash.replace('#','');
+  if(!hash)return;
+  // Find a tab button whose data-tab matches the hash
+  const btn=document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+  if(btn){
+    btn.click();
+    // Scroll to the tabs bar smoothly
+    setTimeout(()=>{
+      const tabsBar=btn.closest('[data-tabs]');
+      if(tabsBar)tabsBar.scrollIntoView({behavior:'smooth',block:'start'});
+    },80);
+  }
+}
+activateTabFromHash();
+window.addEventListener('hashchange',activateTabFromHash);
 
 // ── FAQ ──
 document.querySelectorAll('.faq-question').forEach(q=>{

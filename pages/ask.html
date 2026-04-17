@@ -41,6 +41,15 @@
     <span class="badge badge-green">🤖 Ask AI</span>
     <h1>Ask Any Financial Question</h1>
     <p>Tax, salary, loans, investments — get instant India-specific answers. Like having a CA friend available 24/7. Free 3 questions per day.</p>
+    <div style="margin-top:12px;background:rgba(255,255,255,0.15);border-radius:10px;padding:10px 16px;font-size:.85rem;display:inline-block">
+      💡 <strong>ITR 2025-26 filing is NOW open — July 31, 2026 deadline. Ask me anything about filing yours.</strong>
+    </div>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left:4px solid #2ecc71;padding:12px 20px;margin:0">
+  <div class="container" style="font-size:.9rem;color:#1a5c2a;font-weight:600">
+    🔥 <strong>Most asked this week:</strong> "Am I missing ₹50,000 in deductions?" · "New vs Old regime — which saves more for me?" · "How do I file ITR if I switched jobs?"
   </div>
 </div>
 
@@ -117,7 +126,11 @@
 
           <div class="faq-item">
             <button class="faq-question">What happens if I miss the ITR filing deadline? <span class="faq-icon">+</span></button>
-            <div class="faq-answer">For FY 2026-27, ITR-1/ITR-2 regular deadline is July 31, 2027; ITR-3/ITR-4 (non-audit) extended to August 31, 2027. Belated return: until December 31, 2027. Penalty: ₹5,000 (₹1,000 if income ≤ ₹5L). Interest on unpaid tax: 1% per month from April 1 under Sections 234A, 234B, 234C. You lose the right to carry forward capital losses if you miss the deadline. File immediately — delays compound.</div>
+            <div class="faq-answer">
+              <strong>FY 2025-26 (Current Filing Season — AY 2026-27):</strong> Filing is open from April 1, 2026. Individuals (ITR-1/ITR-2): deadline <strong>July 31, 2026</strong>. Businesses and audit cases (ITR-3/ITR-4): <strong>October 31, 2026</strong>. Belated return: until <strong>December 31, 2026</strong> (₹5,000 penalty; ₹1,000 if income ≤ ₹5L). ITR-U (updated return): up to March 31, 2028 with 25–50% additional tax.
+              <br><br><strong>FY 2026-27 (Next Year — AY 2027-28):</strong> Filing opens April 1, 2027. Individuals: July 31, 2027. Businesses/audit: October 31, 2027.
+              <br><br>Interest on unpaid tax: 1%/month from April 1 under Sections 234A, 234B, 234C. You lose the right to carry forward capital losses if you miss the deadline. File early — July is always rushed.
+            </div>
           </div>
 
           <div class="faq-item">
@@ -213,16 +226,18 @@ async function sendMessage(){
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:`You are PaisaClarity AI, a friendly Indian financial assistant specializing in FY 2026-27 Indian personal finance.
+        system:`You are PaisaClarity AI, a friendly Indian financial assistant specializing in Indian personal finance. Today is April 2026.
 
-KEY TAX RULES (FY 2026-27, effective April 1, 2026):
+KEY TAX RULES — TWO SEASONS:
+FY 2025-26 (AY 2026-27) = CURRENT FILING (Budget 2025 rules):
 - New Regime slabs: 0% (0-4L), 5% (4-8L), 10% (8-12L), 15% (12-16L), 20% (16-20L), 25% (20-24L), 30% (above 24L)
 - Section 87A rebate in New Regime: up to Rs.60,000 -- income up to Rs.12L is effectively tax-free; salaried up to Rs.12.75L (after Rs.75K standard deduction)
 - Old Regime slabs: unchanged. Standard deduction Rs.50K. 87A rebate Rs.12,500 up to Rs.5L.
 - HRA metro cities at 50%: Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Pune, Hyderabad, Ahmedabad (Bengaluru/Pune/Hyderabad/Ahmedabad newly added from April 2026)
 - Capital gains: LTCG equity 12.5% above Rs.1.25L | STCG equity 20% | Property LTCG 12.5% (no indexation for purchases after July 23, 2024)
 - 80C limit: Rs.1.5L unchanged, Old Regime only
-- ITR deadlines FY 2026-27: July 31, 2027 (ITR-1/2) | August 31, 2027 (ITR-3/4 non-audit)
+- ITR deadlines FY 2025-26: July 31, 2026 (ITR-1/2 individuals) | October 31, 2026 (ITR-3/4 audit/business) | Belated: Dec 31, 2026
+- FY 2026-27 deadlines (next year): July 31, 2027 (individuals) | October 31, 2027 (business)
 - New from April 2026: Share buybacks taxed as capital gains; SGBs bought from secondary market no longer tax-free at maturity
 - Income Tax Act 2025 replaced 1961 Act from April 1, 2026 -- same rules, renumbered sections
 
@@ -233,7 +248,7 @@ Rules:
 - Always mention if the user should consult a CA for their specific situation
 - Keep responses concise but complete -- 100-300 words ideal
 - Use bullet points for lists
-- Always use FY 2026-27 rules
+- Default to FY 2025-26 if user does not specify; clarify which year if ambiguous
 - Never give stock-specific investment advice
 - End with a relevant follow-up question or tip if helpful`,
                messages:[{role:'user',content:q}]

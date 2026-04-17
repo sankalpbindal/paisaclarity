@@ -41,26 +41,26 @@ function renderFooter(){
       <div class="footer-col">
         <h5>Payslip Tools</h5>
         <a href="../pages/payslip.html">Payslip Explainer</a>
-        <a href="../pages/payslip.html#hra">HRA Calculator</a>
-        <a href="../pages/payslip.html#pf">PF Calculator</a>
-        <a href="../pages/payslip.html#takehome">Take-Home Salary</a>
-        <a href="../pages/payslip.html#regime">New vs Old Regime</a>
+        <a href="../pages/payslip.html#t2">HRA Calculator</a>
+        <a href="../pages/payslip.html#t3">PF Calculator</a>
+        <a href="../pages/payslip.html#t1">Take-Home Salary</a>
+        <a href="../pages/payslip.html#t4">New vs Old Regime</a>
       </div>
       <div class="footer-col">
         <h5>EMI & Loans</h5>
         <a href="../pages/emi.html">EMI Calculator</a>
-        <a href="../pages/emi.html#compare">Lender Comparison</a>
-        <a href="../pages/emi.html#prepay">Prepayment Planner</a>
-        <a href="../pages/emi.html#eligibility">Loan Eligibility</a>
-        <a href="../pages/emi.html#guides">Loan Guides</a>
+        <a href="../pages/emi.html#e4">Lender Comparison</a>
+        <a href="../pages/emi.html#e2">Prepayment Planner</a>
+        <a href="../pages/emi.html#e3">Loan Eligibility</a>
+        <a href="../pages/emi.html#e5">Loan Guides</a>
       </div>
       <div class="footer-col">
         <h5>ITR & Taxes</h5>
         <a href="../pages/itr.html">Which ITR Form?</a>
-        <a href="../pages/itr.html#80c">80C Deductions</a>
-        <a href="../pages/itr.html#refund">Refund Estimator</a>
-        <a href="../pages/itr.html#capital">Capital Gains</a>
-        <a href="../pages/itr.html#freelancer">Freelancer Taxes</a>
+        <a href="../pages/itr.html#i3">80C Deductions</a>
+        <a href="../pages/itr.html#i2">Refund Estimator</a>
+        <a href="../pages/itr.html#i4">Capital Gains</a>
+        <a href="../pages/itr.html#i6">Freelancer Taxes</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -119,26 +119,26 @@ function renderFooterRoot(){
       <div class="footer-col">
         <h5>Payslip Tools</h5>
         <a href="pages/payslip.html">Payslip Explainer</a>
-        <a href="pages/payslip.html#hra">HRA Calculator</a>
-        <a href="pages/payslip.html#pf">PF Calculator</a>
-        <a href="pages/payslip.html#takehome">Take-Home Salary</a>
-        <a href="pages/payslip.html#regime">New vs Old Regime</a>
+        <a href="pages/payslip.html#t2">HRA Calculator</a>
+        <a href="pages/payslip.html#t3">PF Calculator</a>
+        <a href="pages/payslip.html#t1">Take-Home Salary</a>
+        <a href="pages/payslip.html#t4">New vs Old Regime</a>
       </div>
       <div class="footer-col">
         <h5>EMI & Loans</h5>
         <a href="pages/emi.html">EMI Calculator</a>
-        <a href="pages/emi.html#compare">Lender Comparison</a>
-        <a href="pages/emi.html#prepay">Prepayment Planner</a>
-        <a href="pages/emi.html#eligibility">Loan Eligibility</a>
-        <a href="pages/emi.html#guides">Loan Guides</a>
+        <a href="pages/emi.html#e4">Lender Comparison</a>
+        <a href="pages/emi.html#e2">Prepayment Planner</a>
+        <a href="pages/emi.html#e3">Loan Eligibility</a>
+        <a href="pages/emi.html#e5">Loan Guides</a>
       </div>
       <div class="footer-col">
         <h5>ITR & Taxes</h5>
         <a href="pages/itr.html">Which ITR Form?</a>
-        <a href="pages/itr.html#80c">80C Deductions</a>
-        <a href="pages/itr.html#refund">Refund Estimator</a>
-        <a href="pages/itr.html#capital">Capital Gains</a>
-        <a href="pages/itr.html#freelancer">Freelancer Taxes</a>
+        <a href="pages/itr.html#i3">80C Deductions</a>
+        <a href="pages/itr.html#i2">Refund Estimator</a>
+        <a href="pages/itr.html#i4">Capital Gains</a>
+        <a href="pages/itr.html#i6">Freelancer Taxes</a>
       </div>
     </div>
     <div class="footer-bottom">
