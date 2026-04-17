@@ -53,6 +53,7 @@
               <label class="form-label">Income sources (tick all that apply)</label>
               <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
                 <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-salary" checked> Salary / Pension</label>
+                <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-rental"> House property rental income</label>
                 <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-house"> House property rental income</label>
                 <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-capital"> Capital Gains (stocks, MFs, property)</label>
                 <label style="display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="src-business"> Business / Freelance / Professional income</label>
@@ -425,16 +426,70 @@ function findForm(){
   const capital=document.getElementById('src-capital').checked;
   const business=document.getElementById('src-business').checked;
   const foreign=document.getElementById('src-foreign').checked;
+  const crypto=document.getElementById('src-crypto')?.checked||false;
   const houseCount=document.getElementById('house-count').value;
   const amt=document.getElementById('amt-range').value;
-  const director=document.getElementById('is-director').value;
+  const directorVal=document.getElementById('is-director').value;
+  const director=(directorVal==='yes');
+  const rental=document.getElementById('src-rental').checked;
   let form,desc,advice,cls;
   const docs=['PAN card','Aadhaar card','Form 16 from employer','Form 26AS (IT portal login)','Bank statements (all accounts)'];
-  if(business){form='ITR-4 or ITR-3';desc='You have business/professional income. ITR-4 (Sugam) if opting for presumptive taxation (44ADA/44AD). ITR-3 if maintaining books.';advice='Consider Section 44ADA if you\'re a professional with receipts under ₹75L — it\'s simpler and often tax-efficient. Use the Freelancer Tab for your estimate.';cls='alert-amber';docs.push('All invoices raised','Client TDS certificates (Form 16A)','Business expense receipts');}
-  else if(foreign||director){form='ITR-2';desc='Required for foreign assets/income or company directors. Cannot use ITR-1.';advice='Keep all foreign account statements, FEMA documents, and directorship details ready. Foreign asset disclosure is mandatory.';cls='alert-amber';docs.push('Foreign account statements','Schedule FA details');}
-  else if(capital){form='ITR-2';desc='Required when you have capital gains from stocks, mutual funds, property, or any asset.';advice='Download capital gains statement from your broker (Zerodha: Tax P&L report, Groww: Capital Gains report). For property, get sale deed and purchase deed.';cls='alert-blue';docs.push('Capital gains statement from broker/Kuvera','Property sale deed (if applicable)','Cost of acquisition proof');}
-  else if(houseCount==='2'||amt==='above50'){form='ITR-2';desc='Multiple house properties or income above ₹50L requires ITR-2.';advice='Keep rental agreements and property tax receipts for all properties.';cls='alert-blue';}
-  else{form='ITR-1 (Sahaj)';desc='Simplest form for salary + one house property + other income under ₹50L. Most pre-filled data auto-populates on the IT portal.';advice='Great news! ITR-1 is easiest. Log in to incometax.gov.in, click File ITR → AY 2026-27 → the data should mostly be pre-filled from Form 16. Just verify and submit. Deadline: July 31, 2026.';cls='alert-green';}
+
+  if(business){
+    form='ITR-4 or ITR-3';
+    desc='You have business/professional income. Use ITR-4 (Sugam) if you opt for presumptive taxation under 44AD/44ADA. Use ITR-3 if you maintain books of accounts or your turnover/receipts exceed the presumptive limits.';
+    advice='If you are a professional (doctor, CA, consultant, designer, developer etc.) with gross receipts under ₹75L, Section 44ADA lets you declare 50% as profit — no books needed. Use the Freelancer tab for a detailed estimate.';
+    cls='alert-amber';
+    docs.push('All invoices raised','Client TDS certificates (Form 16A)','Business expense receipts');
+  }
+  else if(crypto){
+    form='ITR-2 or ITR-3';
+    desc='Crypto/VDA income must be reported. If only salary + crypto (no business), use ITR-2. If you trade crypto as a business, use ITR-3.';
+    advice='Crypto gains (VDA) are taxed at flat 30% with no deductions and no loss set-off against other income. Each exchange should give you a transaction statement. Report under Schedule VDA.';
+    cls='alert-amber';
+    docs.push('Exchange transaction statements (CoinDCX, WazirX, Binance etc.)','Schedule VDA details');
+  }
+  else if(foreign||director){
+    form='ITR-2';
+    desc='Required for foreign assets/income or company directors/unlisted share holders. You cannot use ITR-1 even if your only income is salary.';
+    advice='Keep all foreign account statements, FEMA documents, and directorship details ready. Foreign asset disclosure (Schedule FA) is mandatory even if no income was earned from those assets.';
+    cls='alert-amber';
+    docs.push('Foreign account statements / Schedule FA details','Directorship certificate / unlisted share details');
+  }
+  else if(capital){
+    form='ITR-2';
+    desc='Capital gains from stocks, mutual funds, property, or any asset requires ITR-2. Cannot use ITR-1.';
+    advice='Download your capital gains statement from your broker before filing — Zerodha: Tax P&L report, Groww: Capital Gains report, Kuvera/Coin: Gain/Loss statement. For property sales, keep the sale deed and original purchase documents.';
+    cls='alert-blue';
+    docs.push('Capital gains statement from broker','Property sale deed + purchase deed (if applicable)','Cost of acquisition proof');
+  }
+  else if(houseCount==='2'){
+    form='ITR-2';
+    desc='Two or more house properties requires ITR-2 — even if your total income is below ₹50L.';
+    advice='Keep rental agreements, property tax receipts, and municipal tax payment proofs for all properties. You can claim 30% standard deduction on rental income and deduct home loan interest under Section 24(b).';
+    cls='alert-blue';
+    docs.push('Rental agreements for all properties','Municipal tax / property tax receipts','Home loan interest certificates');
+  }
+  else if(rental&&houseCount==='1'){
+    form='ITR-1';
+    desc='Rental income from one self-let house property (where you are not residing) can be reported in ITR-1, provided total income is under ₹50L and there are no capital gains or foreign assets.';
+    advice='Declare rent under "Income from House Property" in ITR-1. You get a flat 30% standard deduction on net rent automatically. Deduct any home loan interest paid under Section 24(b) — up to ₹2L in Old Regime. Keep rent receipts and loan interest certificate handy.';
+    cls='alert-green';
+    docs.push('Rent receipts / rental agreement','Municipal / property tax receipts','Home loan interest certificate (if applicable)');
+  }
+  else if(amt==='above50'){
+    form='ITR-2';
+    desc='Total income above ₹50L requires ITR-2. ITR-1 is only for income up to ₹50L.';
+    advice='ITR-2 is straightforward for salaried filers — it just has more schedules. Your Form 16 and Form 26AS will have most data pre-filled on the IT portal.';
+    cls='alert-blue';
+  }
+  else{
+    form='ITR-1 (Sahaj)';
+    desc='You qualify for the simplest form — salary/pension income, up to one house property, other income (interest/dividends) under ₹50L total. Most data is pre-filled from Form 16.';
+    advice='Great news — ITR-1 is the easiest! Log in to incometax.gov.in → File ITR → AY 2026-27. Your salary, TDS and interest data should be pre-filled from Form 16 and Form 26AS. Just verify, add any missing details, and submit. Deadline: July 31, 2026.';
+    cls='alert-green';
+  }
+
   document.getElementById('form-result').classList.remove('hidden');
   document.getElementById('form-name').textContent=form;
   document.getElementById('form-desc').textContent=desc;
