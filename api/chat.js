@@ -1,3 +1,10 @@
+// Disable Vercel's built-in body parser so we can read raw stream
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 const handler = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -9,13 +16,24 @@ const handler = async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'API key missing' });
 
-  let body = req.body;
-  if (typeof body === 'string') {
-    try { body = JSON.parse(body); } catch(e) { return res.status(400).json({ error: 'Bad JSON' }); }
+  // Read raw body
+  let body;
+  try {
+    const raw = await new Promise((resolve, reject) => {
+      let data = '';
+      req.on('data', chunk => data += chunk);
+      req.on('end', () => resolve(data));
+      req.on('error', reject);
+    });
+    body = JSON.parse(raw);
+  } catch (e) {
+    return res.status(400).json({ error: 'Could not parse body: ' + e.message });
   }
 
   const { messages, system } = body || {};
-  if (!messages || !messages.length) return res.status(400).json({ error: 'No messages' });
+  if (!messages || !messages.length) {
+    return res.status(400).json({ error: 'No messages provided' });
+  }
 
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
