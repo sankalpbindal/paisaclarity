@@ -604,3 +604,19 @@ input[type=range]{width:100%;accent-color:var(--primary);cursor:pointer;height:4
 .related-grid {
   gap: 1rem;
 }
+
+/* Add this to style.css — fixes refund policy cards on mobile */
+@media (max-width: 640px) {
+  /* Refund cards: stack to single column on phones */
+  #refund .card-grid-3,
+  #refund [style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Tablets: 2 columns, last card full width */
+  #refund [style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
