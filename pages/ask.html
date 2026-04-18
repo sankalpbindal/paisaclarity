@@ -235,70 +235,110 @@ if(lastDate!==today){askedToday=0;localStorage.setItem('pc_asked_today','0');loc
 freeQuestions=Math.max(0,3-askedToday);
 updateCounter();
 
+// ── Conversation history (maintained per session for context) ──
+const conversationHistory=[];
+
+const SYSTEM_PROMPT=`You are PaisaClarity AI, a friendly Indian financial assistant. Today is April 2026.
+
+CURRENT FILING SEASON — FY 2025-26 (AY 2026-27) — Budget 2025 rules apply:
+- New Regime (default): 0%(0-4L), 5%(4-8L), 10%(8-12L), 15%(12-16L), 20%(16-20L), 25%(20-24L), 30%(above 24L)
+- Section 87A rebate (New Regime): income up to Rs.12L = zero tax; salaried up to Rs.12.75L after Rs.75K standard deduction
+- Old Regime: unchanged slabs 5%/20%/30%, standard deduction Rs.50K, 87A rebate up to Rs.12,500 (income up to Rs.5L)
+- HRA metro 50%: Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Pune, Hyderabad, Ahmedabad (last 4 newly added April 2026)
+- Capital gains: LTCG equity 12.5% above Rs.1.25L | STCG equity 20% | Property LTCG 12.5% (no indexation for purchases after July 23 2024)
+- 80C: Rs.1.5L limit, Old Regime only
+- ITR deadlines FY 2025-26: Jul 31 2026 (individuals ITR-1/2) | Oct 31 2026 (business/audit ITR-3/4) | Belated: Dec 31 2026
+- FY 2026-27 (next year): Jul 31 2027 individuals | Oct 31 2027 business
+- New April 2026: share buybacks taxed as capital gains; SGBs from secondary market no longer tax-free at maturity
+- Income Tax Act 2025 replaced 1961 Act — same rules, sections renumbered
+
+RULES:
+- Answer in plain, friendly language. India-specific and practical.
+- Use Rs., lakh, crore. Give concrete numbers where possible.
+- Reference Indian laws/sections (80C, 24b, 44ADA etc.)
+- Default to FY 2025-26 unless user specifies
+- Keep responses 100-250 words. Use bullet points for steps/lists.
+- End with one useful follow-up tip or next step
+- For complex/personal situations, suggest consulting a CA
+- Never give stock-specific investment advice`;
+
 function updateCounter(){
   const el=document.getElementById('free-counter');
-  if(freeQuestions>0){el.textContent=freeQuestions+' free question'+(freeQuestions===1?'':'s')+' remaining today';}
-  else{el.innerHTML='Free limit reached. <a href="pricing.html" style="color:var(--primary);font-weight:500">Upgrade to Pro</a> for unlimited questions.';}
+  if(!el)return;
+  if(freeQuestions>0){
+    el.textContent=freeQuestions+' free question'+(freeQuestions===1?'':'s')+' remaining today';
+  } else {
+    el.innerHTML='Free limit reached. <a href="pricing.html" style="color:var(--primary);font-weight:600">Upgrade to Pro</a> for unlimited questions.';
+    const nudge=document.getElementById('pro-nudge');
+    if(nudge)nudge.style.display='block';
+  }
 }
 
 function askQuestion(q){document.getElementById('chat-input').value=q;sendMessage();}
-
 function handleEnter(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
 
 async function sendMessage(){
-  const input=document.getElementById('chat-input');const q=input.value.trim();
+  const input=document.getElementById('chat-input');
+  const q=input.value.trim();
   if(!q)return;
-  if(freeQuestions<=0){alert('You\'ve used your 3 free questions today. Upgrade to Pro for unlimited questions!');return;}
+
+  if(freeQuestions<=0){
+    const nudge=document.getElementById('pro-nudge');
+    if(nudge){nudge.style.display='block';nudge.scrollIntoView({behavior:'smooth',block:'nearest'});}
+    return;
+  }
+
+  const sendBtn=document.getElementById('send-btn');
+  sendBtn.disabled=true;sendBtn.textContent='...';
   input.value='';
+
   addMsg(q,'user');
+  conversationHistory.push({role:'user',content:q});
   const typing=addTyping();
+
   freeQuestions--;askedToday++;
   localStorage.setItem('pc_asked_today',askedToday.toString());
+  localStorage.setItem('pc_last_date',today);
   updateCounter();
+
   try{
-    const response=await fetch('https://api.anthropic.com/v1/messages',{
+    // Calls your Vercel proxy — API key stays server-side
+    const response=await fetch('/api/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        system:`You are PaisaClarity AI, a friendly Indian financial assistant specializing in Indian personal finance. Today is April 2026.
-
-KEY TAX RULES — TWO SEASONS:
-FY 2025-26 (AY 2026-27) = CURRENT FILING (Budget 2025 rules):
-- New Regime slabs: 0% (0-4L), 5% (4-8L), 10% (8-12L), 15% (12-16L), 20% (16-20L), 25% (20-24L), 30% (above 24L)
-- Section 87A rebate in New Regime: up to Rs.60,000 -- income up to Rs.12L is effectively tax-free; salaried up to Rs.12.75L (after Rs.75K standard deduction)
-- Old Regime slabs: unchanged. Standard deduction Rs.50K. 87A rebate Rs.12,500 up to Rs.5L.
-- HRA metro cities at 50%: Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Pune, Hyderabad, Ahmedabad (Bengaluru/Pune/Hyderabad/Ahmedabad newly added from April 2026)
-- Capital gains: LTCG equity 12.5% above Rs.1.25L | STCG equity 20% | Property LTCG 12.5% (no indexation for purchases after July 23, 2024)
-- 80C limit: Rs.1.5L unchanged, Old Regime only
-- ITR deadlines FY 2025-26: July 31, 2026 (ITR-1/2 individuals) | October 31, 2026 (ITR-3/4 audit/business) | Belated: Dec 31, 2026
-- FY 2026-27 deadlines (next year): July 31, 2027 (individuals) | October 31, 2027 (business)
-- New from April 2026: Share buybacks taxed as capital gains; SGBs bought from secondary market no longer tax-free at maturity
-- Income Tax Act 2025 replaced 1961 Act from April 1, 2026 -- same rules, renumbered sections
-
-Rules:
-- Give clear, practical, India-specific answers in plain language
-- Use Indian currency (Rs., lakh, crore)
-- Reference correct Indian laws; mention old section names (80C, 24b) which are still widely understood
-- Always mention if the user should consult a CA for their specific situation
-- Keep responses concise but complete -- 100-300 words ideal
-- Use bullet points for lists
-- Default to FY 2025-26 if user does not specify; clarify which year if ambiguous
-- Never give stock-specific investment advice
-- End with a relevant follow-up question or tip if helpful`,
-               messages:[{role:'user',content:q}]
+        system:SYSTEM_PROMPT,
+        messages:conversationHistory
       })
     });
+
+    if(!response.ok){
+      const err=await response.json().catch(()=>({}));
+      throw new Error(err.error?.message||'HTTP '+response.status);
+    }
+
     const data=await response.json();
     typing.remove();
-    const text=data.content&&data.content[0]?data.content[0].text:'I couldn\'t process that question. Please try again.';
+    const text=data.content?.[0]?.text||'Sorry, could not get a response. Please try again.';
+    conversationHistory.push({role:'assistant',content:text});
     addMsg(text,'ai');
+
   }catch(err){
     typing.remove();
-    addMsg('Sorry, I\'m having trouble connecting right now. Please try again in a moment. In the meantime, check our guides above for common questions!','ai');
+    const isAuth=err.message&&(err.message.includes('401')||err.message.includes('api_key')||err.message.includes('authentication'));
+    if(isAuth){
+      addMsg('The AI service needs an API key configured on your server. See setup instructions — in the meantime, our FAQ guides below cover the most common questions!','ai');
+    } else {
+      addMsg('Sorry, having trouble connecting right now. Please try again in a moment. Our FAQ guides below cover the most common questions!','ai');
+    }
+    freeQuestions++;askedToday=Math.max(0,askedToday-1);
+    localStorage.setItem('pc_asked_today',askedToday.toString());
+    updateCounter();
+  } finally{
+    sendBtn.disabled=false;sendBtn.textContent='Ask →';
   }
 }
+
 
 function addMsg(text,role){
   const wrap=document.getElementById('chat-messages');
