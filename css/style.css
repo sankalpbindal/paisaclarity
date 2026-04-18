@@ -605,18 +605,21 @@ input[type=range]{width:100%;accent-color:var(--primary);cursor:pointer;height:4
   gap: 1rem;
 }
 
-/* Add this to style.css — fixes refund policy cards on mobile */
-@media (max-width: 640px) {
-  /* Refund cards: stack to single column on phones */
-  #refund .card-grid-3,
-  #refund [style*="grid-template-columns:repeat(3"] {
-    grid-template-columns: 1fr !important;
+/* ── TRUST & TESTIMONIALS ── */
+@media(max-width:768px){
+  /* testimonial grid: stack on mobile */
+  .testimonial-grid,[style*="grid-template-columns:repeat(3,1fr)"]{
+    grid-template-columns:1fr!important;
   }
+  /* refund policy cards: stack on mobile */
+  .refund-grid{grid-template-columns:1fr!important}
+  /* sticky bar: single column */
+  #upsell-bar{flex-direction:column;gap:8px;text-align:center;padding:12px 16px}
 }
-
-@media (max-width: 900px) {
-  /* Tablets: 2 columns, last card full width */
-  #refund [style*="grid-template-columns:repeat(3"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+@media(min-width:769px) and (max-width:1024px){
+  /* testimonials: 2+1 on tablet */
+  .testimonial-grid{grid-template-columns:1fr 1fr!important}
 }
+/* ── WHATSAPP FLOAT BUTTON ── */
+.wa-float{position:fixed;bottom:70px;right:20px;z-index:998;width:48px;height:48px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.4);text-decoration:none;font-size:1.4rem;transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
