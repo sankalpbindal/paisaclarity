@@ -512,35 +512,74 @@ body.show-annual .monthly-price{display:none}
 <!-- ═══════════════════════════════
      REFUND POLICY
 ════════════════════════════════ -->
-<section class="section-sm" style="background:var(--surface-2)">
-  <div class="container" style="max-width:760px">
-    <div class="section-header"><h2>Refund Policy</h2><p>We keep it simple and fair.</p></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-      <!-- Pro -->
-      <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px">
-        <div style="font-size:1.4rem;margin-bottom:8px">⚡</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--text-primary)">Pro Subscription</div>
-        <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.55">Full refund within <strong>7 days</strong> of purchase — no questions asked. Email your order ID to support@paisaclarity.in. Refund in 3–5 business days to your original UPI account.</div>
-      </div>
-      <!-- Per-session -->
-      <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px">
-        <div style="font-size:1.4rem;margin-bottom:8px">🧾</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--text-primary)">Per-Query / Session</div>
-        <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.55">Refund if your CA doesn't respond within the promised window, or if you're genuinely unsatisfied with response quality. Unused query packs refunded in full within 30 days of purchase.</div>
-      </div>
-      <!-- CA Connect -->
-      <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px">
-        <div style="font-size:1.4rem;margin-bottom:8px">👨‍💼</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--text-primary)">CA Connect Packages</div>
-        <div style="font-size:.83rem;color:var(--text-secondary);line-height:1.55">Full refund before your CA begins work. Partial refund (50%) if work is in progress. No refund after ITR is filed or notice response submitted. Disputes? We step in and resolve.</div>
-      </div>
+<!-- <section class="section-sm" style="background:var(--surface-2)"> -->
+  <!-- ═══════════════════════════════════════════════
+     FIND THIS SECTION in pricing.html and replace it
+     (search for "Refund Policy" to locate it)
+     ═══════════════════════════════════════════════ -->
+
+<section class="section" id="refund">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Refund Policy</h2>
+      <p class="section-desc">We keep it simple and fair.</p>
     </div>
-    <div style="background:var(--primary-bg);border:1px solid var(--primary);border-radius:var(--radius-md);padding:14px 18px;margin-top:16px;font-size:.83rem;color:var(--primary-dark);display:flex;gap:10px;align-items:center">
-      <span style="font-size:1.1rem;flex-shrink:0">✉️</span>
-      <span>To request a refund, email <strong>support@paisaclarity.in</strong> with your order ID and UPI transaction reference. We respond within 1 business day.</span>
+
+    <!-- FIX: equal-height cards, no text wrapping, proper 3-col grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;align-items:stretch">
+
+      <!-- Card 1 -->
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:1.8rem">⚡</div>
+        <h4 style="margin:0;font-size:1rem;line-height:1.3">Pro Subscription</h4>
+        <p style="margin:0;font-size:.875rem;color:var(--text-secondary);line-height:1.6;flex:1">
+          Full refund within <strong>7 days</strong> of purchase — no questions asked. Email your order ID to
+          <strong>bindalsankalp@gmail.com</strong>. Refund in 3–5 business days to your original UPI account.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:1.8rem">🧾</div>
+        <h4 style="margin:0;font-size:1rem;line-height:1.3">Per-Query / Session</h4>
+        <p style="margin:0;font-size:.875rem;color:var(--text-secondary);line-height:1.6;flex:1">
+          Refund if your CA doesn't respond within the promised window, or if you're genuinely unsatisfied
+          with response quality. Unused query packs refunded in full within 30 days of purchase.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:1.8rem">👨‍💼</div>
+        <h4 style="margin:0;font-size:1rem;line-height:1.3">CA Connect Packages</h4>
+        <p style="margin:0;font-size:.875rem;color:var(--text-secondary);line-height:1.6;flex:1">
+          Full refund before your CA begins work. Partial refund (50%) if work is in progress.
+          No refund after ITR is filed or notice response submitted. Disputes? We step in and resolve.
+        </p>
+      </div>
+
     </div>
+
+    <!-- Contact strip — updated email -->
+    <div class="highlight-box" style="margin-top:28px;display:flex;align-items:center;gap:14px">
+      <span style="font-size:1.4rem;flex-shrink:0">✉️</span>
+      <p style="margin:0;font-size:.9rem;color:var(--text-secondary);line-height:1.5">
+        To request a refund, email <strong><a href="mailto:bindalsankalp@gmail.com" style="color:var(--primary)">bindalsankalp@gmail.com</a></strong>
+        with your order ID and UPI transaction reference. We respond within 1 business day.
+      </p>
+    </div>
+
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════
+     Also replace ALL occurrences of:
+       support@paisaclarity.in
+     with:
+       bindalsankalp@gmail.com
+     across pricing.html AND contact.html
+     ═══════════════════════════════════════════════ -->
 
 <!-- ═══════════════════════════════
      FAQ
