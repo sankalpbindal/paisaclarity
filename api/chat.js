@@ -1,38 +1,46 @@
-// Disable Vercel's built-in body parser so we can read raw stream
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-const handler = async (req, res) => {
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'API key missing' });
 
-  // Read raw body
-  let body;
+  // Try every possible way to get the body
+  let messages, system;
+
   try {
-    const raw = await new Promise((resolve, reject) => {
-      let data = '';
-      req.on('data', chunk => data += chunk);
-      req.on('end', () => resolve(data));
-      req.on('error', reject);
-    });
-    body = JSON.parse(raw);
+    // Method 1: already parsed by Vercel
+    if (req.body && req.body.messages) {
+      messages = req.body.messages;
+      system   = req.body.system || '';
+    }
+    // Method 2: body is a string
+    else if (typeof req.body === 'string') {
+      const p = JSON.parse(req.body);
+      messages = p.messages;
+      system   = p.system || '';
+    }
+    // Method 3: read raw stream
+    else {
+      const raw = await new Promise((resolve, reject) => {
+        let d = '';
+        req.on('data', c => d += c);
+        req.on('end',  () => resolve(d));
+        req.on('error', reject);
+      });
+      const p = JSON.parse(raw);
+      messages = p.messages;
+      system   = p.system || '';
+    }
   } catch (e) {
-    return res.status(400).json({ error: 'Could not parse body: ' + e.message });
+    return res.status(400).json({ error: 'Body parse failed: ' + e.message, body: String(req.body) });
   }
 
-  const { messages, system } = body || {};
   if (!messages || !messages.length) {
-    return res.status(400).json({ error: 'No messages provided' });
+    return res.status(400).json({ error: 'No messages found', body: String(req.body) });
   }
 
   try {
@@ -46,7 +54,7 @@ const handler = async (req, res) => {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
-        system: system || '',
+        system,
         messages,
       }),
     });
@@ -57,5 +65,3 @@ const handler = async (req, res) => {
     return res.status(502).json({ error: err.message });
   }
 };
-
-module.exports = handler;
