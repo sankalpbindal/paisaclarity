@@ -30,7 +30,7 @@
           <div style="width:48px;height:48px;background:var(--primary-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📧</div>
           <div>
             <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:3px">Email</div>
-            <a href="mailto:bindalsankalp@gmail.com" style="font-weight:600;color:var(--primary);font-size:.95rem">bindalsankalp@gmail.com</a>
+            <a href="mailto:paisaclarity@zohomail.in" style="font-weight:600;color:var(--primary);font-size:.95rem">paisaclarity@zohomail.in</a>
             <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">For general queries, feedback, or bugs</div>
           </div>
         </div>
@@ -107,7 +107,7 @@
               <textarea class="form-input" id="contactMsg" rows="5" placeholder="Describe your query in detail…" style="resize:vertical;min-height:120px"></textarea>
             </div>
             <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="handleContactSubmit()">Send Message →</button>
-            <p style="font-size:.78rem;color:var(--text-muted);margin-top:12px;text-align:center">Or email directly: <a href="mailto:bindalsankalp@gmail.com">bindalsankalp@gmail.com</a></p>
+            <p style="font-size:.78rem;color:var(--text-muted);margin-top:12px;text-align:center">Or email directly: <a href="mailto:paisaclarity@zohomail.in">paisaclarity@zohomail.in</a></p>
           </div>
 
           <div id="contactSuccess" style="display:none;text-align:center;padding:32px 0">
@@ -152,7 +152,7 @@ function handleContactSubmit(){
   // Build a mailto link as fallback (no server-side processing)
   const subjectLine = subject ? `[PaisaClarity - ${subject}] ${name}` : `[PaisaClarity] Message from ${name}`;
   const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`;
-  const mailtoUrl = `mailto:bindalsankalp@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+  const mailtoUrl = `mailto:paisaclarity@zohomail.in?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
 
   // Show success state
