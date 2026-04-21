@@ -5,7 +5,11 @@ function renderNav(){
   <div class="container">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">
-        <div class="nav-logo-icon">PC</div>
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="44" cy="44" r="34" stroke="#2db04b" stroke-width="10" fill="white"/>
+          <text x="44" y="57" text-anchor="middle" font-size="36" font-weight="700" fill="#2db04b" font-family="Arial, sans-serif">₹</text>
+          <line x1="69" y1="69" x2="88" y2="88" stroke="#1a2744" stroke-width="10" stroke-linecap="round"/>
+        </svg>
         <span class="nav-logo-text">Paisa<span>Clarity</span></span>
       </a>
       <div class="nav-links" id="navLinks">
@@ -34,8 +38,14 @@ function renderFooter(){
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo-icon">PC</div>
-        <span class="footer-logo-text">Paisa<span>Clarity</span></span>
+        <a href="../index.html" class="footer-logo-link">
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+            <circle cx="44" cy="44" r="34" stroke="#2db04b" stroke-width="10" fill="transparent"/>
+            <text x="44" y="57" text-anchor="middle" font-size="36" font-weight="700" fill="#2db04b" font-family="Arial, sans-serif">₹</text>
+            <line x1="69" y1="69" x2="88" y2="88" stroke="#1a2744" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-logo-text">Paisa<span>Clarity</span></span>
+        </a>
         <p>India's most trusted financial clarity platform. Understand your salary, loans, and taxes — in plain language.</p>
       </div>
       <div class="footer-col">
@@ -84,7 +94,11 @@ function renderNavRoot(){
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <div class="nav-logo-icon">PC</div>
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="44" cy="44" r="34" stroke="#2db04b" stroke-width="10" fill="white"/>
+          <text x="44" y="57" text-anchor="middle" font-size="36" font-weight="700" fill="#2db04b" font-family="Arial, sans-serif">₹</text>
+          <line x1="69" y1="69" x2="88" y2="88" stroke="#1a2744" stroke-width="10" stroke-linecap="round"/>
+        </svg>
         <span class="nav-logo-text">Paisa<span>Clarity</span></span>
       </a>
       <div class="nav-links" id="navLinks">
@@ -112,8 +126,14 @@ function renderFooterRoot(){
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo-icon">PC</div>
-        <span class="footer-logo-text">Paisa<span>Clarity</span></span>
+        <a href="index.html" class="footer-logo-link">
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+            <circle cx="44" cy="44" r="34" stroke="#2db04b" stroke-width="10" fill="transparent"/>
+            <text x="44" y="57" text-anchor="middle" font-size="36" font-weight="700" fill="#2db04b" font-family="Arial, sans-serif">₹</text>
+            <line x1="69" y1="69" x2="88" y2="88" stroke="#1a2744" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-logo-text">Paisa<span>Clarity</span></span>
+        </a>
         <p>India's most trusted financial clarity platform. Understand your salary, loans, and taxes — in plain language.</p>
       </div>
       <div class="footer-col">
