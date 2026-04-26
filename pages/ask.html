@@ -25,6 +25,23 @@
 <link rel="canonical" href="https://paisaclarity.in/pages/ask.html">
 <link rel="stylesheet" href="../css/style.css">
 <style>
+  /* ── FIX 1: ask.html — chat bubbles overflowing off screen on mobile
+   Root cause: .msg-bubble has no word-break, and .chat-messages has
+   no overflow-x:hidden, so long text/URLs bleed past the viewport. */
+ 
+.chat-messages {
+  overflow-x: hidden;
+}
+ 
+.msg {
+  min-width: 0;
+}
+ 
+.msg-bubble {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
 .chat-wrap{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
 .chat-messages{padding:24px;min-height:320px;max-height:500px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
 .msg{display:flex;gap:12px;align-items:flex-start;max-width:90%}
