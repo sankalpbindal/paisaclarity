@@ -627,54 +627,50 @@ input[type=range]{width:100%;accent-color:var(--primary);cursor:pointer;height:4
 
 
 /* ============================================================
-   PAISACLARITY — MOBILE FIXES
-   Append to the END of css/style.css
+   PAISACLARITY — MOBILE FIX (append to END of css/style.css)
+   
+   ROOT CAUSE: ask.html Pro upsell card has a button with
+   white-space:nowrap + flex-shrink:0 (inline styles). This forces
+   the card wider than the mobile viewport, which stretches the entire
+   grid column — making chat-wrap and everything above it APPEAR to
+   overflow even though they are fine. Fix the column, fix everything.
    ============================================================ */
 
-/* ── FIX 1: ask.html — full page horizontal scroll on mobile
-   Root cause: .page-hero has a child div with display:inline-block
-   containing long bold text ("ITR 2025-26 filing is NOW open...").
-   inline-block never wraps to fit its parent, so it widens the page.
-   Also covers the sticky upsell bar which can cause the same issue. */
-
-.page-hero .container > div[style*="inline-block"] {
-  display: block !important;
-  white-space: normal !important;
-  max-width: 100% !important;
-  box-sizing: border-box;
-}
-
-/* Belt-and-braces: any inline-block inside page-hero container */
 @media (max-width: 600px) {
-  .page-hero .container > div {
-    display: block;
-    white-space: normal;
+
+  /* 1. Force the grid column to never exceed viewport width.
+        min-width:0 is critical — without it, a grid child's
+        minimum size is its content size, not zero. */
+  .content-with-sidebar > div {
+    min-width: 0;
     max-width: 100%;
-    box-sizing: border-box;
+    overflow: hidden;
   }
 
-  /* Upsell bar: prevent it widening the page */
-  #upsell-bar {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
+  /* 2. The pro-upsell card flex row: let it wrap so button drops below */
+  .card .flex-between {
+    flex-wrap: wrap;
+  }
+
+  /* 3. The nowrap button: allow it to go full-width when it wraps */
+  .card .flex-between .btn {
     white-space: normal;
-    box-sizing: border-box;
-    max-width: 100vw;
+    flex-shrink: 1;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 
-  /* Chat bubbles: wrap long words */
-  .msg-bubble {
-    word-break: break-word;
-    overflow-wrap: break-word;
+  /* 4. Belt-and-braces: chat-wrap itself must not exceed its column */
+  .chat-wrap {
+    max-width: 100%;
+    overflow: hidden;
   }
+
 }
 
 
-/* ── FIX 2: pricing.html — Refund Policy cards don't stack on mobile
-   Root cause: div uses inline style="grid-template-columns:1fr 1fr 1fr"
-   which beats the .refund-grid class rule. !important overrides it. */
-
+/* ── pricing.html — Refund 3-col grid stacking fix ── */
 @media (max-width: 680px) {
   .container [style*="grid-template-columns:1fr 1fr 1fr"],
   .container [style*="grid-template-columns: 1fr 1fr 1fr"] {
