@@ -146,6 +146,19 @@
 .monthly-price{display:block}
 body.show-annual .annual-price{display:block}
 body.show-annual .monthly-price{display:none}
+
+  /* ── FIX 2: pricing.html — Refund Policy cards don't stack on mobile
+   Root cause: the div uses an inline style="grid-template-columns:1fr 1fr 1fr"
+   which has higher specificity than the .refund-grid class rule already
+   in style.css. Override with !important inside the media query. */
+ 
+@media (max-width: 680px) {
+  .container [style*="grid-template-columns:1fr 1fr 1fr"],
+  .container [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+ 
 </style>
 </head>
 <body>
